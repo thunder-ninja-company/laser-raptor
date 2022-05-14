@@ -13,7 +13,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome 123123 BRANCHO  <a href="https://nextjs.org">Next.js!</a>
+          Welcome PREVIEW FEATURE WORKS MAYBE dev BRANCHO  <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
         <p className={styles.description}>
