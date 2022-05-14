@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-thundervolcano-dev-121141-authRole",
+      "UnauthRoleArn": "arn:aws:iam::938413686327:role/amplify-thundervolcano-dev-121141-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::938413686327:role/amplify-thundervolcano-dev-121141-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-thundervolcano-dev-121141-deployment",
+      "UnauthRoleName": "amplify-thundervolcano-dev-121141-unauthRole",
+      "StackName": "amplify-thundervolcano-dev-121141",
+      "StackId": "arn:aws:cloudformation:us-east-1:938413686327:stack/amplify-thundervolcano-dev-121141/5d12e680-d227-11ec-aa51-12797743054f",
+      "AmplifyAppId": "d1dg6wp1g06v2y"
+    }
+  }
+}
