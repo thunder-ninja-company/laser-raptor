@@ -9,13 +9,23 @@
       "UnauthRoleName": "amplify-thundervolcano-dev-121141-unauthRole",
       "StackName": "amplify-thundervolcano-dev-121141",
       "StackId": "arn:aws:cloudformation:us-east-1:938413686327:stack/amplify-thundervolcano-dev-121141/5d12e680-d227-11ec-aa51-12797743054f",
-      "AmplifyAppId": "d1dg6wp1g06v2y"
+      "AmplifyAppId": "d1dg6wp1g06v2y",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-thundervolcano-dev-121141-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "hosting": {
         "amplifyhosting": {
           "appId": "d1dg6wp1g06v2y",
           "type": "manual"
+        }
+      },
+      "auth": {
+        "undefined": {}
+      },
+      "function": {
+        "thundervolcanobe459ee2": {
+          "deploymentBucketName": "amplify-thundervolcano-dev-121141-deployment",
+          "s3Key": "amplify-builds/thundervolcanobe459ee2-3465615978567a384741-build.zip"
         }
       }
     }

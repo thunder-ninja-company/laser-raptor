@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "paths": {
+    "/game": {
+      "name": "/game",
+      "lambdaFunction": "thundervolcanobe459ee2",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update"
+        ]
+      }
+    }
+  }
+}
