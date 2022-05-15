@@ -10,6 +10,11 @@
       "StackName": "amplify-thundervolcano-develop-15725",
       "StackId": "arn:aws:cloudformation:us-east-1:938413686327:stack/amplify-thundervolcano-develop-15725/33b45960-d329-11ec-8aee-1265a3c1ccaf",
       "AmplifyAppId": "dn38ts8gqrljm"
+    },
+    "categories": {
+      "auth": {
+        "thundervolcanoc3b91ffd": {}
+      }
     }
   }
 }
