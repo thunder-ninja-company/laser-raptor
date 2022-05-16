@@ -4,21 +4,38 @@ import styles from '../styles/Home.module.css'
 import { DoubleHeader } from '../components/Header';
 
 const mainLinks = [{
-  label : 'label1',
-  link  : 'link1',
+  label : 'PRIVACY & SECURITY',
+  link : 'PRIVACY & SECURITY',
 }, {
-  label : 'label2',
-  link  : 'link2',
+  label : 'ACCOUNT SETTINGS',
+  link : 'ACCOUNT SETTINGS',
+},  {
+  label : 'SUPPORT OPTIONS',
+  link : 'SUPPORT OPTIONS',
 }];
 
+const userLinks = [{
+  label : 'BOOK A DEMO',
+  link : 'BOOK A DEMO',
+}, {
+  label : 'DOCUMENTATION',
+  link : 'DOCUMENTATION',
+}, {
+  label : 'COMMUNITY',
+  link : 'COMMUNITY',
+}, {
+  label : 'ACADEMY',
+  link : 'ACADEMY',
+}, {
+  label : 'FORUMS',
+  link : 'FORUMS',
+}];
 
 const Home: NextPage = () => {
   return (
-    <div className={styles.container}>
       <DoubleHeader
         mainLinks={mainLinks}
         userLinks={mainLinks} />
-    </div>
   )
 }
 
