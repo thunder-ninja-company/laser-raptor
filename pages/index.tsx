@@ -1,11 +1,11 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
 import { DoubleHeader } from '../components/Header';
+import { FooterCentered } from '../components/Footer';
+import { NavbarSimple } from '../components/NavbarSimple';
 
 const mainLinks = [{
-  label : 'PRIVACY & SECURITY',
-  link : 'PRIVACY & SECURITY',
+  label : 'JIRA HOME',
+  link : 'https://thunderninja.atlassian.net/jira/projects?selectedProjectType=software',
 }, {
   label : 'ACCOUNT SETTINGS',
   link : 'ACCOUNT SETTINGS',
@@ -33,9 +33,14 @@ const userLinks = [{
 
 const Home: NextPage = () => {
   return (
-      <DoubleHeader
-        mainLinks={mainLinks}
-        userLinks={mainLinks} />
+      <>
+        <DoubleHeader
+          mainLinks={mainLinks}
+          userLinks={mainLinks} />
+          <NavbarSimple />
+        
+        <FooterCentered links={mainLinks} />
+      </>
   )
 }
 

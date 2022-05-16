@@ -110,7 +110,7 @@ export function DoubleHeader({ mainLinks, userLinks }: DoubleHeaderProps) {
   ));
 
   return (
-    <Header height={HEADER_HEIGHT} mb={120}>
+    <Header height={HEADER_HEIGHT}>
       <Container className={classes.inner}>
         <MantineLogo width={130} />
         <div className={classes.links}>
