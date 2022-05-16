@@ -2,6 +2,10 @@ import type { NextPage } from 'next'
 import { DoubleHeader } from '../components/Header';
 import { FooterCentered } from '../components/Footer';
 import { NavbarSimple } from '../components/NavbarSimple';
+import { LeadGrid } from '../components/LeadGrid';
+import { ImageCheckboxes } from '../components/ImageCheckboxes';
+import { TableReviews } from '../components/TableReviews';
+
 
 const mainLinks = [{
   label : 'JIRA HOME',
@@ -37,8 +41,11 @@ const Home: NextPage = () => {
         <DoubleHeader
           mainLinks={mainLinks}
           userLinks={mainLinks} />
+          <ImageCheckboxes />
+          
           <NavbarSimple />
-        
+          <TableReviews data={[]} />
+          <LeadGrid />
         <FooterCentered links={mainLinks} />
       </>
   )
