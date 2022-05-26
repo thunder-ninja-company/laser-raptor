@@ -5,7 +5,7 @@ import { NavbarSimple } from '../components/NavbarSimple';
 import { LeadGrid } from '../components/LeadGrid';
 import { ImageCheckboxes } from '../components/ImageCheckboxes';
 import { TableReviews } from '../components/TableReviews';
-
+import { Counter } from '../src/app/counter';
 
 const mainLinks = [{
   label : 'JIRA HOME',
@@ -45,6 +45,7 @@ const Home: NextPage = () => {
           
           <NavbarSimple />
           <TableReviews data={[]} />
+          <Counter />
           <LeadGrid />
         <FooterCentered links={mainLinks} />
       </>
