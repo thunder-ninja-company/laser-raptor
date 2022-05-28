@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { createStyles, Header, Container, Anchor, Group, Burger } from '@mantine/core';
 import { useBooleanToggle } from '@mantine/hooks';
-import { MantineLogo } from '../../shared/MantineLogo';
-
 
 const HEADER_HEIGHT = 84;
 
@@ -112,7 +110,6 @@ export function DoubleHeader({ mainLinks, userLinks }: DoubleHeaderProps) {
   return (
     <Header height={HEADER_HEIGHT}>
       <Container className={classes.inner}>
-        <MantineLogo width={130} />
         <div className={classes.links}>
           <Group position="right">{secondaryItems}</Group>
           <Group spacing={0} position="right" className={classes.mainLinks}>

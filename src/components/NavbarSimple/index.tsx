@@ -11,7 +11,7 @@ import {
   SwitchHorizontal,
   Logout,
 } from 'tabler-icons-react';
-import { MantineLogo } from '../../shared/MantineLogo';
+// import { MantineLogo } from '../../../shared/MantineLogo';
 
 const useStyles = createStyles((theme, _params, getRef) => {
   const icon = getRef('icon');

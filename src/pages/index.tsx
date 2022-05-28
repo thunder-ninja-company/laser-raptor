@@ -1,11 +1,11 @@
 import type { NextPage } from 'next'
-import { DoubleHeader } from '../components/Header';
-import { FooterCentered } from '../components/Footer';
-import { NavbarSimple } from '../components/NavbarSimple';
-import { LeadGrid } from '../components/LeadGrid';
-import { ImageCheckboxes } from '../components/ImageCheckboxes';
-import { TableReviews } from '../components/TableReviews';
-import { Counter } from '../src/app/counter';
+import { DoubleHeader } from 'components/Header';
+import { FooterCentered } from 'components/Footer';
+import { NavbarSimple } from 'components/NavbarSimple';
+import { LeadGrid } from 'components/LeadGrid';
+import { ImageCheckboxes } from 'components/ImageCheckboxes';
+import { TableReviews } from 'components/TableReviews';
+import { Counter } from '../counter';
 
 const mainLinks = [{
   label : 'JIRA HOME',

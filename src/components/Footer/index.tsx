@@ -1,7 +1,6 @@
 import React from 'react';
 import { createStyles, Anchor, Group, ActionIcon } from '@mantine/core';
 import { BrandTwitter, BrandYoutube, BrandInstagram } from 'tabler-icons-react';
-import { MantineLogo } from '../../shared/MantineLogo';
 
 const useStyles = createStyles((theme) => ({
   footer: {
@@ -50,8 +49,6 @@ export function FooterCentered({ links }: FooterCenteredProps) {
     return (
         <div className={classes.footer}>
             <div className={classes.inner}>
-                <MantineLogo />
-
                 <Group className={classes.links}>{items}</Group>
 
                 <Group spacing={0} position='right' noWrap>

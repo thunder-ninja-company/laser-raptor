@@ -3,7 +3,8 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "npm run dev:open-browser && next dev -p 13337 -H raptor.local",
+    "dev:open-browser": "open http://raptor.local:13337/",
     "build": "next build && next export",
     "start": "next start",
     "lint": "next lint"
@@ -19,7 +20,8 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-redux": "^8.0.2",
-    "tabler-icons-react": "1.48.0"
+    "tabler-icons-react": "1.48.0",
+    "web-vitals": "2.1.4"
   },
   "devDependencies": {
     "@types/node": "17.0.33",
