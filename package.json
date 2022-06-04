@@ -3,7 +3,6 @@
   "version": "0.2.0",
   "private": true,
   "main": "./src/electron/main.js",
-
   "scripts": {
     "dev": "npm run dev:open-browser && next dev -p 13337 -H raptor.local",
     "dev:open-browser": "open http://raptor.local:13337/",
@@ -22,6 +21,7 @@
     "@mantine/next": "4.2.5",
     "@reduxjs/toolkit": "^1.8.2",
     "aws-amplify": "4.3.22",
+    "newrelic": "8.13.2",
     "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0",
