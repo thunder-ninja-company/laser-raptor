@@ -20,6 +20,6 @@
     },
     "baseUrl": "."
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".plasmo/**/*"],
+  "include": ["next-env.d.ts", "./**/*.ts", "./**/*.tsx", ".plasmo/**/*"],
   "exclude": ["node_modules"]
 }

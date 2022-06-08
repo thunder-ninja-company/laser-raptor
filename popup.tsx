@@ -12,7 +12,7 @@ function IndexPopup() {
         padding: 16
       }}>
       <h1>
-        Welcome wefto your <a href="https://www.plasmo.com">Plasmo</a> Extension!
+        Welcome asdf ddd {data} wefto your <a href="https://www.plasmo.com">Plasmo</a> Extension!
         <Application />
       </h1>
       <input onChange={(e) => setData(e.target.value)} value={data} />
