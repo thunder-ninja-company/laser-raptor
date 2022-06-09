@@ -17,7 +17,7 @@
     "start:next": "next start",
     "start:storybook": "start-storybook -p 6006",
     "util:open-browser": "open http://raptor.local:13337/",
-    "cypress:open": "cypress open",
+    "test:cypress": "cypress open",
     "lint:next": "next lint"
   },  
   "dependencies": {
