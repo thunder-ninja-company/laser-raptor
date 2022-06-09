@@ -9,8 +9,7 @@
     "default_icon": {
       "16": "./gen-assets/icon16.png",
       "48": "./gen-assets/icon48.png"
-    },
-    "default_popup": "./static/popup/index.html"
+    }
   },
   "version": "0.2.0",
   "name": "Browser",
