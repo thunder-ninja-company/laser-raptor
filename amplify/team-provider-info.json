@@ -17,5 +17,23 @@
         "thundervolcanoe935e9bc": {}
       }
     }
+  },
+  "main": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-thundervolcano-main-211916-authRole",
+      "UnauthRoleArn": "arn:aws:iam::938413686327:role/amplify-thundervolcano-main-211916-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::938413686327:role/amplify-thundervolcano-main-211916-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-thundervolcano-main-211916-deployment",
+      "UnauthRoleName": "amplify-thundervolcano-main-211916-unauthRole",
+      "StackName": "amplify-thundervolcano-main-211916",
+      "StackId": "arn:aws:cloudformation:us-east-1:938413686327:stack/amplify-thundervolcano-main-211916/838fda20-e924-11ec-a181-12f27dc0bc91",
+      "AmplifyAppId": "d2dmsz9mur3j3v"
+    },
+    "categories": {
+      "auth": {
+        "thundervolcanoe935e9bc": {}
+      }
+    }
   }
 }
