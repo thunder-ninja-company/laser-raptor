@@ -1,3 +1,6 @@
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+
+
 module.exports = {
   stories: [
     // "../src/**/*.stories.mdx",
@@ -15,5 +18,35 @@ module.exports = {
   typescript : { reactDocgen : false },
   features: {
     interactionsDebugger: true, // 👈 Enable playback controls
+  },
+
+  webpackFinal: async (config, { configType }) => {
+    // Make whatever fine-grained changes you need
+    // Return the altered config
+
+    config.resolve.plugins = [new TsconfigPathsPlugin()];
+
+    console.log('asdfasdfasdfasdf');
+    console.log('asdfasdfasdfasdf');
+    console.log('asdfasdfasdfasdf');
+    console.log('asdfasdfasdfasdf');
+    console.log('asdfasdfasdfasdf');
+    console.log('asdfasdfasdfasdf');
+    console.log('asdfasdfasdfasdf');
+    console.log('asdfasdfasdfasdf');
+    console.log('asdfasdfasdfasdf');
+    console.log('asdfasdfasdfasdf');
+    console.log('asdfasdfasdfasdf');
+    console.log('asdfasdfasdfasdf');
+    console.log('asdfasdfasdfasdf');
+    console.log('asdfasdfasdfasdf');
+    console.log('asdfasdfasdfasdf');
+    console.log('asdfasdfasdfasdf');
+    console.log('asdfasdfasdfasdf');
+    console.log('asdfasdfasdfasdf');
+    console.log('asdfasdfasdfasdf');
+    console.log('asdfasdfasdfasdf');
+
+    return config;
   },
 }
