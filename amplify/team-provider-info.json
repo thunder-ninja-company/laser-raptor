@@ -1,15 +1,15 @@
 {
-  "dev": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-toothbeaver-dev-214515-authRole",
-      "UnauthRoleArn": "arn:aws:iam::938413686327:role/amplify-toothbeaver-dev-214515-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::938413686327:role/amplify-toothbeaver-dev-214515-authRole",
-      "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-toothbeaver-dev-214515-deployment",
-      "UnauthRoleName": "amplify-toothbeaver-dev-214515-unauthRole",
-      "StackName": "amplify-toothbeaver-dev-214515",
-      "StackId": "arn:aws:cloudformation:us-east-1:938413686327:stack/amplify-toothbeaver-dev-214515/4eedf310-e9f1-11ec-9c10-12a15a619e13",
-      "AmplifyAppId": "d12t7c26h521vg"
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-toothbeaver-dev-214515-authRole",
+            "UnauthRoleArn": "arn:aws:iam::938413686327:role/amplify-toothbeaver-dev-214515-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::938413686327:role/amplify-toothbeaver-dev-214515-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-toothbeaver-dev-214515-deployment",
+            "UnauthRoleName": "amplify-toothbeaver-dev-214515-unauthRole",
+            "StackName": "amplify-toothbeaver-dev-214515",
+            "StackId": "arn:aws:cloudformation:us-east-1:938413686327:stack/amplify-toothbeaver-dev-214515/4eedf310-e9f1-11ec-9c10-12a15a619e13",
+            "AmplifyAppId": "d12t7c26h521vg"
+        }
     }
-  }
 }

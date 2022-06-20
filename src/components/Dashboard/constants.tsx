@@ -1,11 +1,6 @@
-import { FooterCentered } from 'components/Footer';
-import { DoubleHeader } from 'components/Header';
-import { LeadGrid } from 'components/LeadGrid';
-import { NavbarSimple } from 'components/NavbarSimple';
-import { TableReviews } from 'components/TableReviews';
-import type { NextPage } from 'next';
+import { localConstant } from 'core/constants';
 
-import { Counter } from '../counter';
+const ComponentName = localConstant('Dashboard');
 
 const mainLinks = [
     {
@@ -44,19 +39,3 @@ const userLinks = [
         link: 'FORUMS'
     }
 ];
-
-const Home: NextPage = () => {
-    return (
-        <>
-            <DoubleHeader mainLinks={mainLinks} userLinks={mainLinks} />
-
-            <NavbarSimple />
-            <TableReviews data={[]} />
-            <Counter />
-            <LeadGrid />
-            <FooterCentered links={mainLinks} />
-        </>
-    );
-};
-
-export default Home;

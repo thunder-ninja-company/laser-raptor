@@ -2,10 +2,12 @@ import { FooterCentered } from 'components/Footer';
 import { DoubleHeader } from 'components/Header';
 import { LeadGrid } from 'components/LeadGrid';
 import { NavbarSimple } from 'components/NavbarSimple';
-import { TableReviews } from 'components/TableReviews';
-import type { NextPage } from 'next';
 
-import { Counter } from '../counter';
+import type { Props } from './type';
+
+type User = {
+    name: string;
+};
 
 const mainLinks = [
     {
@@ -45,18 +47,14 @@ const userLinks = [
     }
 ];
 
-const Home: NextPage = () => {
+export const Template: React.FC<Props> = ({ children }: Props) => {
     return (
-        <>
+        <div>
             <DoubleHeader mainLinks={mainLinks} userLinks={mainLinks} />
-
-            <NavbarSimple />
-            <TableReviews data={[]} />
-            <Counter />
-            <LeadGrid />
+            {children}
             <FooterCentered links={mainLinks} />
-        </>
+        </div>
     );
 };
 
-export default Home;
+export default Template;
