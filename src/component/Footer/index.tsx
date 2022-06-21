@@ -26,9 +26,7 @@ const useStyles = createStyles((theme) => ({
     }
 }));
 
-interface FooterCenteredProps {
-    links: { link: string; label: string }[];
-}
+
 
 export default function Footer({ links }: FooterCenteredProps) {
     const { classes } = useStyles();

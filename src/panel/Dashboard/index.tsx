@@ -1,7 +1,5 @@
 import { Grid } from '@mantine/core';
-import {
-    LeadGrid, NavbarSimple,
-} from 'component';
+import { LeadGrid, NavbarSimple } from 'component';
 import { Template } from 'panel/Template';
 import { MainLinks, UserLinks } from 'project/constant';
 

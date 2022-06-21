@@ -81,7 +81,7 @@ const data = [
     { link: '', label: 'Other Settings', icon: Settings }
 ];
 
-export default function NavbarSimple() {
+export default function NavbarSimple({}) {
     const { classes, cx } = useStyles();
     const [active, setActive] = useState('Billing');
 

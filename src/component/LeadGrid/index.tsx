@@ -1,10 +1,8 @@
-import {
-    Container, Grid, SimpleGrid, Skeleton, useMantineTheme
-} from '@mantine/core';
+import { Container, Grid, SimpleGrid, Skeleton, useMantineTheme } from '@mantine/core';
 
 const PRIMARY_COL_HEIGHT = 300;
 
-export default function LeadGrid() {
+export default function LeadGrid({}) {
     const theme = useMantineTheme();
     const SECONDARY_COL_HEIGHT = PRIMARY_COL_HEIGHT / 2 - theme.spacing.md / 2;
 

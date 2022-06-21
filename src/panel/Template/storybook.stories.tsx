@@ -1,7 +1,8 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import { userEvent, within } from '@storybook/testing-library';
-import Template from '.';
 import React from 'react';
+
+import Template from '.';
 
 export default {
     title: 'Dyson/panel/Template',
