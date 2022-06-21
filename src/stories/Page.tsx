@@ -1,8 +1,8 @@
-import { FooterCentered } from 'components/Footer';
-import { DoubleHeader } from 'components/Header';
-import { LeadGrid } from 'components/LeadGrid';
-import { NavbarSimple } from 'components/NavbarSimple';
-import { TableReviews } from 'components/TableReviews';
+import { FooterCentered } from '~src/component/Footer';
+import { DoubleHeader } from 'component/Header';
+import { LeadGrid } from '~src/component/LeadGrid';
+import { NavbarSimple } from '~src/component/NavbarSimple';
+
 import Page123 from 'pages/index';
 import React from 'react';
 

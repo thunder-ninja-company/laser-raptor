@@ -1,7 +1,7 @@
 import { Grid } from '@mantine/core';
-import { LeadGrid } from 'components/LeadGrid';
-import { NavbarSimple } from 'components/NavbarSimple';
-import { Template } from 'components/Template';
+import { LeadGrid } from 'component/LeadGrid';
+import { NavbarSimple } from 'component/NavbarSimple';
+import { Template } from 'panel/Template';
 
 export const Page: React.FC = () => {
     return (

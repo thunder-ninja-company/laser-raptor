@@ -1,9 +1,9 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import Account from 'components/Account';
+import Account from '.';
 import React from 'react';
 
 export default {
-    title: 'Dyson/Account',
+    title: 'Dyson/panel/Account',
     component: Account,
     parameters: {
         // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout

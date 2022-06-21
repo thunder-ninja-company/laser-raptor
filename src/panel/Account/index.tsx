@@ -1,4 +1,4 @@
-import Template from 'components/Template';
+import Template from '~src/panel/Template';
 
 export const Account: React.FC = () => {
     return (

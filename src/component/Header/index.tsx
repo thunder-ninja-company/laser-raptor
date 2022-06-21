@@ -77,7 +77,7 @@ interface DoubleHeaderProps {
   userLinks: LinkProps[];
 }
 
-export function DoubleHeader({ mainLinks, userLinks }: DoubleHeaderProps) {
+export default function DoubleHeader({ mainLinks, userLinks }: DoubleHeaderProps) {
   const [opened, toggleOpened] = useBooleanToggle(false);
   const { classes, cx } = useStyles();
   const [active, setActive] = useState(0);

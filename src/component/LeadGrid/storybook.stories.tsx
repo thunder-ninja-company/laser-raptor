@@ -1,22 +1,21 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import { userEvent, within } from '@storybook/testing-library';
-import Template from 'components/Template';
-import React from 'react';
+import LeadGrid from '.';
 
 export default {
-    title: 'Dyson/Template',
-    component: Template,
+    title: 'Dyson/component/LeadGrid',
+    component: LeadGrid,
     parameters: {
         // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
         layout: 'fullscreen'
     }
-} as ComponentMeta<typeof Template>;
+} as ComponentMeta<typeof LeadGrid>;
 
-const ComponentTemplate: ComponentStory<typeof Template> = (args) => <Template {...args} />;
+const Template: ComponentStory<typeof LeadGrid> = (args) => <LeadGrid {...args} />;
 
-export const LoggedOut = ComponentTemplate.bind({});
+export const LoggedOut = Template.bind({});
 
-export const LoggedIn = ComponentTemplate.bind({});
+export const LoggedIn = Template.bind({});
 
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
 LoggedIn.play = async ({ canvasElement }) => {

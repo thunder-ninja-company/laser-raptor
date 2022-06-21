@@ -1,7 +1,7 @@
-import { FooterCentered } from 'components/Footer';
-import { DoubleHeader } from 'components/Header';
-import { LeadGrid } from 'components/LeadGrid';
-import { NavbarSimple } from 'components/NavbarSimple';
+import { FooterCentered } from '~src/component/Footer';
+import { DoubleHeader } from 'component/Header';
+import { LeadGrid } from 'component/LeadGrid';
+import { NavbarSimple } from 'component/NavbarSimple';
 
 import type { Props } from './type';
 

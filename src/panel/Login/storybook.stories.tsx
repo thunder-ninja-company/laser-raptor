@@ -1,18 +1,19 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import { userEvent, within } from '@storybook/testing-library';
-import Dashboard from 'components/Dashboard';
 import React from 'react';
 
+import Login from '.';
+
 export default {
-    title: 'Dyson/Dashboard',
-    component: Dashboard,
+    title: 'Dyson/panel/Login',
+    component: Login,
     parameters: {
         // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
         layout: 'fullscreen'
     }
-} as ComponentMeta<typeof Dashboard>;
+} as ComponentMeta<typeof Login>;
 
-const Template: ComponentStory<typeof Dashboard> = (args) => <Dashboard {...args} />;
+const Template: ComponentStory<typeof Login> = (args) => <Login {...args} />;
 
 export const LoggedOut = Template.bind({});
 
