@@ -1,21 +1,18 @@
-import {
-    Footer, Header, LeadGrid, NavbarSimple
-} from 'component';
+import { Footer, Header, LeadGrid, NavbarSimple } from 'component';
 import type { NextPage } from 'next';
+import { MainLinks, UserLinks } from 'project/constant';
 
 import { Counter } from '../counter';
-
-
 
 const Home: NextPage = () => {
     return (
         <>
-            <Header mainLinks={mainLinks} userLinks={mainLinks} />
+            <Header.default mainLinks={MainLinks} userLinks={UserLinks} />
 
-            <NavbarSimple />
+            <NavbarSimple.default />
             <Counter />
-            <LeadGrid />
-            <Footer links={mainLinks} />
+            <LeadGrid.default />
+            <Footer.default links={MainLinks} />
         </>
     );
 };

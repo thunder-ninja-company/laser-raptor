@@ -1,6 +1,6 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
+
 import Account from '.';
-import React from 'react';
 
 export default {
     title: 'Dyson/panel/Account',
