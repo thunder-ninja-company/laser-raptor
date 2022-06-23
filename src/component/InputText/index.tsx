@@ -1,26 +1,22 @@
-import { Input, InputWrapper } from '@mantine/core';
-import React from 'react';
+import { Input, InputWrapper } from "@mantine/core";
 
-import type { Props } from './type';
+import type { Props } from "./type";
 
-export default function Component({
+export const InputText: React.FC<Props> = ({
     placeholderMessage,
     isRequired = false,
-    title = 'trololo',
-    errorMessage,
+    title = "trololo",
     description,
-    id,
-}: Props) {
-    return (
-        <InputWrapper
-            description={description}
-            required={isRequired}
-            error={errorMessage}
-            label={title}
-            id={id}>
-            <Input
-                placeholder={placeholderMessage}
-                id={id} />
-        </InputWrapper>
-    );
-}
+}: Props) => (
+    // handle the new value from the input
+    // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     const { value } = e.target;
+
+    // };
+
+    <InputWrapper description={description} required={isRequired} label={title}>
+        <Input placeholder={placeholderMessage} />
+    </InputWrapper>
+);
+
+export default InputText;

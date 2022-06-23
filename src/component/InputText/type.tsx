@@ -1,8 +1,6 @@
 export interface Props {
-    placeholderMessage : string;
-    isRequired : boolean;
-    description : string,
-    errorMessage: string;
+    placeholderMessage: string;
+    isRequired: boolean;
+    description: string;
     title: string;
-    id : string;
 }
