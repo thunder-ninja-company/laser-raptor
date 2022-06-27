@@ -1,28 +1,35 @@
-import { ActionIcon, Anchor, Group, createStyles } from '@mantine/core';
-import React from 'react';
-import { BrandInstagram, BrandTwitter, BrandYoutube } from 'tabler-icons-react';
-import { useStyles } from './style';
-import type { FooterCenteredProps } from './type';
+import { ActionIcon, Anchor, Group } from "@mantine/core";
+import React from "react";
+import {
+    Box,
+    BrandInstagram,
+    BrandTwitter,
+    BrandYoutube,
+} from "tabler-icons-react";
+import { useStyles } from "./style";
+import type { FooterCenteredProps } from "./type";
+import { Footer as MantineFooter } from "@mantine/core";
 
 export default function Footer({ links }: FooterCenteredProps) {
     const { classes } = useStyles();
+
     const items = links.map((link) => (
-        <Anchor<'a'>
+        <Anchor<"a">
             color="dimmed"
             key={link.label}
             href={link.link}
             sx={{ lineHeight: 1 }}
             onClick={(event) => event.preventDefault()}
-            size="sm">
+            size="sm"
+        >
             {link.label}
         </Anchor>
     ));
 
     return (
-        <div className={classes.footer}>
+        <MantineFooter height={100} p="md">
             <div className={classes.inner}>
                 <Group className={classes.links}>{items}</Group>
-
                 <Group spacing={0} position="right" noWrap>
                     <ActionIcon size="lg">
                         <BrandTwitter size={18} />
@@ -35,6 +42,6 @@ export default function Footer({ links }: FooterCenteredProps) {
                     </ActionIcon>
                 </Group>
             </div>
-        </div>
+        </MantineFooter>
     );
 }

@@ -1,7 +1,7 @@
-import { Grid } from '@mantine/core';
-import { LeadGrid, NavbarSimple } from 'component';
-import { Template } from 'panel/Template';
-import { MainLinks, UserLinks } from 'project/constant';
+import { Grid } from "@mantine/core";
+import { LeadGrid, NavbarSimple } from "component";
+import { Template } from "panel/Template";
+import { MainLinks, UserLinks } from "project/constant";
 
 export const Page: React.FC = () => {
     return (
@@ -14,7 +14,7 @@ export const Page: React.FC = () => {
                     <article>
                         <section>
                             <LeadGrid />
-                            {'this is the section part 32132132'}
+                            {"this is the section part 32132132"}
                         </section>
                     </article>
                 </Grid.Col>
