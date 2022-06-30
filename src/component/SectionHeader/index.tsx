@@ -1,10 +1,16 @@
-import { Burger, Header, MediaQuery, Title, useMantineTheme } from "@mantine/core";
+import {
+    Burger,
+    Header,
+    MediaQuery,
+    Title,
+    useMantineTheme,
+} from "@mantine/core";
 import TopMenuLogo from "assets/image/ninja.png";
 import React from "react";
 
 import type { Props } from "./type";
 
-const InputForm: React.FC<Props> = ({opened, onSetOpened}: Props) => {
+const InputForm: React.FC<Props> = ({ opened, onSetOpened }: Props) => {
     const theme = useMantineTheme();
 
     return (
@@ -16,10 +22,7 @@ const InputForm: React.FC<Props> = ({opened, onSetOpened}: Props) => {
                     height: "100%",
                 }}
             >
-                <MediaQuery
-                    smallerThan="sm"
-                    styles={{ display: "none" }}
-                >
+                <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
                     <img
                         src={TopMenuLogo}
                         style={{
@@ -29,10 +32,7 @@ const InputForm: React.FC<Props> = ({opened, onSetOpened}: Props) => {
                         }}
                     />
                 </MediaQuery>
-                <MediaQuery
-                    largerThan="sm"
-                    styles={{ display: "none" }}
-                >
+                <MediaQuery largerThan="sm" styles={{ display: "none" }}>
                     <Burger
                         opened={opened}
                         onClick={() => onSetOpened(!opened)}
@@ -45,9 +45,7 @@ const InputForm: React.FC<Props> = ({opened, onSetOpened}: Props) => {
                 <Title>{"Towncall Header"}</Title>
             </div>
         </Header>
-
     );
 };
 
 export default InputForm;
-

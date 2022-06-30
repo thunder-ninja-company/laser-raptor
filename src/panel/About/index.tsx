@@ -1,6 +1,5 @@
-import { TextInput, Checkbox, Button, Group, Box } from "@mantine/core";
+import { Box } from "@mantine/core";
 import { useForm } from "@mantine/form";
-
 
 export const ProfileSummary: React.FC<{}> = () => {
     const form = useForm({
@@ -17,7 +16,7 @@ export const ProfileSummary: React.FC<{}> = () => {
 
     return (
         <Box sx={{ maxWidth: 300 }} mx="auto">
-            {'asdfz'}
+            {"asdfz"}
         </Box>
     );
 };
