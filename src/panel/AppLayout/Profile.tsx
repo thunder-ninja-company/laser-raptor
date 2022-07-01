@@ -3,6 +3,7 @@ import { useForm } from "@mantine/hooks";
 import { At, Ballpen, Briefcase, BrandTwitter, ExternalLink, EditCircle } from 'tabler-icons-react';
 import { InputForm, SectionBox } from "component";
 import { ThemeConsumer } from "styled-components";
+import { handle } from "@oclif/core/lib/errors";
 
 export const Profile: React.FC<{}> = () => {
     const theme = useMantineTheme();
@@ -85,8 +86,8 @@ export const Profile: React.FC<{}> = () => {
                 </InputForm>
                 </Grid.Col>
                 <Grid.Col md={6} style={{ textAlign : 'center' }}>
-                    <Anchor href="https://mantine.dev/" target="_blank">
-                        {'Edit Avatar '}
+                    <Anchor onClick={handle}>
+                        {'Edit   '}
                         <EditCircle  />
                     </Anchor>
                     <Space h="sm" />
