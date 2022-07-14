@@ -12,7 +12,13 @@ import {
     Title,
     Space,
 } from "@mantine/core";
-import { Footer, NavbarSimple, HelpSection, SectionHeader, SectionBox } from "component";
+import {
+    Footer,
+    NavbarSimple,
+    HelpSection,
+    SectionHeader,
+    SectionBox,
+} from "component";
 import { MainLinks } from "~src/project/constant";
 import Profile from "./Profile";
 
@@ -34,7 +40,9 @@ export default function AppShellDemo() {
                             : theme.colors.gray[0],
                 },
             }}
-            header={<SectionHeader opened={opened} onSetOpened={handleSetOpened} />}
+            header={
+                <SectionHeader opened={opened} onSetOpened={handleSetOpened} />
+            }
             navbar={<NavbarSimple opened={opened} />}
             aside={<HelpSection id="help-section" />}
             footer={<Footer links={MainLinks} />}
@@ -42,9 +50,7 @@ export default function AppShellDemo() {
             asideOffsetBreakpoint="sm"
             fixed={false}
         >
-            <Title>
-                {'Project Mayhem Home'}
-            </Title>
+            <Title>{"Project Mayhem Home"}</Title>
             <Space h="lg" />
             <Profile />
         </AppShell>

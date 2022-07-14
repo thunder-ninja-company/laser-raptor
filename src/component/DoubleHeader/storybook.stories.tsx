@@ -1,22 +1,24 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import { MainLinks, UserLinks } from 'project/constant';
+import type { ComponentMeta, ComponentStory } from "@storybook/react";
+import { MainLinks, UserLinks } from "project/constant";
 
-import DoubleHeader from '.';
+import DoubleHeader from ".";
 
 export default {
-    title: 'Dyson/component/DoubleHeader',
+    title: "Dyson/component/DoubleHeader",
     component: DoubleHeader,
     parameters: {
         // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
-        layout: 'fullscreen'
-    }
+        layout: "fullscreen",
+    },
 } as ComponentMeta<typeof DoubleHeader>;
 
-const Template: ComponentStory<typeof DoubleHeader> = (args) => <DoubleHeader {...args} />;
+const Template: ComponentStory<typeof DoubleHeader> = (args) => (
+    <DoubleHeader {...args} />
+);
 
 export const LoggedOut = Template.bind({});
 
 LoggedOut.args = {
     mainLinks: MainLinks,
-    userLinks: UserLinks
+    userLinks: UserLinks,
 };
