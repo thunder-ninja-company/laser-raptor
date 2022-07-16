@@ -58,7 +58,7 @@ export default function AppShellDemo() {
                         <Paper
                             shadow="sm"
                             radius="xl"
-                            p="xl"
+                            p="md"
                             withBorder
                             sx={{
                                 textAlign: "center",
