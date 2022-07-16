@@ -4,7 +4,7 @@ import { userEvent, within } from '@storybook/testing-library';
 import LeadGrid from '.';
 
 export default {
-    title: 'Dyson/component/LeadGrid',
+    title: 'shared/component/LeadGrid',
     component: LeadGrid,
     parameters: {
         // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout

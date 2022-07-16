@@ -4,7 +4,7 @@ import { MainLinks, UserLinks } from "project/constant";
 import DoubleHeader from ".";
 
 export default {
-    title: "Dyson/component/DoubleHeader",
+    title: "shared/component/DoubleHeader",
     component: DoubleHeader,
     parameters: {
         // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout

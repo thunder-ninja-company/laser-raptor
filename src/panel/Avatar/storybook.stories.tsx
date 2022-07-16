@@ -3,7 +3,7 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import ProfileSummary from '.';
 
 export default {
-    title: 'Dyson/panel/ProfileSummary',
+    title: 'Shared/panel/ProfileSummary',
     component: ProfileSummary,
     parameters: {
         // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout

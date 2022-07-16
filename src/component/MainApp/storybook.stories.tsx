@@ -3,7 +3,7 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import MainApp from ".";
 
 export default {
-    title: "Dyson/component/MainApp",
+    title: "shared/component/MainApp",
     component: MainApp,
     parameters: {
         // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout

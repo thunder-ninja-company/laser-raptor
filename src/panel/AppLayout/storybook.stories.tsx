@@ -3,7 +3,7 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import AppLayout from ".";
 
 export default {
-    title: "Dyson/panel/AppLayout",
+    title: "Shared/panel/AppLayout",
     component: AppLayout,
     parameters: {
         // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout

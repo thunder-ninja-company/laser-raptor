@@ -4,7 +4,7 @@ import { MainLinks } from "project/constant";
 import ProjectTimeline from ".";
 
 export default {
-    title: "Dyson/component/ProjectTimeline",
+    title: "shared/component/ProjectTimeline",
     component: ProjectTimeline,
     parameters: {
         // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout

@@ -3,7 +3,7 @@ import type { ComponentMeta, ComponentStory } from "@storybook/react";
 import Timecard from ".";
 
 export default {
-    title: "Dyson/component/Timecard",
+    title: "shared/component/Timecard",
     component: Timecard,
     parameters: {
         // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout

@@ -23,7 +23,7 @@
     "scripts": {
         "dev:next": "npm run open-browser:next && next dev -p 13337 -H next.local",
         "dev:plasmo": "plasmo dev",
-        "dev:storybook": "start-storybook -p 6006 -h storybook.local",
+        "dev:storybook": "npm run open-browser:storybook && start-storybook -p 6006 -h storybook.local",
         "build:storybook": "build-storybook",
         "build:next": "next build && next export",
         "build:plasmo": "plasmo build",

@@ -5,7 +5,7 @@ import React from 'react';
 import Dashboard from '.';
 
 export default {
-    title: 'Dyson/panel/Dashboard',
+    title: 'Shared/panel/Dashboard',
     component: Dashboard,
     parameters: {
         // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout

@@ -4,7 +4,7 @@ import { MainLinks } from "project/constant";
 import Footer from ".";
 
 export default {
-    title: "Dyson/component/Footer",
+    title: "shared/component/Footer",
     component: Footer,
     parameters: {
         // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout

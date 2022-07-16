@@ -4,7 +4,7 @@ import { userEvent, within } from '@storybook/testing-library';
 import NavbarSimple from '.';
 
 export default {
-    title: 'Dyson/component/NavbarSimple',
+    title: 'shared/component/NavbarSimple',
     component: NavbarSimple,
     parameters: {
         // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout

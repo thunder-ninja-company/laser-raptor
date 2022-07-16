@@ -3,7 +3,7 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import Account from '.';
 
 export default {
-    title: 'Dyson/panel/Account',
+    title: 'Shared/panel/Account',
     component: Account,
     parameters: {
         // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout

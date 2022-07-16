@@ -5,7 +5,7 @@ import React from 'react';
 import Login from '.';
 
 export default {
-    title: 'Dyson/panel/Login',
+    title: 'Shared/panel/Login',
     component: Login,
     parameters: {
         // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout

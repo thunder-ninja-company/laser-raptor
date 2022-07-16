@@ -1,2 +1,2 @@
 
-export const PROJECT_NAME = 'gist';
+export const PROJECT_NAME = 'gyst';
