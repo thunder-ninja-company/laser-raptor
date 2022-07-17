@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import "component/MainApp";
-import { AppShell, useMantineTheme } from "@mantine/core";
-import MainApp from "component/MainApp";
+import { AppShell } from "@mantine/core";
 import AppHeader from "project/gyst/component/AppHeader";
-import AppBody from "~src/project/gyst/component/AppBody";
+import AppBody from "project/gyst/component/AppBody";
+import GistApp from "project/gyst";
+
+const id = "project-gyst";
 
 export default function AppShellDemo() {
-    const theme = useMantineTheme();
-    const [opened, setOpened] = useState(false);
     return (
         <AppShell
+            header={<AppHeader id={`app-header-${id}`} />}
             navbarOffsetBreakpoint="sm"
             asideOffsetBreakpoint="sm"
             fixed={true}
-            header={<AppHeader id="app-header" />}
         >
-            <AppBody id="app-body" />
+            <AppBody id={`app-body-${id}`}>
+                <GistApp id="gist-app" />
+            </AppBody>
         </AppShell>
     );
 }

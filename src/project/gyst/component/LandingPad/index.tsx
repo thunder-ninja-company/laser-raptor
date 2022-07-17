@@ -1,13 +1,14 @@
 import { Box } from "@mantine/core";
+import GroupGrid from "../GroupGrid";
 
 import { COMPONENT_NAME } from "./constant";
 
 import type { Props } from "./type";
 
-export default function LandingPad({ id: _id }: Props) {
+export default function LandingPad({ id }: Props) {
     return (
-        <Box sx={{ padding: "20px", margin: "20px" }}>
-            {`LandingPad Content: ${COMPONENT_NAME}`}
+        <Box id={id} sx={{ padding: "20px", margin: "20px" }}>
+            {'landing pad?'}
         </Box>
     );
 }

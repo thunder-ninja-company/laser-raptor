@@ -1,13 +1,14 @@
 import { Box } from "@mantine/core";
-
-import { COMPONENT_NAME } from "./constant";
+import React from "react";
 
 import type { Props } from "./type";
 
-export default function GroupPanel({ id: _id }: Props) {
+export default function GroupPanel({ id, items : itemList }: Props) {
     return (
-        <Box sx={{ padding: "20px", margin: "20px" }}>
-            {`GroupPanel Content ${COMPONENT_NAME}`}
+        <Box id={id} sx={{ padding: "20px", margin: "20px" }}>
+            {itemList.map((item, index) => (
+                <Box key={`group-panel-${id}-item-${index}`}>{item}</Box>
+            ))}
         </Box>
     );
 }
