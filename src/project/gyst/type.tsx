@@ -1,16 +1,17 @@
 export interface GroupPanelItemDTO {
     id: string;
-    content: string;
+    value: string;
 }
 
-export interface PanelListDTO {
+export interface GroupPanelDTO {
     id: string;
-    items: GroupPanelItemDTO[];
+    groupPanelItems: GroupPanelItemDTO[];
 }
 
 export interface GroupGridDTO {
     id: string;
-    items: PanelListDTO[];
+    groupPanels: GroupPanelDTO[];
+
 }
 
 export interface Props {

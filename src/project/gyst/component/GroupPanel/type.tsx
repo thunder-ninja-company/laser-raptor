@@ -1,7 +1,6 @@
+import type { GroupPanelDTO } from "project/gyst/type";
+
 export interface Props {
     id: string;
-    items: {
-        id: string;
-        content: string;
-    }[];
+    value: GroupPanelDTO;
 }
