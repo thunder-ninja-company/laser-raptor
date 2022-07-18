@@ -6,9 +6,7 @@ import type { Props } from "./type";
 
 export default function AppHeader({ id }: Props) {
     return (
-        <Box
-            id={id}
-            sx={{ padding: "20px", margin: "20px" }}>
+        <Box id={id} sx={{ padding: "20px", margin: "20px" }}>
             {`AppBody Content ${COMPONENT_NAME}`}
         </Box>
     );

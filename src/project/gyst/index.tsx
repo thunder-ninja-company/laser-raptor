@@ -1,9 +1,7 @@
-import GroupGrid from "project/gyst/component/GroupGrid";
+import { GroupGrid } from "gyst/component";
 import { GroupGridData } from "./constant";
 import type { Props } from "./type";
 
 export default function GistApp({ id }: Props) {
-    return (
-        <GroupGrid id={`group-grid-${id}`} value={GroupGridData} />
-    );
+    return <GroupGrid id={`group-grid-1-${id}`} value={GroupGridData} />;
 }

@@ -1,24 +1,19 @@
 import { Box } from "@mantine/core";
-import GroupPanel from "project/gyst/component/GroupPanel";
-
+import { GroupPanel } from "gyst/component";
+import { useStyles } from "./style";
 import type { Props } from "./type";
 
 export default function GroupGrid({ id, value }: Props) {
-    debugger;
-
+    const { classes } = useStyles();
 
     return (
-        <Box id={id} sx={{ padding: "20px", margin: "20px" }}>
-            {'GROUP GRID'}
-
+        <Box id={id} className={classes.groupGrid}>
             {value.groupPanels.map((panel, index) => (
                 <GroupPanel
-                    id={`group-panel-${index}-${id}`}
                     key={`group-panel-${panel.id}-item-${index}`}
                     value={panel}
                 />
             ))}
-
         </Box>
     );
 }
