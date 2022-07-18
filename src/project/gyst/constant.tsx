@@ -1,8 +1,8 @@
-import type { GroupGridDTO } from "project/gyst/type";
+import type { GroupGridDTO, GystAppRoot } from "gyst/type";
 
 export const PROJECT_NAME = "gyst";
 
-export const GroupGridData: GroupGridDTO = {
+export const GroupGridDefaultData: GroupGridDTO = {
     id: "group-panel-1",
     groupPanels: [
         {
@@ -28,4 +28,10 @@ export const GroupGridData: GroupGridDTO = {
             }]
         },
     ],
+};
+
+// Define the initial state using that type
+export const initialState: GystAppRoot = {
+    groupGrid: GroupGridDefaultData,
+    hello : 123,
 };

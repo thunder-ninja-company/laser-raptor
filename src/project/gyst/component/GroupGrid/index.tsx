@@ -5,7 +5,8 @@ import type { Props } from "./type";
 
 export default function GroupGrid({ id, value }: Props) {
     const { classes } = useStyles();
-
+    debugger;
+console.log(value)
     return (
         <Box id={id} className={classes.groupGrid}>
             {value.groupPanels.map((panel, index) => (

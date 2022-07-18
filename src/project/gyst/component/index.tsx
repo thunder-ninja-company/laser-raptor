@@ -6,3 +6,4 @@ export { default as GroupPanel } from "./GroupPanel";
 export { default as GroupPanelItem } from "./GroupPanelItem";
 export { default as IconAction } from "./IconAction";
 export { default as LandingPad } from "./LandingPad";
+export { default as AppRoot } from "./AppRoot";

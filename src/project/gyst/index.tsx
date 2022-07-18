@@ -1,7 +1,12 @@
-import { GroupGrid } from "gyst/component";
-import { GroupGridData } from "./constant";
 import type { Props } from "./type";
+import { Provider } from 'react-redux'
+import store from './store'
+import { AppRoot } from 'gyst/component';
 
 export default function GistApp({ id }: Props) {
-    return <GroupGrid id={`group-grid-1-${id}`} value={GroupGridData} />;
+    return (
+        <Provider store={store}>
+            <AppRoot id={`app-root-${id}`} />
+        </Provider>
+    );
 }

@@ -11,9 +11,13 @@ export interface GroupPanelDTO {
 export interface GroupGridDTO {
     id: string;
     groupPanels: GroupPanelDTO[];
-
 }
 
 export interface Props {
     id: string;
+}
+
+export interface GystAppRoot {
+    groupGrid: GroupGridDTO;
+    hello : number;
 }

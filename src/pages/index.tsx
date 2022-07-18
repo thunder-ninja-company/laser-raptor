@@ -19,6 +19,7 @@ export default function AppShellDemo() {
                 fixed={true}
             >
                 <AppBody id={`app-body-${id}`}>
+                    asdf
                     <GistApp id="gist-app" />
                 </AppBody>
             </AppShell>
