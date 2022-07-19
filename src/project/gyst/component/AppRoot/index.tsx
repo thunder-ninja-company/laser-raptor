@@ -27,8 +27,7 @@ export default function AppRoot({ id }: Props) {
                 <AppBody id={`app-body-${id}`}>
                     <Grid>
                         <Grid.Col span={12}>
-                            <GroupGrid value={groupGrid}
-                            />
+                            <GroupGrid value={groupGrid} />
                         </Grid.Col>
                     </Grid>
                 </AppBody>

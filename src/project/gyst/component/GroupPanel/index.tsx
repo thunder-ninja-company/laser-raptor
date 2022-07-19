@@ -10,7 +10,7 @@ export default function GroupPanel({ value: { id, groupPanelItems } }: Props) {
         <Box id={id} className={classes.groupPanel}>
             {`GP - ${id}`}
 
-            <LandingZone id={`0`} />
+            <LandingZone id={`lz-${id}-0`} />
 
             {groupPanelItems.map((item, index) => (
                 <>
@@ -18,7 +18,7 @@ export default function GroupPanel({ value: { id, groupPanelItems } }: Props) {
                         key={`gp-${id}-item-${item.id}`}
                         value={item}
                     />
-                    <LandingZone id={index + 1} />
+                    <LandingZone id={`lz-${id}-${index + 1}`} />
                 </>
             ))}
         </Box>
