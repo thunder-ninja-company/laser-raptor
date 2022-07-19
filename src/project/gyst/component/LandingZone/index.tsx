@@ -1,6 +1,5 @@
 import { Box } from "@mantine/core";
-import { useState } from "react";
-import { useDrag, useDrop } from "react-dnd";
+import { useDrop } from "react-dnd";
 import { useStyles } from "./style";
 
 import type { Props } from "./type";
@@ -9,19 +8,23 @@ import type { Props } from "./type";
 export default function LandingZone({ id }: Props) {
     const { classes } = useStyles();
 
-     const [{ isDragging }, drag, dragPreview] = useDrag(() => ({
-		// "type" is required. It is used by the "accept" specification of drop targets.
-    type: 'BOX',
-		// The collect function utilizes a "monitor" instance (see the Overview for what this is)
-		// to pull important pieces of state from the DnD system.
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging()
-    })
-  }))
+    const [{ canDrop, isOver }, drop] = useDrop(() => ({
+        // The type (or types) to accept - strings or symbols
+        accept: 'BOX',
+        // Props to collect
+        collect: (monitor) => ({
+          isOver: monitor.isOver(),
+          canDrop: monitor.canDrop()
+        })
+      }))
+
 
     return (
-        <Box id={String(id)} className={classes.root} ref={dropRef}>
+        <Box id={String(id)} className={classes.root} ref={drop}
+        style={{ backgroundColor: isOver ? 'red' : 'pink' }}>
             {`LZ - ${id}`}
+
+            {canDrop ? 'Release to drop' : 'Drag a box here'}
         </Box>
     );
 }

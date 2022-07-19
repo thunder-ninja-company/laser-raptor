@@ -17,10 +17,16 @@ export default function GroupPanelItem({ value: { id, value } }: Props) {
   }))
 
     return (
-        <Box id={id} className={classes.groupPanelItem} ref={dragPreview}>
-            {value} {"GroupPanelItem "}
-            {isDragging && 'IS DRAGGING'}
-            <div role="Handle" ref={drag} />
+        <Box
+            id={id}
+            className={classes.groupPanelItem}
+            ref={dragPreview}>
+            <div
+                role="Handle"
+                ref={drag}>
+                {value} {"GroupPanelItem "}
+                {isDragging && 'IS DRAGGING'}
+            </div>
         </Box>
     );
 }
