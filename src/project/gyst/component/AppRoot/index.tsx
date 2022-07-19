@@ -26,28 +26,8 @@ export default function AppRoot({ id }: Props) {
             >
                 <AppBody id={`app-body-${id}`}>
                     <Grid>
-                        <Grid.Col span={4}>
-                            <GroupGrid
-                                id={`group-grid-1-${id}`}
-                                value={groupGrid}
-                            />
-                        </Grid.Col>
-                        <Grid.Col span={4}>
-                            <GroupGrid
-                                id={`group-grid-2-${id}`}
-                                value={groupGrid}
-                            />
-                        </Grid.Col>
-                        <Grid.Col span={4}>
-                            <GroupGrid
-                                id={`group-grid-3-${id}`}
-                                value={groupGrid}
-                            />
-                        </Grid.Col>
-                        <Grid.Col span={4}>
-                            <GroupGrid
-                                id={`group-grid-4-${id}`}
-                                value={groupGrid}
+                        <Grid.Col span={12}>
+                            <GroupGrid value={groupGrid}
                             />
                         </Grid.Col>
                     </Grid>

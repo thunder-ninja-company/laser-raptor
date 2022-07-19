@@ -3,31 +3,31 @@ import type { GroupGridDTO, GystAppRoot } from "gyst/type";
 export const ProjectName = "gyst";
 
 export const GroupGridDefaultData: GroupGridDTO = {
-    id: "group-panel-1",
+    id: "gg-0",
     groupPanels: [
         {
-            id: "group-panel-1-1",
+            id: "gp-abc",
             groupPanelItems: [
                 {
-                    id: "item 1 id",
-                    value: "item 1 value",
+                    id: "gpi-abc-1",
+                    value: "item abc-2",
                 },
                 {
-                    id: "item 2 id",
-                    value: "item 2 value",
+                    id: "gpi-abc-2",
+                    value: "item abc-2",
                 },
             ],
         },
         {
-            id: "group-panel-1-2",
+            id: "gp-123",
             groupPanelItems: [
                 {
-                    id: "item 3 id",
-                    value: "item 3 value",
+                    id: "gpi-123-1",
+                    value: "item 123-2",
                 },
                 {
-                    id: "item 3 id",
-                    value: "item 4 value",
+                    id: "gpi-123-2",
+                    value: "item 123-2",
                 },
             ],
         },

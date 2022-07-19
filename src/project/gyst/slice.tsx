@@ -1,10 +1,11 @@
+import { initialState } from "./constant";
+import type { GroupGridDTO } from "./type";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type { GroupGridDTO } from "./type";
-import { initialState } from "./constant";
 
 export const counterSlice = createSlice({
     name: "groupGrid",
+
     // `createSlice` will infer the state type from the `initialState` argument
     initialState,
     reducers: {

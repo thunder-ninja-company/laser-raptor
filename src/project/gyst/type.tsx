@@ -19,5 +19,5 @@ export interface Props {
 
 export interface GystAppRoot {
     groupGrid: GroupGridDTO;
-    hello : number;
+    hello: number;
 }
