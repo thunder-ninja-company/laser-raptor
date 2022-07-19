@@ -85,7 +85,7 @@
         "babel-loader": "8.2.5",
         "chai": "^4",
         "cypress": "10.0.0",
-        "electron": "19.0.2",
+        "electron": "19.0.8",
         "eslint": "8.15.0",
         "eslint-config-next": "12.1.6",
         "eslint-config-oclif": "^4",
