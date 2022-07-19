@@ -2,8 +2,7 @@ import { createStyles } from "@mantine/core";
 
 export const useStyles = createStyles((theme) => ({
     root: {
-        backgroundColor: theme.colors.teal,
+        backgroundColor: theme.colors.red,
         padding: "20px",
-        margin: "20px",
     },
 }));

@@ -1,10 +1,10 @@
-import { AppShell, MantineProvider } from "@mantine/core";
+import { AppShell, Grid, MantineProvider } from "@mantine/core";
 import { AppHeader, AppBody, GroupGrid } from "gyst/component";
-import { useSelector } from "react-redux";
 import { selectGroupGrid } from "gyst/selector";
+import { ProjectName } from "gyst/constant";
+import { useSelector } from "react-redux";
 import { useStyles } from "./style";
 import type { Props } from "./type";
-import { PROJECT_NAME } from 'gyst/constant';
 
 export default function AppRoot({ id }: Props) {
     const { classes } = useStyles();
@@ -13,7 +13,7 @@ export default function AppRoot({ id }: Props) {
 
     return (
         <MantineProvider
-            emotionOptions={{ key: PROJECT_NAME }}
+            emotionOptions={{ key: ProjectName }}
             withNormalizeCSS={true}
             withGlobalStyles={true}
         >
@@ -21,11 +21,36 @@ export default function AppRoot({ id }: Props) {
                 header={<AppHeader id={`app-header-${id}`} />}
                 navbarOffsetBreakpoint="sm"
                 asideOffsetBreakpoint="sm"
+                className={classes.root}
                 fixed={true}
             >
                 <AppBody id={`app-body-${id}`}>
-                    <GroupGrid id={`group-grid-1-${id}`} value={groupGrid} />
-
+                    <Grid>
+                        <Grid.Col span={4}>
+                            <GroupGrid
+                                id={`group-grid-1-${id}`}
+                                value={groupGrid}
+                            />
+                        </Grid.Col>
+                        <Grid.Col span={4}>
+                            <GroupGrid
+                                id={`group-grid-2-${id}`}
+                                value={groupGrid}
+                            />
+                        </Grid.Col>
+                        <Grid.Col span={4}>
+                            <GroupGrid
+                                id={`group-grid-3-${id}`}
+                                value={groupGrid}
+                            />
+                        </Grid.Col>
+                        <Grid.Col span={4}>
+                            <GroupGrid
+                                id={`group-grid-4-${id}`}
+                                value={groupGrid}
+                            />
+                        </Grid.Col>
+                    </Grid>
                 </AppBody>
             </AppShell>
         </MantineProvider>

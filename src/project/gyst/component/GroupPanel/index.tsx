@@ -9,12 +9,12 @@ export default function GroupPanel({ value: { id, groupPanelItems } }: Props) {
 
     return (
         <Box id={id} className={classes.groupPanel}>
-            {groupPanelItems.map(item =>
+            {groupPanelItems.map((item) => (
                 <GroupPanelItem
                     key={`group-panel-${id}-item-${item.id}`}
                     value={item}
                 />
-            )}
+            ))}
         </Box>
     );
 }

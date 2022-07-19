@@ -1,12 +1,15 @@
 import { Box } from "@mantine/core";
 
 import { COMPONENT_NAME } from "./constant";
+import { useStyles } from "./style";
 
 import type { Props } from "./type";
 
 export default function AppHeader({ id }: Props) {
+    const { classes } = useStyles();
+
     return (
-        <Box id={id} sx={{ padding: "20px", margin: "20px" }}>
+        <Box id={id} className={classes.root}>
             {`AppBody Content ${COMPONENT_NAME}`}
         </Box>
     );
