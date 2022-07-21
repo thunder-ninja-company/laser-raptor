@@ -1,19 +1,19 @@
 import type { ComponentMeta, ComponentStory } from "@storybook/react";
 
-import GroupGrid from ".";
+import DragGrid from ".";
 import { COMPONENT_NAME } from "./constant";
 
 export default {
-    title: "Gyst/GroupGrid",
-    component: GroupGrid,
+    title: "Gyst/DragGrid",
+    component: DragGrid,
     parameters: {
         // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
         layout: "fullscreen",
     },
-} as ComponentMeta<typeof GroupGrid>;
+} as ComponentMeta<typeof DragGrid>;
 
-const Template: ComponentStory<typeof GroupGrid> = (args) => (
-    <GroupGrid {...args} />
+const Template: ComponentStory<typeof DragGrid> = (args) => (
+    <DragGrid {...args} />
 );
 
 export const ComponentParameters = Template.bind({});

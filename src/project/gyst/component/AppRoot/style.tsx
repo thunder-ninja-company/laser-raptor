@@ -1,7 +1,7 @@
 import { createStyles } from "@mantine/core";
 
 export const useStyles = createStyles((theme) => ({
-    root: {
+    appRoot: {
         backgroundColor: theme.colors.red,
         padding: "20px",
     },

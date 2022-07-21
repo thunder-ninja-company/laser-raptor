@@ -1,3 +1,3 @@
 import { localConstant } from "core/constants";
 
-export const COMPONENT_NAME = localConstant("GroupPanelItem");
+export const COMPONENT_NAME = localConstant("DragGridItem");

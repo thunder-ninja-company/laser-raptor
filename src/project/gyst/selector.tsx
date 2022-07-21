@@ -1,9 +1,9 @@
+import type { GystAppRoot } from 'gyst/type'
 import { createSelector } from 'reselect'
-import type { GystAppRoot } from './type'
 
 const selectState = (state : GystAppRoot) => state
 
-export const selectGroupGrid = createSelector(
+export const selectDragGrid = createSelector(
     selectState,
-  (_selectState) => _selectState.groupGrid
+  (_selectState) => _selectState.dragGrid
 )

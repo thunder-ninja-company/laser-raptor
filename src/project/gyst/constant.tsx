@@ -1,10 +1,10 @@
-import { GroupGridInitialState } from "gyst/component/GroupGrid/constant";
+import { DragGridInitialState } from "~src/project/gyst/component/DragGrid/constant";
 import type { GystAppRoot } from "gyst/type";
 
 export const ProjectName = "gyst";
 
 // Define the initial state using that type
 export const initialState: GystAppRoot = {
-    groupGrid: GroupGridInitialState,
+    dragGrid: DragGridInitialState,
     hello: 123,
 };

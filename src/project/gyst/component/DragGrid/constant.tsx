@@ -1,18 +1,29 @@
+import type { DragDropState, DragGridContextDTO } from "./type";
 import { localConstant } from "core/constants";
-import type { GroupGridDTO } from "gyst/type";
+import type { DragGridDTO } from "gyst/type";
 import React from "react";
-import type { GroupGridContextDTO } from "./type";
 
-export const GroupGridContext = React.createContext<GroupGridContextDTO | undefined>(undefined);
+export const DragGridContext = React.createContext<DragGridContextDTO | undefined>(undefined);
 
-export const COMPONENT_NAME = localConstant("GroupGrid");
+export const COMPONENT_NAME = localConstant("DragGrid");
 
-export const GroupGridInitialState: GroupGridDTO = {
+export const initialDragDropState : DragDropState = {
+    // drag
+    dragPanelId : null,
+    dragItemId  : null,
+
+    // drop
+    dropPanelId : null,
+    dropIndex   : null,
+};
+
+
+export const DragGridInitialState: DragGridDTO = {
     id: "gg-0",
-    groupPanels: [
+    panels: [
         {
             id: "gp-abc",
-            groupPanelItems: [
+            items: [
                 {
                     id: "gpi-abc-1",
                     value: "item abc-2",
@@ -25,7 +36,7 @@ export const GroupGridInitialState: GroupGridDTO = {
         },
         {
             id: "gp-123",
-            groupPanelItems: [
+            items: [
                 {
                     id: "gpi-123-1",
                     value: "item 123-2",

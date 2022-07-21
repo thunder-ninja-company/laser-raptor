@@ -1,19 +1,19 @@
 import type { ComponentMeta, ComponentStory } from "@storybook/react";
 
-import GroupPanel from ".";
+import QuickDebug from ".";
 import { COMPONENT_NAME } from "./constant";
 
 export default {
-    title: "Gyst/GroupPanel",
-    component: GroupPanel,
+    title: "Gyst/QuickDebug",
+    component: QuickDebug,
     parameters: {
         // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
         layout: "fullscreen",
     },
-} as ComponentMeta<typeof GroupPanel>;
+} as ComponentMeta<typeof QuickDebug>;
 
-const Template: ComponentStory<typeof GroupPanel> = (args) => (
-    <GroupPanel {...args} />
+const Template: ComponentStory<typeof QuickDebug> = (args) => (
+    <QuickDebug {...args} />
 );
 
 export const ComponentParameters = Template.bind({});

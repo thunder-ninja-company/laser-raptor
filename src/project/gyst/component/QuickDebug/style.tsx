@@ -1,13 +1,12 @@
 import { createStyles } from "@mantine/core";
 
-export const useStyles = createStyles((theme) => ({
-    groupPanelItem: {
+export const useStyles = createStyles(theme => ({
+    quickDebug: {
         backgroundColor: theme.colors.orange,
         height: "500,",
         width: "300px",
-
         padding: "20px",
         margin: "20px",
-        cursor: 'grab',
+        borderRadius: "10px",
     },
 }));

@@ -1,7 +1,7 @@
 import { createStyles } from "@mantine/core";
 
 export const useStyles = createStyles((theme) => ({
-    groupGrid: {
+    dragGrid: {
         backgroundColor: theme.colors.lime,
         height: "500,",
         width: "300px",

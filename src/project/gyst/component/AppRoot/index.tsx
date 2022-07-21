@@ -1,6 +1,7 @@
 import { AppShell, Grid, MantineProvider } from "@mantine/core";
-import { AppHeader, AppBody, GroupGrid } from "gyst/component";
-import { selectGroupGrid } from "gyst/selector";
+import { AppHeader, AppBody, DragGrid } from "gyst/component";
+import type { DragGridDTO } from "gyst/component/DragGrid/type";
+import { selectDragGrid } from "gyst/selector";
 import { ProjectName } from "gyst/constant";
 import { useSelector } from "react-redux";
 import { useStyles } from "./style";
@@ -9,7 +10,11 @@ import type { Props } from "./type";
 export default function AppRoot({ id }: Props) {
     const { classes } = useStyles();
 
-    const groupGrid = useSelector(selectGroupGrid);
+    const dragGrid = useSelector(selectDragGrid);
+
+    const handleChange = (_value: DragGridDTO) => {
+        debugger;
+    }
 
     return (
         <MantineProvider
@@ -21,13 +26,13 @@ export default function AppRoot({ id }: Props) {
                 header={<AppHeader id={`app-header-${id}`} />}
                 navbarOffsetBreakpoint="sm"
                 asideOffsetBreakpoint="sm"
-                className={classes.root}
+                className={classes.appRoot}
                 fixed={true}
             >
                 <AppBody id={`app-body-${id}`}>
                     <Grid>
                         <Grid.Col span={12}>
-                            <GroupGrid value={groupGrid} />
+                            <DragGrid value={dragGrid} onChange={handleChange} />
                         </Grid.Col>
                     </Grid>
                 </AppBody>
