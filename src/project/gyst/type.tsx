@@ -21,3 +21,7 @@ export interface GystAppRoot {
     groupGrid: GroupGridDTO;
     hello: number;
 }
+
+export interface DragSourceInfo {
+    groupPanelItemId : string;
+}
