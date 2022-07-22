@@ -4,6 +4,6 @@ export interface DragItemDTO {
 }
 
 export interface DragItemProps {
-    value: DragItemDTO;
+    dragItem: DragItemDTO;
     panelId: string;
 }

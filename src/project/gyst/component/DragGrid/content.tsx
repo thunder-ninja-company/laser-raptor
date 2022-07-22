@@ -16,11 +16,11 @@ export default function DragGrid(props: ContentProps) {
                 index={0}
                 panelId={null}
                 type='grid' />
-            {panels.map((panel, index) => (
-                <React.Fragment key={`gp-${panel.id}`}>
-                    <DragPanel value={panel} />
+            {panels.map((dragPanel, index) => (
+                <React.Fragment key={`gp-${dragPanel.id}`}>
+                    <DragPanel dragPanel={dragPanel} />
                     <LandingZone
-                        index={index}
+                        index={index + 1}
                         panelId={null}
                         type='panel' />
                 </React.Fragment>

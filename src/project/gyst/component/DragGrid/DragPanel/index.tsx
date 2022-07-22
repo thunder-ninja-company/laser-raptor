@@ -1,13 +1,14 @@
-import { DragItem, LandingZone } from "../..";
-import { Box, Chip } from "@mantine/core";
-import { useStyles } from "./style";
 import type { DragPanelProps } from "./type";
+import { Box, Chip } from "@mantine/core";
+import LandingZone from "../LandingZone";
+import { useStyles } from "./style";
+import DragItem from "../DragItem";
 import React from "react";
 
-export default function DragPanel({ value}: DragPanelProps) {
+export default function DragPanel({ dragPanel }: DragPanelProps) {
     const { classes } = useStyles();
 
-    const { id : panelId, items } = value;
+    const { id : panelId, items } = dragPanel;
 
     return (
         <Box id={panelId} className={classes.groupPanel}>
@@ -18,14 +19,17 @@ export default function DragPanel({ value}: DragPanelProps) {
 
             <LandingZone id={`lz-${panelId}-0`} index={0} type='item' />
 
-            {items.map((item, index) => (
-                <React.Fragment key={item.id}>
+            {items.map((dragItem, index) => (
+                <React.Fragment key={dragItem.id}>
                     <DragItem
-                        key={`panel-${panelId}-item-${item.id}`}
+                        key={`panel-${panelId}-item-${dragItem.id}`}
                         panelId={panelId}
-                        value={item}
+                        dragItem={dragItem}
                     />
-                    <LandingZone id={`lz-${panelId}-${index + 1}`} index={index} type='item' />
+                    <LandingZone
+                        panelId={panelId}
+                        index={index + 1}
+                        type='panel' />
                 </React.Fragment>
             ))}
         </Box>

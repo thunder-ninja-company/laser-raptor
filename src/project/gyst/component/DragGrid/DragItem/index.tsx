@@ -5,7 +5,7 @@ import { Box, Text } from "@mantine/core";
 import { useStyles } from "./style";
 import { useDrag } from "react-dnd";
 
-export default function DragItem({ value, panelId }: DragItemProps) {
+export default function DragItem({ dragItem, panelId }: DragItemProps) {
     const { classes } = useStyles();
 
     const [{ isDragging }, drag, dragPreview] = useDrag(() => ({
@@ -16,20 +16,20 @@ export default function DragItem({ value, panelId }: DragItemProps) {
         item : {
             ...initialDragDropState,
             dragPanelId : panelId,
-            dragItemId  : value.id,
+            dragItemId  : dragItem.id,
         } as DragDropState,
         end(item, _monitor){
-            console.log(`DragItem has finished dragging ${value.id}`);
+            console.log(`DragItem has finished dragging ${dragItem.id}`);
             console.log(item)
         }
     }));
 
     return (
-        <Box id={id} className={classes.dragItem} ref={dragPreview}>
+        <Box className={classes.dragItem} ref={dragPreview}>
             <div role="Handle" ref={drag}>
                 <Text>
                     <>
-                        {value} {`Item ${isDragging ? '[DRAG]' : ''}`}
+                       {`Item ${dragItem.value} ${isDragging ? '[DRAG]' : ''}`}
                     </>
                 </Text>
             </div>
