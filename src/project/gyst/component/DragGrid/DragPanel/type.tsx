@@ -1,7 +1,8 @@
 import type { DragItemDTO } from "../DragItem/type";
 
-export interface DragPanelProps {
+export interface Props {
     dragPanel: DragPanelDTO;
+
 }
 
 export interface DragPanelDTO {

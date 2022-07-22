@@ -1,14 +1,21 @@
-import type { ContentProps } from "./type";
+import type { DragGridDTO, Props } from "./type";
 import LandingZone from "./LandingZone";
 import { useStyles } from "./style";
 import { Box } from "@mantine/core";
 import DragPanel from "./DragPanel";
 import React from "react";
 
-export default function DragGrid(props: ContentProps) {
+export default function DragGridContent(props : Props) {
+
     const { classes } = useStyles();
 
-    const { value: { id, panels } } = props;
+    // debugger;
+
+    console.log('asdfasdfasdf');
+
+    const { id, panels } = props.dragGrid;
+
+    // debugger;
 
     return (
         <Box id={id} className={classes.dragGrid}>

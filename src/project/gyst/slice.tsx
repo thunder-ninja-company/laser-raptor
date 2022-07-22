@@ -1,10 +1,11 @@
-import { initialState } from "./constant";
 import type { DragGridDTO } from "gyst/component/DragGrid/type";
-import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import { initialState } from "./constant";
+import { ProjectName } from './constant';
 
-export const counterSlice = createSlice({
-    name: "gragGrid",
+export default createSlice({
+    name: ProjectName,
 
     // `createSlice` will infer the state type from the `initialState` argument
     initialState,
@@ -15,7 +16,3 @@ export const counterSlice = createSlice({
         },
     },
 });
-
-export const { updateGroupGridValue } = counterSlice.actions;
-
-export default counterSlice.reducer;

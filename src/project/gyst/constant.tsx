@@ -1,4 +1,4 @@
-import { DragGridInitialState } from "~src/project/gyst/component/DragGrid/constant";
+import { DragGridInitialState } from "gyst/component/DragGrid/constant";
 import type { GystAppRoot } from "gyst/type";
 
 export const ProjectName = "gyst";
