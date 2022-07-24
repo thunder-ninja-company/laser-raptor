@@ -19,31 +19,31 @@ export const initialDragDropState : DragDropState = {
 
 
 export const DragGridInitialState: DragGridDTO = {
-    id: "gg-0",
+    id: "grid-0",
     panels: [
         {
-            id: "gp-abc",
+            id: "panel-0",
             items: [
                 {
-                    id: "gpi-abc-1",
-                    value: "item abc-2",
+                    id: "id-alpha",
+                    value: "Alpha",
                 },
                 {
-                    id: "gpi-abc-2",
-                    value: "item abc-2",
+                    id: "id-beta",
+                    value: "Beta",
                 },
             ],
         },
         {
-            id: "gp-123",
+            id: "panel-1",
             items: [
                 {
-                    id: "gpi-123-1",
-                    value: "item 123-2",
+                    id: "id-charlie",
+                    value: "Charlie",
                 },
                 {
-                    id: "gpi-123-2",
-                    value: "item 123-2",
+                    id: "id-delta",
+                    value: "Delta",
                 },
             ],
         },

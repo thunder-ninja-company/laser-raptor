@@ -1,8 +1,8 @@
 import { createStyles } from "@mantine/core";
 
-export const useStyles = createStyles(({ spacing }) => ({
+export const useStyles = createStyles(theme => ({
     landingZone: {
-        backgroundColor: "#0af",
-        padding: spacing.sm,
+        backgroundColor: theme.colors.gray,
+        // padding: theme.spacing.xs,
     },
 }));

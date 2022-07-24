@@ -4,7 +4,7 @@ import type { DragDropState } from "../type";
 import { useStyles  } from "./style";
 import { useDrop } from "react-dnd";
 import { useContext } from "react";
-import { Box, Chip, Text } from "@mantine/core";
+import { Box, Chip, MantineSize, Text } from "@mantine/core";
 
 
 export default function LandingZone({ index, panelId }: LandingZoneProps) {
@@ -39,16 +39,12 @@ export default function LandingZone({ index, panelId }: LandingZoneProps) {
 
     return (
         <Box
-            style={{ backgroundColor: isOver ? "#9dA" : "#0d0" }}
             className={classes.landingZone}
+            style={isOver ? { backgroundColor: "red" } : {}}
             ref={drop}
-            id={id}
-        >
-            <Chip value={id}>
-                {`LZ - ${id}`}
-            </Chip>
-            <Text>
-                {canDrop ? "Release to drop" : "Drag a box here"}
+            id={id}>
+            <Text size='xs'>
+                {canDrop ? `(${id}) Release to drop` : `(${id}) Drag a box here`}
             </Text>
         </Box>
     );

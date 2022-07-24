@@ -4,6 +4,19 @@ import { createSlice } from "@reduxjs/toolkit";
 import { initialState } from "./constant";
 import { ProjectName } from './constant';
 
+
+// export interface CounterState {
+//     value: number;
+//     status: 'idle' | 'loading' | 'failed';
+//   }
+
+//   const initialState: CounterState = {
+//     value: 0,
+//     status: 'idle',
+//   };
+
+
+
 export default createSlice({
     name: ProjectName,
 

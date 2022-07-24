@@ -27,10 +27,9 @@ export default function DragItem({ dragItem, panelId }: DragItemProps) {
     return (
         <Box className={classes.dragItem} ref={dragPreview}>
             <div role="Handle" ref={drag}>
+
                 <Text>
-                    <>
-                       {`Item ${dragItem.value} ${isDragging ? '[DRAG]' : ''}`}
-                    </>
+                    {`Item ${dragItem.value} ${isDragging ? '[DRAG]' : ''}`}
                 </Text>
             </div>
         </Box>

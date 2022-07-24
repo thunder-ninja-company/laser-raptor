@@ -5,9 +5,7 @@ export const useStyles = createStyles((theme) => ({
         backgroundColor: "#0a0",
         height: "500,",
         width: "300px",
-        padding: "20px",
         fontSize: "20px",
         color: "#fff",
-        margin: "20px",
     },
 }));

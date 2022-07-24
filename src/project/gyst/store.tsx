@@ -6,6 +6,7 @@ const { reducer } = slice;
 
 const store = configureStore({
     reducer,
+    devTools : true,
 });
 
 export type AppDispatch = typeof store.dispatch;
