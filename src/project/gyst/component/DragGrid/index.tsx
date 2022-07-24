@@ -52,17 +52,18 @@ const indexOfItemAndPanel = (dragGrid: DragGridDTO, itemId: string | null): { pa
 const indexOfPanel = (dragGrid : DragGridDTO, panelId : string | null) : number =>
     dragGrid.panels.findIndex(dragPanel => dragPanel.id === panelId);
 
-const isRemovingTheLastItem = (gridCopy : DragGridDTO, panelIndex : number | null) : boolean => {
+const isRemovingTheLastItem = (gridCopy : DragGridDTO, panelIndex : number) : boolean => {
 
     // const panelIndex = indexOfDragPanel(gridCopy, dragDropState);
 
     return getPanelByIndex(gridCopy, panelIndex).items.length === 1;
 };
 
-const getPanelByIndex = (dragGrid : DragGridDTO, panelIndex : number | null) : DragPanelDTO =>
-    dragGrid.panels[panelIndex || -1];
+const getPanelByIndex = (dragGrid : DragGridDTO, panelIndex : number) : DragPanelDTO =>
+    dragGrid.panels[panelIndex];
 
 const removeItem = (gridCopy : DragGridDTO, dragItemId : string | null) : void => {
+    debugger;
 
     const { panelIndex, itemIndex } = indexOfItemAndPanel(gridCopy, dragItemId);
 
