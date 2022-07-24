@@ -82,51 +82,12 @@ const isDraggedIntoSamePosition = (dragItemIndex : number, dropIndex : number | 
 const isReorderingExistingPanel = (dragPanelIndex : number, dropPanelIndex : number) : boolean =>
     dragPanelIndex === dropPanelIndex;
 
-const reorderPanelItems = (
-    gridCopy   : DragGridDTO,
-    dragItemId : string,
-    dropIndex  : number
-) : DragGridDTO => {
-
-    const {
-        panelIndex,
-        itemIndex  : dragItemIndex,
-    } = indexOfItemAndPanel(gridCopy, dragItemId);
-
-    // Only move if dragging into a new position within the panel
-    // The UI should genreally not allow this, but this would
-    // be a situation where the person tried dragging into a drop
-    // zone of the same index (UI displays before item) or dragged an item into
-    // the drop zome immedatly after itself. Both would result in the item
-    // staying where it already is and not b
-    if (isDraggedIntoSamePosition(dragItemIndex, dropIndex)) {
-        debugger;
-        console.log('Dragging into directly adjacent zone, not moving anything.')
-
-        return gridCopy;
-    }
-
-    // dragging into the anchor landing panel at the end of the list.
-    // so append it rather than insert it
-    if(dropIndex === gridCopy.panels[panelIndex].items.length) {
-
-        gridCopy.panels[panelIndex].items.push(itemCopy);
-        gridCopy.panels[panelIndex].items.splice(dragItemIndex, 1);
-
-    } else {
-        debugger;
-        // otherwise the zone index matches up with item index, so insert whereever
-        // the drop index was
-        gridCopy.panels[panelIndex].items.splice(dropIndex || 0, 0, itemCopy);
-    }
-
-    return gridCopy;
-}
-
-
-
-const wasDroppedOntoSamePanel = (gridCopy : DragGridDTO, dragPanelId : string, dropPanelId : string) : boolean => {
+const wasDroppedOntoSamePanel = (gridCopy : DragGridDTO, dragPanelId : string, dropPanelId : string | null) : boolean => {
     debugger;
+
+    // panel is null when dragging an item between two other panels
+    if (dropPanelId === null)
+        return false;
 
     const dragPanelIndex = indexOfPanel(gridCopy, dragPanelId);
     const dropPanelIndex = indexOfPanel(gridCopy, dropPanelId);
@@ -134,28 +95,28 @@ const wasDroppedOntoSamePanel = (gridCopy : DragGridDTO, dragPanelId : string, d
     return dragPanelIndex === dropPanelIndex;
 };
 
-const wasDroppedOntoDifferentPanel = (dragPanelId : string, dropPanelId : string) : boolean =>
-    dragPanelId !== dropPanelId;
+const wasDroppedOntoDifferentPanel = (dragPanelId : string, dropPanelId : string | null) : boolean =>
+    dropPanelId === null || dragPanelId !== dropPanelId;
 
 const wasDroppedBetweenPanels = (dropIndex : number | null, dropPanelId : string | null) : boolean =>
     dropPanelId === null && dropIndex !== null;
 
-const dropBetweenPanels = (gridCopy : DragGridDTO, dropIndex : number, dragItemId : string, itemCopy : DragItemDTO) : DragGridDTO => {
+const dropBetweenPanels = (gridCopy : DragGridDTO, dropIndex : number, itemCopy : DragItemDTO) : DragGridDTO => {
     debugger; // verified - NO
 
     // insert the item copy of the item being dragged
     // into a new panel and insert the panel into the grid
     // where it was dropped
-    gridCopy.panels.splice(dropIndex || 0, 0, {
+    gridCopy.panels.splice(dropIndex, 0, {
         id: nanoid(),
         items: [],
     })
 
     // pluck it from the old panel, this is a new panel
-    removeItem(gridCopy, dragItemId);
+    removeItem(gridCopy, itemCopy.id);
 
     // insert the item into the new panel
-    gridCopy.panels[dropIndex || 0].items.push(itemCopy);
+    gridCopy.panels[dropIndex].items.push(itemCopy);
 
     return gridCopy;
 };
@@ -182,12 +143,12 @@ const dropOntoDifferentPanel = (
     } = indexOfItemAndPanel(gridCopy, dragItemId);
 
     gridCopy.panels[dragPanelIndex].items.splice(dragItemIndex, 1);
-    gridCopy.panels[dropPanelIndex].items.splice(dropIndex || 0, 0, itemCopy);
+    gridCopy.panels[dropPanelIndex].items.splice(dropIndex, 0, itemCopy);
 
     return gridCopy;
 }
 
-const getDragDropItems = (dragGrid : DragGridDTO, dragItemId : string, dragPanelId : string, dropPanelId : string) => {
+const getDragDropItems = (dragGrid : DragGridDTO, dragItemId : string, dragPanelId : string, dropPanelId : string | null) => {
 
      // Copy the original item from the tree
      const itemCopy = copyItem(dragGrid, dragItemId);
@@ -211,34 +172,45 @@ export default function DragGrid(props: Props) {
 
     const handleChange = (dragDropState : DragDropState) => {
 
-        const { dragItemId, dropIndex, dropPanelId, dragPanelId } = dragDropState;
+        const {
+            dragItemId, dropIndex, dropPanelId, dragPanelId,
+        } = dragDropState;
 
-        if(dropIndex === null || dragItemId === null || dragPanelId === null || dropPanelId === null)
+        debugger;
+
+        if(dropIndex === null || dragItemId === null || dragPanelId === null)
             return;
 
         const {
-            gridCopy, itemCopy, dragPanelIndex, dropPanelIndex,
+            gridCopy, itemCopy, dropPanelIndex,
         } = getDragDropItems(dragGridOriginal, dragItemId, dragPanelId, dropPanelId);
 
-                // If dragging between panels, then add a new panel with the item
+        // If dragging between panels, then add a new panel with the item
         // as the initial seed element
-        if(wasDroppedBetweenPanels(dropIndex, dropPanelId)) {
+        if (wasDroppedBetweenPanels(dropIndex, dropPanelId)) {
+            console.log('wasDropped BETWEEN TWO PANELS');
             debugger;
 
-            const newGrid = dropBetweenPanels(gridCopy, dropIndex, dragItemId, itemCopy);
+            // VERIFIED - IN PROGRESS
+            const newGrid = dropBetweenPanels(gridCopy, dropIndex, itemCopy);
 
             return onChange(newGrid);
         }
 
         if (wasDroppedOntoSamePanel(gridCopy, dragPanelId, dropPanelId)) {
+            console.log('wasDropped SAME PANEL');
+
             debugger;
 
-            const newGrid = dropOntoSamePanel(gridCopy, dragItemId, dropIndex || 0);
+            const newGrid = dropOntoSamePanel(gridCopy, dragItemId, dropIndex);
 
             return onChange(newGrid);
         }
 
         if (wasDroppedOntoDifferentPanel(dragPanelId, dropPanelId)) {
+            console.log('wasDropped DIFFERENT PANELS');
+
+            // VERIFIED
             debugger;
 
             const newGrid = dropOntoDifferentPanel(gridCopy, dropPanelIndex, dragItemId, dropIndex, itemCopy);
@@ -246,7 +218,9 @@ export default function DragGrid(props: Props) {
             return onChange(newGrid);
         }
 
-        console.log('Unhandled case of drag and drop');
+        debugger;
+
+        console.log('UNHANDLED case of drag and drop');
         console.log(dragDropState);
 
         debugger;
