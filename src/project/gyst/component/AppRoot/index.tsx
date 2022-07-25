@@ -12,8 +12,8 @@ import { useEffect } from "react";
 import { nanoid } from "nanoid";
 
 
-
 export default function AppRoot({ id }: Props) {
+
     const { classes } = useStyles();
 
     const dragGrid = useSelector(selectDragGrid);
@@ -22,8 +22,6 @@ export default function AppRoot({ id }: Props) {
     }, [dragGrid]);
 
     const dispatch = useAppDispatch();
-
-    debugger;
 
     const handleChange = (value: DragGridDTO) => {
         debugger;
@@ -48,9 +46,9 @@ export default function AppRoot({ id }: Props) {
                     <Grid>
                         <Grid.Col span={12}>
                             <DragGrid
-                                key={nanoid()}
+                                dragGrid={{...dragGrid}}
                                 onChange={handleChange}
-                                dragGrid={{...dragGrid}} />
+                                key={nanoid()} />
                         </Grid.Col>
                     </Grid>
                 </AppBody>

@@ -1,5 +1,6 @@
 import { DragGridInitialState } from "gyst/component/DragGrid/constant";
-import type { GystAppRoot } from "gyst/type";
+import type { GystAppContextDTO, GystAppRoot } from "gyst/type";
+import React from "react";
 
 export const ProjectName = "gyst";
 
@@ -8,3 +9,5 @@ export const initialState: GystAppRoot = {
     dragGrid: DragGridInitialState,
     hello: 123,
 };
+
+export const GystAppContext = React.createContext<GystAppContextDTO | undefined>(undefined);

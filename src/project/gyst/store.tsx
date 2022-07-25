@@ -5,11 +5,11 @@ import slice from "./slice";
 const { reducer } = slice;
 
 const store = configureStore({
-    reducer,
     devTools : true,
+    reducer,
 });
 
 export type AppDispatch = typeof store.dispatch;
-export const useAppDispatch: () => AppDispatch = useDispatch; // Export a hook that can be reused to resolve types
+export const useAppDispatch: () => AppDispatch = useDispatch;
 
 export default store;

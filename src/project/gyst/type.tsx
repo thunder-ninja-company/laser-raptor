@@ -8,3 +8,9 @@ export interface GystAppRoot {
     dragGrid: DragGridDTO;
     hello: number;
 }
+export interface GystAppContextDTO {
+    onRemovePanel : (actionId : string) => void;
+    onRemoveItem  : (actionId : string) => void;
+    onAddPanel    : (actionId : string) => void;
+    onAddItem     : (actionId : string) => void;
+}

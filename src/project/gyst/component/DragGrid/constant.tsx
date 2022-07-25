@@ -3,7 +3,6 @@ import { localConstant } from "core/constants";
 import type { DragGridDTO } from "./type";
 import React from "react";
 
-
 export const DragGridContext = React.createContext<DragGridContextDTO | undefined>(undefined);
 
 export const COMPONENT_NAME = localConstant("DragGrid");

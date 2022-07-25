@@ -51,6 +51,7 @@
         "@oclif/plugin-help": "^5",
         "@oclif/plugin-plugins": "^2.0.1",
         "@reduxjs/toolkit": "^1.8.2",
+        "@tabler/icons": "1.78.1",
         "@types/styled-components": "5.1.25",
         "aws-amplify": "4.3.22",
         "nanoid": "4.0.0",
