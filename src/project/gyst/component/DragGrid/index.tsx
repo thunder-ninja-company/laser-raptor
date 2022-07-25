@@ -201,63 +201,30 @@ export default function DragGrid(props: Props) {
     console.log(dragGridOriginal);
     debugger;
 
-    const handleChange = (dragDropState : DragDropState) => {
+    const handleChange = ({
+        dragItemId, dropIndex, dropPanelId, dragPanelId,
+    } : DragDropState) => {
 
-        const {
-            dragItemId, dropIndex, dropPanelId, dragPanelId,
-        } = dragDropState;
-
-        debugger;
-
+        // typescript is really picky about handling these nulls. This
+        // simplifies the rest of the code here since it can assume the values exist
         if(dropIndex === null || dragItemId === null || dragPanelId === null)
             return;
 
-        const {
-            gridCopy, itemCopy, dropPanelIndex,
-        } = getDragDropItems(dragGridOriginal, dragItemId, dragPanelId, dropPanelId);
+        const { gridCopy, itemCopy, dropPanelIndex }
+            = getDragDropItems(dragGridOriginal, dragItemId, dragPanelId, dropPanelId);
 
         // If dragging between panels, then add a new panel with the item
         // as the initial seed element
-        if (wasDroppedBetweenPanels(dropIndex, dropPanelId)) {
-            console.log('wasDropped BETWEEN TWO PANELS');
-            debugger;
+        if (wasDroppedBetweenPanels(dropIndex, dropPanelId))
+            return onChange(dropBetweenPanels(gridCopy, dropIndex, itemCopy));
 
-            // VERIFIED - IN PROGRESS
-            const newGrid = dropBetweenPanels(gridCopy, dropIndex, itemCopy);
+        if (wasDroppedOntoSamePanel(gridCopy, dragPanelId, dropPanelId))
+            return onChange(dropOntoSamePanel(gridCopy, dragItemId, dropIndex));
 
-            return onChange(newGrid);
-        }
+        if (wasDroppedOntoDifferentPanel(dragPanelId, dropPanelId))
+            return onChange(dropOntoDifferentPanel(gridCopy, dropPanelIndex, dragItemId, dropIndex, itemCopy));
 
-        if (wasDroppedOntoSamePanel(gridCopy, dragPanelId, dropPanelId)) {
-            console.log('wasDropped SAME PANEL');
-
-            debugger;
-
-            const newGrid = dropOntoSamePanel(gridCopy, dragItemId, dropIndex);
-
-            return onChange(newGrid);
-
-        }
-
-        if (wasDroppedOntoDifferentPanel(dragPanelId, dropPanelId)) {
-            console.log('wasDropped DIFFERENT PANELS');
-
-            // VERIFIED
-            debugger;
-
-            const newGrid = dropOntoDifferentPanel(gridCopy, dropPanelIndex, dragItemId, dropIndex, itemCopy);
-
-            return onChange(newGrid);
-        }
-
-        debugger;
-
-        console.log('UNHANDLED case of drag and drop');
-        console.log(dragDropState);
-
-        debugger;
-
-        return onChange(gridCopy);
+        throw Error('Unable to figure out wtf happened dropping the item');
     }
 
 

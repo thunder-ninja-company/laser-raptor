@@ -1,7 +1,7 @@
 import type { DragGridDTO, Props } from "./type";
 import LandingZone from "./LandingZone";
 import { useStyles } from "./style";
-import { Box } from "@mantine/core";
+import { Box, Grid } from "@mantine/core";
 import DragPanel from "./DragPanel";
 import React from "react";
 
@@ -23,15 +23,20 @@ export default function DragGridContent(props : Props) {
                 index={0}
                 panelId={null}
                 type='grid' />
-            {panels.map((dragPanel, index) => (
-                <React.Fragment key={`gp-${dragPanel.id}`}>
-                    <DragPanel dragPanel={dragPanel} />
-                    <LandingZone
-                        index={index + 1}
-                        panelId={null}
-                        type='panel' />
-                </React.Fragment>
-            ))}
+            <Grid>
+                {panels.map((dragPanel, index) => (
+                    <Grid.Col
+                        key={`gp-${dragPanel.id}`}
+                        md={6}
+                        lg={3}>
+                        <DragPanel dragPanel={dragPanel} />
+                        <LandingZone
+                            index={index + 1}
+                            panelId={null}
+                            type='panel' />
+                    </Grid.Col>
+                ))}
+            </Grid>
         </Box>
     );
 }
