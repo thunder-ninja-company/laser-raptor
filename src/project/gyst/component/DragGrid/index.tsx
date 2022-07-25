@@ -61,12 +61,12 @@ const isRemovingTheLastItem = (gridCopy : DragGridDTO, panelIndex : number) : bo
 const getPanelByIndex = (dragGrid : DragGridDTO, panelIndex : number) : DragPanelDTO =>
     dragGrid.panels[panelIndex];
 
-const removeItem = (gridCopy : DragGridDTO, dragItemId : string | null) : void => {
+const removeItem = (gridCopy : DragGridDTO, dragItemId : string | null) : DragItemDTO => {
     debugger;
 
     const { panelIndex, itemIndex } = indexOfItemAndPanel(gridCopy, dragItemId);
 
-    gridCopy.panels[panelIndex].items.splice(itemIndex, 1);
+    return gridCopy.panels[panelIndex].items.splice(itemIndex, 1)[0];
 };
 
 const isDraggedIntoSamePosition = (dragItemIndex : number, dropIndex : number | null) : boolean =>
@@ -131,13 +131,26 @@ const dropBetweenPanels = (gridCopy : DragGridDTO, dropIndex : number, itemCopy 
     return gridCopy;
 };
 
-const dropOntoSamePanel = (gridCopy : DragGridDTO, dragItemId : string, dropIndex : number) => {
-    const panelIndex = indexOfPanel(gridCopy, dragItemId);
-
+const dropOntoSamePanel = (gridCopy : DragGridDTO, dragItemId : string, dropItemIndex : number) => {
     debugger;
+
+    const {
+        itemIndex : dragItemIndex,
+        panelIndex,
+    } = indexOfItemAndPanel(gridCopy, dragItemId);
+
+    const itemCopy = removeItem(gridCopy, dragItemId);
+
+    if(dragItemIndex > dropItemIndex) {
+        gridCopy.panels[panelIndex].items.splice(dropItemIndex, 0, itemCopy);
+
+    } else {
+        gridCopy.panels[panelIndex].items.splice(dropItemIndex - 1, 0, itemCopy);
+    }
 
     return gridCopy;
 };
+
 
 const dropOntoDifferentPanel = (
     gridCopy       : DragGridDTO,
@@ -154,6 +167,8 @@ const dropOntoDifferentPanel = (
 
     gridCopy.panels[dragPanelIndex].items.splice(dragItemIndex, 1);
     gridCopy.panels[dropPanelIndex].items.splice(dropIndex, 0, itemCopy);
+
+    removeEmptyPanels(gridCopy);
 
     return gridCopy;
 }
