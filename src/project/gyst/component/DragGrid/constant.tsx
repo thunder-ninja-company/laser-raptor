@@ -1,7 +1,8 @@
 import type { DragDropState, DragGridContextDTO } from "./type";
 import { localConstant } from "core/constants";
-import type { DragGridDTO } from "gyst/type";
+import type { DragGridDTO } from "./type";
 import React from "react";
+
 
 export const DragGridContext = React.createContext<DragGridContextDTO | undefined>(undefined);
 

@@ -1,14 +1,13 @@
-import type { DragDropState, DragGridDTO, Props } from "./type";
+import type { DragDropState, DragGridContextDTO, DragGridDTO, Props } from "./type";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import type { DragPanelDTO } from "./DragPanel/type";
 import type { DragItemDTO } from "./DragItem/type";
 import { DragGridContext } from "./constant";
+import { copyObject } from "gyst/shared";
 import DragGridContent from "./content";
 import { DndProvider } from 'react-dnd'
 import { nanoid } from 'nanoid'
-import React from "react";
-import type { DragPanelDTO } from "./DragPanel/type";
-
-const copyObject = (obj: any) => JSON.parse(JSON.stringify(obj));
+import React, { useEffect } from "react";
 
 const copyItem = (dragGrid: DragGridDTO, itemId: string | null): DragItemDTO => {
 
@@ -67,14 +66,7 @@ const removeItem = (gridCopy : DragGridDTO, dragItemId : string | null) : void =
 
     const { panelIndex, itemIndex } = indexOfItemAndPanel(gridCopy, dragItemId);
 
-    // lop off the whole panel which implictly removes the item
-    if(getPanelByIndex(gridCopy, panelIndex).items.length === 1) {
-
-        gridCopy.panels.splice(panelIndex, 1);
-    }
-    else {
-        gridCopy.panels[panelIndex].items.splice(itemIndex, 1);
-    }
+    gridCopy.panels[panelIndex].items.splice(itemIndex, 1);
 };
 
 const isDraggedIntoSamePosition = (dragItemIndex : number, dropIndex : number | null) : boolean =>
@@ -102,6 +94,18 @@ const wasDroppedOntoDifferentPanel = (dragPanelId : string, dropPanelId : string
 const wasDroppedBetweenPanels = (dropIndex : number | null, dropPanelId : string | null) : boolean =>
     dropPanelId === null && dropIndex !== null;
 
+const removeEmptyPanels = (gridCopy : DragGridDTO) : DragGridDTO => {
+
+    for (let panelIndex = 0; panelIndex < gridCopy.panels.length; panelIndex++) {
+        if(gridCopy.panels[panelIndex].items.length === 0) {
+            gridCopy.panels.splice(panelIndex, 1);
+            panelIndex--;
+        }
+    }
+
+    return gridCopy;
+}
+
 const dropBetweenPanels = (gridCopy : DragGridDTO, dropIndex : number, itemCopy : DragItemDTO) : DragGridDTO => {
     debugger; // verified - NO
 
@@ -116,8 +120,13 @@ const dropBetweenPanels = (gridCopy : DragGridDTO, dropIndex : number, itemCopy 
     // pluck it from the old panel, this is a new panel
     removeItem(gridCopy, itemCopy.id);
 
-    // insert the item into the new panel
     gridCopy.panels[dropIndex].items.push(itemCopy);
+
+    debugger;
+    removeEmptyPanels(gridCopy);
+
+    // insert the item into the new panel
+
 
     return gridCopy;
 };
@@ -171,6 +180,12 @@ export default function DragGrid(props: Props) {
 
     const { dragGrid : dragGridOriginal, onChange } = props;
 
+    useEffect(() => {
+      }, [dragGridOriginal]);
+
+    console.log(dragGridOriginal);
+    debugger;
+
     const handleChange = (dragDropState : DragDropState) => {
 
         const {
@@ -206,6 +221,7 @@ export default function DragGrid(props: Props) {
             const newGrid = dropOntoSamePanel(gridCopy, dragItemId, dropIndex);
 
             return onChange(newGrid);
+
         }
 
         if (wasDroppedOntoDifferentPanel(dragPanelId, dropPanelId)) {
@@ -230,7 +246,7 @@ export default function DragGrid(props: Props) {
     }
 
 
-    const context = {
+    const context : DragGridContextDTO = {
         dragGrid : dragGridOriginal,
         onChange : handleChange,
     };

@@ -10,6 +10,11 @@ export interface DragGridDTO {
     panels: DragPanelDTO[];
 }
 
+export interface DragGridContextDTO {
+    onChange : (dragDropState : DragDropState) => void;
+    dragGrid: DragGridDTO;
+};
+
 export interface DragDropState {
     dragPanelId : string | null;
     dragItemId : string | null;

@@ -8,6 +8,8 @@ import { useSelector } from "react-redux";
 import { useStyles } from "./style";
 import type { Props } from "./type";
 import foo from "gyst/slice";
+import { useEffect } from "react";
+import { nanoid } from "nanoid";
 
 
 
@@ -16,16 +18,18 @@ export default function AppRoot({ id }: Props) {
 
     const dragGrid = useSelector(selectDragGrid);
 
+    useEffect(() => {
+    }, [dragGrid]);
+
     const dispatch = useAppDispatch();
 
-    const handleChange = (_value: DragGridDTO) => {
-        // debugger;
+    debugger;
 
-        dispatch(foo.actions.updateGroupGridValue(_value));
+    const handleChange = (value: DragGridDTO) => {
+        debugger;
+
+        dispatch(foo.actions.updateGroupGridValue(value));
     }
-
-    // debugger;
-
 
     return (
         <MantineProvider
@@ -44,8 +48,9 @@ export default function AppRoot({ id }: Props) {
                     <Grid>
                         <Grid.Col span={12}>
                             <DragGrid
-                                dragGrid={dragGrid}
-                                onChange={handleChange} />
+                                key={nanoid()}
+                                onChange={handleChange}
+                                dragGrid={{...dragGrid}} />
                         </Grid.Col>
                     </Grid>
                 </AppBody>

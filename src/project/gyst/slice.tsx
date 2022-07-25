@@ -3,19 +3,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 import { initialState } from "./constant";
 import { ProjectName } from './constant';
-
-
-// export interface CounterState {
-//     value: number;
-//     status: 'idle' | 'loading' | 'failed';
-//   }
-
-//   const initialState: CounterState = {
-//     value: 0,
-//     status: 'idle',
-//   };
-
-
+import { copyObject } from "gyst/shared";
 
 export default createSlice({
     name: ProjectName,
@@ -25,7 +13,13 @@ export default createSlice({
     reducers: {
         // Use the PayloadAction type to declare the contents of `action.payload`
         updateGroupGridValue: (state, action: PayloadAction<DragGridDTO>) => {
-            state.dragGrid = action.payload;
+
+            state.dragGrid = {
+                ...action.payload,
+            }
+
+            console.log('slice value now:');
+            console.log(state.dragGrid);
         },
     },
 });
