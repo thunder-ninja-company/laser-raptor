@@ -11,14 +11,7 @@ export default function ActionIcon({ id }: Props) {
 
     const context = useContext(GystAppContext);
 
-    const handleClick = () => {
-        if(context) {
-            debugger;
-            context.onAddItem123(id);
-        } else {
-            debugger;
-        }
-    }
+    const handleClick = () => context?.onAddItem(id);
 
     return (
         <IconPlus

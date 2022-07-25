@@ -5,22 +5,6 @@ import type { DragItemDTO } from "./DragItem/type";
 import { copyObject } from "gyst/shared";
 import { nanoid } from 'nanoid'
 
-export const handleRemovePanel = (actionId : string) : void => {
-    debugger;
-};
-
-export const handleRemoveItem = (actionId : string) : void => {
-    debugger;
-};
-
-export const handleAddPanel = (actionId : string) : void => {
-    debugger;
-};
-
-export const handleAddItem = (actionId : string) : void => {
-    debugger;
-};
-
 const copyItem = (dragGrid: DragGridDTO, itemId: string | null): DragItemDTO => {
 
     const itemInfo = indexOfItemAndPanel(dragGrid, itemId);
@@ -36,6 +20,33 @@ const copyItem = (dragGrid: DragGridDTO, itemId: string | null): DragItemDTO => 
 
         return copyObject(dragGrid.panels[panelIndex].items[itemIndex]) as DragItemDTO;
 };
+
+export const removePanel = (actionId : string) : void => {
+    debugger;
+};
+
+export const removeItem = (actionId : string) : void => {
+    debugger;
+};
+
+export const addPanel = (actionId : string) : void => {
+    debugger;
+};
+
+export const insertItem = (dragGrid : DragGridDTO, index : number) : void => {
+
+    dragGrid.panels.splice(index, 0, {
+        id: nanoid(),
+        items: [
+            {
+                id: nanoid(),
+                value : 'fuck!'
+            }
+        ]
+    });
+};
+
+
 
 const indexOfItem = (dragGrid : DragGridDTO, panelIndex : number, itemId : string | null) : number =>
     dragGrid.panels[panelIndex].items.findIndex(dragItem => dragItem.id === itemId);
@@ -73,7 +84,7 @@ const isRemovingTheLastItem = (gridCopy : DragGridDTO, panelIndex : number) : bo
 const getPanelByIndex = (dragGrid : DragGridDTO, panelIndex : number) : DragPanelDTO =>
     dragGrid.panels[panelIndex];
 
-const removeItem = (gridCopy : DragGridDTO, dragItemId : string | null) : DragItemDTO => {
+const removeItemById = (gridCopy : DragGridDTO, dragItemId : string | null) : DragItemDTO => {
     debugger;
 
     const { panelIndex, itemIndex } = indexOfItemAndPanel(gridCopy, dragItemId);
@@ -130,7 +141,7 @@ const dropBetweenPanels = (gridCopy : DragGridDTO, dropIndex : number, itemCopy 
     })
 
     // pluck it from the old panel, this is a new panel
-    removeItem(gridCopy, itemCopy.id);
+    removeItemById(gridCopy, itemCopy.id);
 
     gridCopy.panels[dropIndex].items.push(itemCopy);
 

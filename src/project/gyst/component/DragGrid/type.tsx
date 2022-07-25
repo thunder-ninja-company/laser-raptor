@@ -13,9 +13,8 @@ export interface DragGridDTO {
 }
 
 export interface DragGridContextDTO {
-
-    onChange      : (dragDropState : DragDropState) => void;
-    dragGrid      : DragGridDTO;
+    onChange : (dragDropState : DragDropState) => void;
+    dragGrid : DragGridDTO;
 };
 
 export interface DragDropState {

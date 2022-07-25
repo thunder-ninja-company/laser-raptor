@@ -14,7 +14,7 @@ export default function AppHeader({ id }: Props) {
             className={classes.root}
             onClick={() => ({})}
             id={id}>
-            <ActionIcon id='header-add-icon' />
+            <ActionIcon id='app-header-add-item' />
         </Box>
     );
 }

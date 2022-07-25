@@ -1,10 +1,10 @@
 import type { DragDropState, DragGridContextDTO, Props } from "./type";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DragGridContext } from "./constant";
-import React, { useEffect } from "react";
+import React from "react";
 import DragGridContent from "./content";
 import { DndProvider } from 'react-dnd'
-import { handleAddItem, handleAddPanel, handleChange, handleRemoveItem, handleRemovePanel } from "./logic";
+import { handleChange } from "./logic";
 
 export default function DragGrid(props: Props) {
 
@@ -19,10 +19,6 @@ export default function DragGrid(props: Props) {
     const context : DragGridContextDTO = {
         dragGrid : dragGridOriginal,
         onChange : handleChangeHelper,
-        onRemovePanel :() => handleRemovePanel,
-        onRemoveItem :() => handleRemoveItem,
-        onAddPanel :() => handleAddPanel,
-        onAddItem :() => handleAddItem,
     };
 
     // debugger;
