@@ -11,3 +11,5 @@ export const initialState: GystAppRoot = {
 };
 
 export const GystAppContext = React.createContext<GystAppContextDTO | undefined>(undefined);
+
+export const ItemIconSize = 24;

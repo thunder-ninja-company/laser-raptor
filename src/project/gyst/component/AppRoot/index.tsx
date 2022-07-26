@@ -1,9 +1,10 @@
+import { initialDragItem, initialDragPanel } from "gyst/component/DragGrid/constant";
 import type { DragGridDTO } from "gyst/component/DragGrid/type";
 import { AppShell, Grid, MantineProvider } from "@mantine/core";
 import { AppHeader, AppBody, DragGrid } from "gyst/component";
 import { GystAppContext, ProjectName } from "gyst/constant";
-import { insertItem } from "gyst/component/DragGrid/logic";
-import type { GystAppContextDTO } from "gyst/type";
+import { insertPanel, insertItem } from "gyst/component/DragGrid/logic";
+import type { GystAppContextDTO, ListPosition } from "gyst/type";
 import { selectDragGrid } from "gyst/selector";
 import { useAppDispatch } from 'core/hooks';
 import { useSelector } from "react-redux";
@@ -12,7 +13,14 @@ import { useStyles } from "./style";
 import type { Props } from "./type";
 import { useEffect } from "react";
 import { nanoid } from "nanoid";
-import foo from "gyst/slice";
+import slice from "gyst/slice";
+
+const {
+    actions : {
+        updateGroupGridValue,
+    },
+} =  slice;
+
 
 export default function AppRoot({ id }: Props) {
 
@@ -26,38 +34,80 @@ export default function AppRoot({ id }: Props) {
     const dispatch = useAppDispatch();
 
     const handleChange = (value: DragGridDTO) => {
-        debugger;
-
-        dispatch(foo.actions.updateGroupGridValue(value));
+        dispatch(updateGroupGridValue(value));
     }
 
+    const handleAddNewPanel = (position : ListPosition) => {
 
-    const handleRemovePanel = (actionId : string) : void => {
-        debugger;
-    };
-
-    const handleRemoveItem = (actionId : string) : void => {
-        debugger;
-    };
-
-    const handleAddPanel = (actionId : string) : void => {
-        debugger;
-    };
-
-    const handleAddItem = (actionId : string) : void => {
         const copyGrid = copyObject(dragGrid) as DragGridDTO;
 
-        insertItem(copyGrid, 0);
+        const newPanel = {
+            ...initialDragPanel,
+            id: nanoid(),
+            items: [{
+                ...initialDragItem,
+                id: nanoid(),
+            }]
+        };
 
-        dispatch(foo.actions.updateGroupGridValue(copyGrid));
+        switch(position) {
+            case 'head':
+                insertPanel(copyGrid, 0, newPanel);
+                break;
+
+            case 'tail':
+                insertPanel(copyGrid, copyGrid.panels.length, newPanel);
+                break;
+
+            default:
+                throw Error(`Unknown actionId ${position}`);
+        }
+
+        dispatch(updateGroupGridValue(copyGrid));
     };
 
+    const handleAddNewItem = (position : ListPosition, panelId : string) => {
+        const copyGrid = copyObject(dragGrid) as DragGridDTO;
+
+        const newItem = {
+            ...initialDragItem,
+            id: nanoid(),
+        }
+
+        insertItem(copyGrid, panelId, position, newItem);
+
+        dispatch(updateGroupGridValue(copyGrid));
+    };
+
+    const handleHelp = (id : string) : void => {
+        console.log(`handleHelp(${id})`);
+        debugger;
+    };
+
+    const handleRemovePanel = (panelId: string) : void => {
+        debugger;
+        console.log(`handleRemovePanel ${panelId}`);
+    };
+
+    const handleRemoveItem = (itemId: string) : void => {
+        debugger;
+        console.log(`handleRemovePanel ${itemId}`);
+    };
+
+    const handleToggleItem = (itemId: string) : void => {
+        debugger;
+        console.log(`handleRemovePanel ${itemId}`);
+    };
 
     const context : GystAppContextDTO = {
-        onRemovePanel : handleRemovePanel,
-        onRemoveItem  : handleRemoveItem,
-        onAddPanel    : handleAddPanel,
-        onAddItem     : handleAddItem,
+        addNewItem  : handleAddNewItem,
+        addNewPanel : handleAddNewPanel,
+
+        removePanel : handleRemovePanel,
+        removeItem  : handleRemoveItem,
+
+        toggleItem : handleToggleItem,
+        onHelp     : handleHelp,
     };
 
     return (

@@ -4,6 +4,7 @@ import type { DragPanelDTO } from "./DragPanel/type";
 import type { DragItemDTO } from "./DragItem/type";
 import { copyObject } from "gyst/shared";
 import { nanoid } from 'nanoid'
+import type { ListPosition } from "../../type";
 
 const copyItem = (dragGrid: DragGridDTO, itemId: string | null): DragItemDTO => {
 
@@ -29,21 +30,31 @@ export const removeItem = (actionId : string) : void => {
     debugger;
 };
 
-export const addPanel = (actionId : string) : void => {
-    debugger;
-};
 
-export const insertItem = (dragGrid : DragGridDTO, index : number) : void => {
 
-    dragGrid.panels.splice(index, 0, {
-        id: nanoid(),
-        items: [
-            {
-                id: nanoid(),
-                value : 'fuck!'
-            }
-        ]
-    });
+export const insertPanel = (dragGrid : DragGridDTO, index : number, panel : DragPanelDTO) : void => {
+    dragGrid.panels.splice(index, 0, panel);
+}
+
+export const insertItem = (dragGrid : DragGridDTO, panelId : string, position : ListPosition, item : DragItemDTO) : void => {
+    debugger; // verified - NO
+
+    const panelIndex = indexOfPanel(dragGrid, panelId);
+
+    if(panelIndex === -1) {
+        debugger;
+        throw Error(`Could not find panel with id ${panelId}`);
+    }
+
+    const panel = getPanelByIndex(dragGrid, panelIndex);
+
+    if(position === 'head') {
+        panel.items.unshift(item);
+    } else {
+        panel.items.push(item);
+    }
+
+
 };
 
 

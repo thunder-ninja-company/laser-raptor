@@ -1,9 +1,11 @@
+import { IconRemoveItem, IconAddItem, IconToggleItem, } from "gyst/component";
 import { initialDragDropState } from "../constant";
 import type { DragDropState } from "../type";
 import type { DragItemProps } from "./type";
-import { Box, Text } from "@mantine/core";
+import { Box, Group, Text } from "@mantine/core";
 import { useStyles } from "./style";
 import { useDrag } from "react-dnd";
+
 
 export default function DragItem({ dragItem, panelId }: DragItemProps) {
     const { classes } = useStyles();
@@ -27,10 +29,22 @@ export default function DragItem({ dragItem, panelId }: DragItemProps) {
     return (
         <Box className={classes.dragItem} ref={dragPreview}>
             <div role="Handle" ref={drag}>
-
                 <Text>
                     {`Item ${dragItem.value} ${isDragging ? '[DRAG]' : ''}`}
                 </Text>
+                <Group>
+                    <IconRemoveItem
+                        id={`delete-item-${dragItem.id}`}
+                        itemId={dragItem.id} />
+
+                    <IconAddItem
+                        id={`delete-item-${dragItem.id}`}
+                        panelId={dragItem.id} />
+
+                    <IconToggleItem
+                        id={`delete-item-${dragItem.id}`}
+                        itemId={dragItem.id} />
+                </Group>
             </div>
         </Box>
     );

@@ -1,4 +1,6 @@
 import type { DragDropState, DragGridContextDTO } from "./type";
+import type { DragPanelDTO } from "./DragPanel/type";
+import type { DragItemDTO } from "./DragItem/type";
 import { localConstant } from "core/constants";
 import type { DragGridDTO } from "./type";
 import React from "react";
@@ -17,6 +19,17 @@ export const initialDragDropState : DragDropState = {
     dropIndex   : null,
 };
 
+export const initialDragItem : DragItemDTO = {
+    id : '',
+    value : `Default item`,
+};
+
+export const initialDragPanel : DragPanelDTO = {
+    id : '',
+    items : [
+        initialDragItem,
+    ],
+};
 
 export const DragGridInitialState: DragGridDTO = {
     id: "grid-0",

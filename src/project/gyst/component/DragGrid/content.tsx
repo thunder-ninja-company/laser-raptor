@@ -1,3 +1,4 @@
+import ActionIcon from "~src/project/gyst/component/IconAddPanel";
 import { Box, Grid } from "@mantine/core";
 import LandingZone from "./LandingZone";
 import type { Props } from "./type";
@@ -25,13 +26,18 @@ export default function DragGridContent({ dragGrid : { id, panels }} : Props) {
                         lg={3}>
                         <DragPanel dragPanel={dragPanel} />
 
-
                         <LandingZone
                             index={index + 1}
                             panelId={null}
                             type='panel' />
                     </Grid.Col>
                 ))}
+                <Grid.Col
+                    key={`gp-add-panel-tail`}
+                    md={6}
+                    lg={3}>
+                    <ActionIcon id='add-panel-tail' />
+                </Grid.Col>
             </Grid>
         </Box>
     );
