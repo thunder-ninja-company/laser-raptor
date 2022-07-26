@@ -3,7 +3,10 @@ import type { DragGridDTO } from "gyst/component/DragGrid/type";
 import { AppShell, Grid, MantineProvider } from "@mantine/core";
 import { AppHeader, AppBody, DragGrid } from "gyst/component";
 import { GystAppContext, ProjectName } from "gyst/constant";
-import { insertPanel, insertItem } from "gyst/component/DragGrid/logic";
+import {
+    insertPanel, insertItem, removeItem,
+    removeEmptyPanels, toggleItem,
+} from "gyst/component/DragGrid/logic";
 import type { GystAppContextDTO, ListPosition } from "gyst/type";
 import { selectDragGrid } from "gyst/selector";
 import { useAppDispatch } from 'core/hooks';
@@ -90,13 +93,27 @@ export default function AppRoot({ id }: Props) {
     };
 
     const handleRemoveItem = (itemId: string) : void => {
-        debugger;
-        console.log(`handleRemovePanel ${itemId}`);
+        // debugger;
+        const copyGrid = copyObject(dragGrid) as DragGridDTO;
+
+        console.log(`handleRemoveItem ${itemId}`);
+
+        removeItem(copyGrid, itemId);
+
+        removeEmptyPanels(copyGrid);
+
+        dispatch(updateGroupGridValue(copyGrid));
     };
 
+
     const handleToggleItem = (itemId: string) : void => {
-        debugger;
-        console.log(`handleRemovePanel ${itemId}`);
+        console.log(`handleToggleItem ${itemId}`);
+
+        const copyGrid = copyObject(dragGrid) as DragGridDTO;
+
+        toggleItem(copyGrid, itemId);
+
+        dispatch(updateGroupGridValue(copyGrid));
     };
 
     const context : GystAppContextDTO = {
@@ -121,6 +138,7 @@ export default function AppRoot({ id }: Props) {
                     header={<AppHeader id={`app-header-${id}`} />}
                     navbarOffsetBreakpoint="sm"
                     asideOffsetBreakpoint="sm"
+
                     className={classes.appRoot}
                     fixed={true}
                 >

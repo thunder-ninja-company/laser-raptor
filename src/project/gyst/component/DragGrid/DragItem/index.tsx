@@ -29,20 +29,18 @@ export default function DragItem({ dragItem, panelId }: DragItemProps) {
     return (
         <Box className={classes.dragItem} ref={dragPreview}>
             <div role="Handle" ref={drag}>
-                <Text>
+                <Text style={{
+                      textDecoration: dragItem.status === 'checked' ? 'line-through' : 'none',
+                }}>
                     {`Item ${dragItem.value} ${isDragging ? '[DRAG]' : ''}`}
                 </Text>
                 <Group>
                     <IconRemoveItem
-                        id={`delete-item-${dragItem.id}`}
+                        id={`remove-item-${dragItem.id}`}
                         itemId={dragItem.id} />
 
-                    <IconAddItem
-                        id={`delete-item-${dragItem.id}`}
-                        panelId={dragItem.id} />
-
                     <IconToggleItem
-                        id={`delete-item-${dragItem.id}`}
+                        id={`toggle-item-${dragItem.id}`}
                         itemId={dragItem.id} />
                 </Group>
             </div>

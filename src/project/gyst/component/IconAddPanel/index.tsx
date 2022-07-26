@@ -1,10 +1,10 @@
-import { GystAppContext, ItemIconSize } from 'gyst/constant';
-import { IconBellPlus } from '@tabler/icons';
+import { GystAppContext, LargeIconSize } from 'gyst/constant';
+import { IconPlus } from '@tabler/icons';
 import type { Props } from "./type";
 import { useContext } from 'react';
 import { useStyles } from './style';
 
-export default function AddPanel({ id, position }: Props) {
+export default function IconAddPanel({ id, position }: Props) {
 
     const { classes } = useStyles();
 
@@ -13,11 +13,11 @@ export default function AddPanel({ id, position }: Props) {
     const handleClick = () => context?.addNewPanel(position);
 
     return (
-        <IconBellPlus
-            className={classes.addPanel}
+        <IconPlus
+            className={classes.iconAddPanel}
             onClick={handleClick}
             stroke={2}
-            size={ItemIconSize}
+            size={LargeIconSize}
             id={id} />
     );
 }

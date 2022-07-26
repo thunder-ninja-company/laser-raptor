@@ -1,4 +1,4 @@
-import AddPanel from "gyst/component/IconAddPanel";
+import IconAddPanel from "gyst/component/IconAddPanel";
 import IconHelp from "gyst/component/IconHelp";
 import { Box } from "@mantine/core";
 import { useStyles } from "./style";
@@ -12,10 +12,10 @@ export default function AppHeader({ id }: Props) {
 
     return (
         <Box
-            className={classes.root}
+            className={classes.appHeader}
             onClick={() => ({})}
             id={id}>
-            <AddPanel
+            <IconAddPanel
                 id='add-panel-head'
                 position='head' />
 

@@ -5,6 +5,7 @@ import { Box } from "@mantine/core";
 import { useStyles } from "./style";
 import DragItem from "../DragItem";
 import React from "react";
+import IconAddItem from "../../IconAddItem";
 
 
 export default function DragPanel({ dragPanel }: Props) {
@@ -31,7 +32,10 @@ export default function DragPanel({ dragPanel }: Props) {
                         type='panel' />
                 </React.Fragment>
             ))}
-            <ActionIcon id='add-item-tail' />
+            <IconAddItem
+                id={`add-item-tail-${dragPanel.id}`}
+                position='tail'
+                panelId={panelId} />
         </Box>
     );
 }

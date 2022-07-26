@@ -22,6 +22,7 @@ export const initialDragDropState : DragDropState = {
 export const initialDragItem : DragItemDTO = {
     id : '',
     value : `Default item`,
+    status : 'default',
 };
 
 export const initialDragPanel : DragPanelDTO = {
@@ -31,17 +32,28 @@ export const initialDragPanel : DragPanelDTO = {
     ],
 };
 
+export const initialDragGrid : DragGridDTO = {
+    id : '',
+    panels : [
+        initialDragPanel,
+    ],
+};
+
 export const DragGridInitialState: DragGridDTO = {
+    ...initialDragGrid,
     id: "grid-0",
     panels: [
         {
+            ...initialDragPanel,
             id: "panel-0",
             items: [
                 {
+                    ...initialDragItem,
                     id: "id-alpha",
                     value: "Alpha",
                 },
                 {
+                    ...initialDragItem,
                     id: "id-beta",
                     value: "Beta",
                 },
@@ -51,10 +63,12 @@ export const DragGridInitialState: DragGridDTO = {
             id: "panel-1",
             items: [
                 {
+                    ...initialDragItem,
                     id: "id-charlie",
                     value: "Charlie",
                 },
                 {
+                    ...initialDragItem,
                     id: "id-delta",
                     value: "Delta",
                 },
