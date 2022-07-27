@@ -6,6 +6,7 @@ export { default as IconToggleItem } from "./IconToggleItem";
 export { default as IconAddPanel } from "./IconAddPanel";
 export { default as IconAddItem } from "./IconAddItem";
 export { default as IconAction } from "./IconAddPanel";
+export { default as DragSource } from "./DragSource";
 export { default as AppHeader } from "./AppHeader";
 export { default as IconHelp } from "./IconHelp";
 export { default as DragGrid } from "./DragGrid";

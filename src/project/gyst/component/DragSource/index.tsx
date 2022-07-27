@@ -1,11 +1,11 @@
-import { GystAppContext, ItemIconSize } from 'gyst/constant';
-import { IconCopy } from '@tabler/icons';
+import { GystAppContext, LargeIconSize } from 'gyst/constant';
+import { IconAlarm  } from '@tabler/icons';
 import type { Props } from "./type";
 import { useStyles } from './style';
-import { useContext } from 'react';
 
 
-export default function IconDrag({ panelId }: Props) {
+
+export default function DragSource({ panelId }: Props) {
 
     const { classes } = useStyles();
 
@@ -14,9 +14,9 @@ export default function IconDrag({ panelId }: Props) {
     // onClick={handleClick}
 
     return (
-        <IconCopy
-            className={classes.IconDrag}
-            size={ItemIconSize}
+        <IconAlarm
+            className={classes.DragSource}
+            size={LargeIconSize}
             stroke={2} />
     );
 }

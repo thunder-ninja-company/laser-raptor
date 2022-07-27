@@ -1,19 +1,19 @@
 import type { ComponentMeta, ComponentStory } from "@storybook/react";
 
-import IconDrag from ".";
+import DragSource from ".";
 import { COMPONENT_NAME } from "./constant";
 
 export default {
-    title: "Gyst/IconDrag",
-    component: IconDrag,
+    title: "Gyst/DragSource",
+    component: DragSource,
     parameters: {
         // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
         layout: "fullscreen",
     },
-} as ComponentMeta<typeof IconDrag>;
+} as ComponentMeta<typeof DragSource>;
 
-const Template: ComponentStory<typeof IconDrag> = (args) => (
-    <IconDrag {...args} />
+const Template: ComponentStory<typeof DragSource> = (args) => (
+    <DragSource {...args} />
 );
 
 export const ComponentParameters = Template.bind({});
