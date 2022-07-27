@@ -1,22 +1,22 @@
 import { GystAppContext, ItemIconSize } from 'gyst/constant';
-import { IconTrash } from '@tabler/icons';
+import { IconCopy } from '@tabler/icons';
 import type { Props } from "./type";
 import { useContext } from 'react';
 import { useStyles } from './style';
 
-export default function IconRemovePanel({ id, panelId }: Props) {
+export default function IconDuplicateItem({ itemId }: Props) {
 
     const { classes } = useStyles();
 
     const context = useContext(GystAppContext);
 
-    const handleClick = () => context?.removePanel(panelId);
+    const handleClick = () => context?.duplicateItem(itemId);
 
     return (
-        <IconTrash
-            className={classes.iconRemovePanel}
+        <IconCopy
+            className={classes.iconDuplicateItem}
             onClick={handleClick}
-            stroke={2}
-            size={ItemIconSize} />
+            size={ItemIconSize}
+            stroke={2} />
     );
 }

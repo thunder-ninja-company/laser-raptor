@@ -20,6 +20,10 @@ export interface GystAppContextDTO {
     removeItem  : (itemId : string) => void;
 
     toggleItem  : (itemId : string) => void;
+    duplicateItem  : (itemId : string) => void;
+    duplicatePanel  : (panelId : string) => void;
+
+
 
     onHelp  : (id : string) => void;
 }

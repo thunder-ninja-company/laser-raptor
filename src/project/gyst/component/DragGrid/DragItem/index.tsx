@@ -1,4 +1,4 @@
-import { IconRemoveItem, IconAddItem, IconToggleItem, } from "gyst/component";
+import { IconRemoveItem, IconDuplicateItem, IconToggleItem } from "gyst/component";
 import { initialDragDropState } from "../constant";
 import type { DragDropState } from "../type";
 import type { DragItemProps } from "./type";
@@ -8,6 +8,7 @@ import { useDrag } from "react-dnd";
 
 
 export default function DragItem({ dragItem, panelId }: DragItemProps) {
+
     const { classes } = useStyles();
 
     const [{ isDragging }, drag, dragPreview] = useDrag(() => ({
@@ -27,19 +28,25 @@ export default function DragItem({ dragItem, panelId }: DragItemProps) {
     }));
 
     return (
-        <Box className={classes.dragItem} ref={dragPreview}>
+        <Box
+            className={classes.dragItem}
+            ref={dragPreview}>
+
             <div role="Handle" ref={drag}>
                 <Text style={{
-                      textDecoration: dragItem.status === 'checked' ? 'line-through' : 'none',
+                    textDecoration: dragItem.status === 'checked' ? 'line-through' : 'none',
+                    backgroundColor : isDragging ? '#0fd' : 'transparent',
                 }}>
-                    {`Item ${dragItem.value} ${isDragging ? '[DRAG]' : ''}`}
+                    {`Item ${dragItem.value} ${isDragging ? '!!!!' : ''}`}
                 </Text>
                 <Group>
                     <IconRemoveItem
                         id={`remove-item-${dragItem.id}`}
                         itemId={dragItem.id} />
-
                     <IconToggleItem
+                        id={`toggle-item-${dragItem.id}`}
+                        itemId={dragItem.id} />
+                    <IconDuplicateItem
                         id={`toggle-item-${dragItem.id}`}
                         itemId={dragItem.id} />
                 </Group>

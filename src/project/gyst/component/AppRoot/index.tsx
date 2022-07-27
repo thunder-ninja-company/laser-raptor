@@ -1,13 +1,9 @@
 import { initialDragItem, initialDragPanel } from "gyst/component/DragGrid/constant";
+import type { GystAppContextDTO, ListPosition } from "gyst/type";
 import type { DragGridDTO } from "gyst/component/DragGrid/type";
 import { AppShell, Grid, MantineProvider } from "@mantine/core";
 import { AppHeader, AppBody, DragGrid } from "gyst/component";
 import { GystAppContext, ProjectName } from "gyst/constant";
-import {
-    insertPanel, insertItem, removeItem,
-    removeEmptyPanels, toggleItem,
-} from "gyst/component/DragGrid/logic";
-import type { GystAppContextDTO, ListPosition } from "gyst/type";
 import { selectDragGrid } from "gyst/selector";
 import { useAppDispatch } from 'core/hooks';
 import { useSelector } from "react-redux";
@@ -17,6 +13,11 @@ import type { Props } from "./type";
 import { useEffect } from "react";
 import { nanoid } from "nanoid";
 import slice from "gyst/slice";
+import {
+    insertPanel, insertItem, removeItem,
+    duplicatePanel, removeEmptyPanels,
+    toggleItem, duplicateItem, removePanel,
+} from "gyst/component/DragGrid/logic";
 
 const {
     actions : {
@@ -88,12 +89,17 @@ export default function AppRoot({ id }: Props) {
     };
 
     const handleRemovePanel = (panelId: string) : void => {
-        debugger;
         console.log(`handleRemovePanel ${panelId}`);
+
+        const copyGrid = copyObject(dragGrid) as DragGridDTO;
+
+        removePanel(copyGrid, panelId);
+
+        dispatch(updateGroupGridValue(copyGrid));
+
     };
 
     const handleRemoveItem = (itemId: string) : void => {
-        // debugger;
         const copyGrid = copyObject(dragGrid) as DragGridDTO;
 
         console.log(`handleRemoveItem ${itemId}`);
@@ -116,6 +122,27 @@ export default function AppRoot({ id }: Props) {
         dispatch(updateGroupGridValue(copyGrid));
     };
 
+    const handleDuplicateItem = (itemId: string) : void => {
+        console.log(`handleDuplicateItem ${itemId}`);
+
+        const copyGrid = copyObject(dragGrid) as DragGridDTO;
+
+        duplicateItem(copyGrid, itemId);
+
+        dispatch(updateGroupGridValue(copyGrid));
+    };
+
+    const handleDuplicatePanel = (panelId: string) : void => {
+        console.log(`handleDuplicatePanel ${panelId}`);
+
+        const copyGrid = copyObject(dragGrid) as DragGridDTO;
+
+        duplicatePanel(copyGrid, panelId);
+
+        dispatch(updateGroupGridValue(copyGrid));
+    };
+
+
     const context : GystAppContextDTO = {
         addNewItem  : handleAddNewItem,
         addNewPanel : handleAddNewPanel,
@@ -123,8 +150,11 @@ export default function AppRoot({ id }: Props) {
         removePanel : handleRemovePanel,
         removeItem  : handleRemoveItem,
 
-        toggleItem : handleToggleItem,
-        onHelp     : handleHelp,
+        toggleItem     : handleToggleItem,
+        duplicateItem  : handleDuplicateItem,
+        duplicatePanel : handleDuplicatePanel,
+
+        onHelp        : handleHelp,
     };
 
     return (

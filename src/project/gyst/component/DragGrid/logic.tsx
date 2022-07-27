@@ -21,10 +21,6 @@ const copyItem = (dragGrid: DragGridDTO, itemId: string): DragItemDTO => {
         return copyObject(dragGrid.panels[panelIndex].items[itemIndex]) as DragItemDTO;
 };
 
-export const removePanel = (_dragGrid : DragGridDTO, panelId : string) : void => {
-    throw Error(`removePanel - Not implemented (${panelId})`);
-};
-
 export const insertPanel = (dragGrid : DragGridDTO, index : number, panel : DragPanelDTO) : void => {
     dragGrid.panels.splice(index, 0, panel);
 }
@@ -50,11 +46,16 @@ const indexOfItem = (dragGrid : DragGridDTO, panelIndex : number, itemId : strin
 
 const indexOfItemAndPanel = (dragGrid: DragGridDTO, itemId: string): { panelIndex : number; itemIndex : number; } => {
 
-    const notFound = { panelIndex : -1, itemIndex : -1 };
+    const notFound = {
+        panelIndex : -1,
+        itemIndex  : -1,
+    };
 
-    if (!itemId) notFound;
+    if (!itemId)
+        return notFound;
 
     for (let panelIndex = 0; panelIndex < dragGrid.panels.length; panelIndex++) {
+
         const itemIndex = indexOfItem(dragGrid, panelIndex, itemId);
 
         if (itemIndex !== -1) {
@@ -68,7 +69,7 @@ const indexOfItemAndPanel = (dragGrid: DragGridDTO, itemId: string): { panelInde
     return notFound;
 }
 
-const indexOfPanel = (dragGrid : DragGridDTO, panelId : string) : number =>
+const indexOfPanel = (dragGrid : DragGridDTO, panelId : string | null) : number =>
     dragGrid.panels.findIndex(dragPanel => dragPanel.id === panelId);
 
 const getPanelByIndex = (dragGrid : DragGridDTO, panelIndex : number) : DragPanelDTO =>
@@ -86,6 +87,32 @@ export const toggleItem = (dragGrid : DragGridDTO, itemId : string) : void => {
             : 'checked';
 };
 
+export const duplicateItem = (dragGrid : DragGridDTO, itemId : string) : void => {
+
+    const { panelIndex, itemIndex } = indexOfItemAndPanel(dragGrid, itemId);
+
+    const itemCopy = copyObject(dragGrid.panels[panelIndex].items[itemIndex]) as DragItemDTO;
+
+    dragGrid.panels[panelIndex].items.splice(itemIndex + 1, 0, {
+        ...itemCopy,
+        id : nanoid(),
+    });
+};
+
+export const duplicatePanel = (dragGrid : DragGridDTO, panelId : string) : void => {
+
+    const panelIndex = indexOfPanel(dragGrid, panelId);
+
+    const panelCopy = copyObject(dragGrid.panels[panelIndex]) as DragPanelDTO;
+
+    panelCopy.items.map(dragItem => dragItem.id = nanoid());
+
+    dragGrid.panels.splice(panelIndex + 1, 0, {
+        ...panelCopy,
+        id : nanoid(),
+    });
+};
+
 export const removeItem = (dragGrid : DragGridDTO, itemId : string) : DragItemDTO => {
 
     const { panelIndex, itemIndex } = indexOfItemAndPanel(dragGrid, itemId);
@@ -93,7 +120,14 @@ export const removeItem = (dragGrid : DragGridDTO, itemId : string) : DragItemDT
     return dragGrid.panels[panelIndex].items.splice(itemIndex, 1)[0];
 };
 
-const wasDroppedOntoSamePanel = (dragGrid : DragGridDTO, dragPanelId : string, dropPanelId : string) : boolean => {
+export const removePanel = (dragGrid : DragGridDTO, panelId : string) : DragPanelDTO => {
+
+    const panelIndex = indexOfPanel(dragGrid, panelId);
+
+    return dragGrid.panels.splice(panelIndex, 1)[0];
+};
+
+const wasDroppedOntoSamePanel = (dragGrid : DragGridDTO, dragPanelId : string, dropPanelId : string | null) : boolean => {
 
     // panel is null when dragging an item between two other panels
     if (dropPanelId === null)
@@ -105,11 +139,11 @@ const wasDroppedOntoSamePanel = (dragGrid : DragGridDTO, dragPanelId : string, d
     return dragPanelIndex === dropPanelIndex;
 };
 
-const wasDroppedOntoDifferentPanel = (dragPanelId : string, dropPanelId : string) : boolean =>
+const wasDroppedOntoDifferentPanel = (dragPanelId : string, dropPanelId : string | null) : boolean =>
     dropPanelId === null || dragPanelId !== dropPanelId;
 
-const wasDroppedBetweenPanels = (dropIndex : number, dropPanelId : string) : boolean =>
-    dropPanelId === null && dropIndex !== null;
+const wasDroppedBetweenPanels = (dropPanelId : string | null) : boolean =>
+    dropPanelId === null;
 
 export const removeEmptyPanels = (dragGrid : DragGridDTO) : DragGridDTO => {
 
@@ -160,7 +194,6 @@ const dropOntoSamePanel = (dragGrid : DragGridDTO, dragItemId : string, dropItem
     return dragGrid;
 };
 
-
 const dropOntoDifferentPanel = (
     dragGrid       : DragGridDTO,
     dropPanelIndex : number,
@@ -182,15 +215,15 @@ const dropOntoDifferentPanel = (
     return dragGrid;
 }
 
-const getDragDropItems = (dragGrid : DragGridDTO, dragItemId : string, dragPanelId : string, dropPanelId : string) => {
+const getDragDropItems = (dragGrid : DragGridDTO, dragItemId : string, dragPanelId : string, dropPanelId : string | null) => {
 
-     // Copy the original item from the tree
-     const itemCopy = copyItem(dragGrid, dragItemId);
-     // operate on a copy of the prop since you can't modify the original
-     const gridCopy = copyObject(dragGrid) as DragGridDTO;
+    // Copy the original item from the tree
+    const itemCopy = copyItem(dragGrid, dragItemId);
+    // operate on a copy of the prop since you can't modify the original
+    const gridCopy = copyObject(dragGrid) as DragGridDTO;
 
-     const dragPanelIndex = indexOfPanel(gridCopy, dragPanelId);
-     const dropPanelIndex = indexOfPanel(gridCopy, dropPanelId);
+    const dragPanelIndex = indexOfPanel(gridCopy, dragPanelId);
+    const dropPanelIndex = indexOfPanel(gridCopy, dropPanelId);
 
     return {
         gridCopy,
@@ -206,20 +239,22 @@ export const handleChange = (
 } : DragDropState,
     onChange : (value : DragGridDTO) => void) => {
 
-    // typescript is really picky about handling these nulls. This
-    // simplifies the rest of the code here since it can assume the values exist
+    // technically unnecessary conditional because it's never
+    // true, but allows typescript to assume they exist aftter that line
+
     if (dropIndex === null
         || dragItemId  === null
-        || dragPanelId === null
-        || dropPanelId === null)
+        || dragPanelId === null) {
         return;
+    }
 
-    const { gridCopy, itemCopy, dropPanelIndex }
-        = getDragDropItems(dragGrid, dragItemId, dragPanelId, dropPanelId);
+    const {
+        gridCopy, itemCopy, dropPanelIndex,
+    } = getDragDropItems(dragGrid, dragItemId, dragPanelId, dropPanelId);
 
     // If dragging between panels, then add a new panel with the item
     // as the initial seed element
-    if (wasDroppedBetweenPanels(dropIndex, dropPanelId))
+    if (wasDroppedBetweenPanels(dropPanelId))
         return onChange(dropBetweenPanels(gridCopy, dropIndex, itemCopy));
 
     if (wasDroppedOntoSamePanel(gridCopy, dragPanelId, dropPanelId))
@@ -230,4 +265,3 @@ export const handleChange = (
 
     throw Error('Unable to figure out wtf happened dropping the item');
 }
-

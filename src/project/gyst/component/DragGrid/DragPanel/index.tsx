@@ -1,11 +1,12 @@
-import ActionIcon from "~src/project/gyst/component/IconAddPanel";
+import IconDuplicatePanel from "gyst/component/IconDuplicatePanel";
+import IconRemovePanel from "gyst/component/IconRemovePanel";
+import IconAddItem from "gyst/component/IconAddItem";
 import LandingZone from "../LandingZone";
 import type { Props } from "./type";
 import { Box } from "@mantine/core";
 import { useStyles } from "./style";
 import DragItem from "../DragItem";
 import React from "react";
-import IconAddItem from "../../IconAddItem";
 
 
 export default function DragPanel({ dragPanel }: Props) {
@@ -20,10 +21,12 @@ export default function DragPanel({ dragPanel }: Props) {
                 panelId={panelId}
                 type='panel'
                 index={0} />
+            <IconDuplicatePanel panelId={panelId} />
+            <IconRemovePanel panelId={panelId} />
+
             {items.map((dragItem, index) => (
                 <React.Fragment key={dragItem.id}>
                     <DragItem
-                        key={`panel-${panelId}-item-${dragItem.id}`}
                         panelId={panelId}
                         dragItem={dragItem} />
                     <LandingZone
@@ -32,6 +35,7 @@ export default function DragPanel({ dragPanel }: Props) {
                         type='panel' />
                 </React.Fragment>
             ))}
+
             <IconAddItem
                 id={`add-item-tail-${dragPanel.id}`}
                 position='tail'

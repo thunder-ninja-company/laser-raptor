@@ -1,3 +1,3 @@
 export interface Props {
-    panelId : string;
+    panelId: string;
 }

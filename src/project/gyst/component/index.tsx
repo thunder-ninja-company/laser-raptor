@@ -1,3 +1,5 @@
+export { default as IconDuplicatePanel } from "./IconDuplicatePanel";
+export { default as IconDuplicateItem } from "./IconDuplicateItem";
 export { default as IconRemovePanel } from "./IconRemovePanel";
 export { default as IconRemoveItem } from "./IconRemoveItem";
 export { default as IconToggleItem } from "./IconToggleItem";
