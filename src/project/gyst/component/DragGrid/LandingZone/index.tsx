@@ -4,7 +4,7 @@ import type { DragDropState } from "../type";
 import { useStyles  } from "./style";
 import { useDrop } from "react-dnd";
 import { useContext } from "react";
-import { Box, Chip, MantineSize, Text } from "@mantine/core";
+import { Box, Text } from "@mantine/core";
 
 
 export default function LandingZone({ index, panelId }: LandingZoneProps) {
@@ -15,13 +15,7 @@ export default function LandingZone({ index, panelId }: LandingZoneProps) {
     const [{ isOver, canDrop }, drop] = useDrop(() => ({
         accept: "BOX",
         drop(dragDropState : DragDropState, _monitor) {
-
-            if(!context) {
-                console.error(`DragGridContext is not defined in LandingZone ${index}:${panelId}`);
-                return;
-            }
-
-            context.onChange({
+            context?.onChange({
                 ...dragDropState,
                 dropPanelId : panelId,
                 dropIndex : index,

@@ -1,10 +1,9 @@
 
-import { Box, Text } from "@mantine/core";
+import { Box } from "@mantine/core";
 import { useStyles } from "./style";
 import { useDrag } from "react-dnd";
-import { LargeIconSize } from "gyst/component";
-import { IconAlarm  } from '@tabler/icons';
 import type { Props } from "./type";
+import { initialDragDropState } from "gyst/component/DragGrid/constant";
 
 export default function DragSource({ panelId }: Props) {
 
@@ -16,7 +15,9 @@ export default function DragSource({ panelId }: Props) {
             isDragging: monitor.isDragging()
         }),
         item : {
-            ...{},
+            ...initialDragDropState,
+            dragPanelId : panelId,
+            dragItemId  : null,
         },
         end(item, _monitor){
             console.log(`DragItem has finished dragging ${panelId}`);
@@ -34,9 +35,7 @@ export default function DragSource({ panelId }: Props) {
             ref={dragPreview}>
 
             <div role="Handle" ref={drag}>
-                <IconAlarm
-                    size={LargeIconSize}
-                    stroke={2} />
+                {'DRAGME'}
 
             </div>
         </Box>

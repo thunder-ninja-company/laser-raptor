@@ -14,9 +14,9 @@ import { useEffect } from "react";
 import { nanoid } from "nanoid";
 import slice from "gyst/slice";
 import {
+    toggleItem, duplicateItem, removePanel,
     insertPanel, insertItem, removeItem,
     duplicatePanel, removeEmptyPanels,
-    toggleItem, duplicateItem, removePanel,
 } from "gyst/component/DragGrid/logic";
 
 const {
@@ -142,19 +142,15 @@ export default function AppRoot({ id }: Props) {
         dispatch(updateGroupGridValue(copyGrid));
     };
 
-
     const context : GystAppContextDTO = {
-        addNewItem  : handleAddNewItem,
-        addNewPanel : handleAddNewPanel,
-
-        removePanel : handleRemovePanel,
-        removeItem  : handleRemoveItem,
-
-        toggleItem     : handleToggleItem,
-        duplicateItem  : handleDuplicateItem,
         duplicatePanel : handleDuplicatePanel,
-
-        onHelp        : handleHelp,
+        duplicateItem  : handleDuplicateItem,
+        addNewPanel    : handleAddNewPanel,
+        removePanel    : handleRemovePanel,
+        addNewItem     : handleAddNewItem,
+        removeItem     : handleRemoveItem,
+        toggleItem     : handleToggleItem,
+        onHelp         : handleHelp,
     };
 
     return (
@@ -162,16 +158,13 @@ export default function AppRoot({ id }: Props) {
             <MantineProvider
                 emotionOptions={{ key: ProjectName }}
                 withNormalizeCSS={true}
-                withGlobalStyles={true}
-            >
+                withGlobalStyles={true}>
                 <AppShell
                     header={<AppHeader id={`app-header-${id}`} />}
                     navbarOffsetBreakpoint="sm"
                     asideOffsetBreakpoint="sm"
-
                     className={classes.appRoot}
-                    fixed={true}
-                >
+                    fixed={true}>
                     <AppBody id={`app-body-${id}`}>
                         <Grid>
                             <Grid.Col span={12}>
