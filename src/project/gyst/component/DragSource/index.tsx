@@ -10,7 +10,7 @@ export default function DragSource({ panelId }: Props) {
     const { classes } = useStyles();
 
     const [{ isDragging }, drag, dragPreview] = useDrag(() => ({
-        type: "BOX",
+        type: "panel",
         collect: (monitor) => ({
             isDragging: monitor.isDragging()
         }),

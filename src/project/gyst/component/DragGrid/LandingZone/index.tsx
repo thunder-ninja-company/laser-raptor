@@ -7,13 +7,14 @@ import { useContext } from "react";
 import { Box, Text } from "@mantine/core";
 
 
-export default function LandingZone({ index, panelId }: LandingZoneProps) {
+export default function LandingZone({ index, panelId, type }: LandingZoneProps) {
+
     const { classes } = useStyles();
 
     const context = useContext(DragGridContext);
 
     const [{ isOver, canDrop }, drop] = useDrop(() => ({
-        accept: "BOX",
+        accept: type === 'panel' ? 'item' : 'panel',
         drop(dragDropState : DragDropState, _monitor) {
             context?.onChange({
                 ...dragDropState,
@@ -30,11 +31,12 @@ export default function LandingZone({ index, panelId }: LandingZoneProps) {
     }));
 
     const id = `${panelId}:${index}`;
+    const defaultBackgroundColor = type === 'grid' ? '#934' : '#f3a';
 
     return (
         <Box
             className={classes.landingZone}
-            style={isOver ? { backgroundColor: "red" } : {}}
+            style={isOver ? { backgroundColor: "red" } : { backgroundColor: defaultBackgroundColor }}
             ref={drop}
             id={id}>
             <Text size='xs'>

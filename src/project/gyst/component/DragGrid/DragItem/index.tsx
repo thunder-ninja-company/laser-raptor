@@ -12,7 +12,7 @@ export default function DragItem({ dragItem, panelId }: DragItemProps) {
     const { classes } = useStyles();
 
     const [{ isDragging }, drag, dragPreview] = useDrag(() => ({
-        type: "BOX",
+        type: "item",
         collect: (monitor) => ({
             isDragging: monitor.isDragging()
         }),
@@ -47,7 +47,6 @@ export default function DragItem({ dragItem, panelId }: DragItemProps) {
                         id={`toggle-item-${dragItem.id}`}
                         itemId={dragItem.id} />
                     <IconDuplicateItem
-                        id={`toggle-item-${dragItem.id}`}
                         itemId={dragItem.id} />
                 </Group>
             </div>

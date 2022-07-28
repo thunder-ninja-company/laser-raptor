@@ -16,18 +16,26 @@ export default function DragPanel({ dragPanel }: Props) {
     const { id : panelId, items } = dragPanel;
 
     return (
-        <Box id={panelId} className={classes.groupPanel}>
+        <Box
+            className={classes.groupPanel}
+            id={panelId}>
+            <IconDuplicatePanel
+                panelId={panelId} />
+            <IconRemovePanel
+                panelId={panelId} />
+            <IconAddItem
+                id={`add-item-tail-${dragPanel.id}`}
+                position='tail'
+                panelId={panelId} />
+            <DragSource
+                panelId={panelId} />
             <LandingZone
                 panelId={panelId}
                 type='panel'
                 index={0} />
-            <IconDuplicatePanel panelId={panelId} />
-            <IconRemovePanel panelId={panelId} />
-
-            <DragSource panelId={panelId} />
-
             {items.map((dragItem, index) => (
-                <React.Fragment key={dragItem.id}>
+                <React.Fragment
+                    key={dragItem.id}>
                     <DragItem
                         panelId={panelId}
                         dragItem={dragItem} />
@@ -37,11 +45,6 @@ export default function DragPanel({ dragPanel }: Props) {
                         type='panel' />
                 </React.Fragment>
             ))}
-
-            <IconAddItem
-                id={`add-item-tail-${dragPanel.id}`}
-                position='tail'
-                panelId={panelId} />
         </Box>
     );
 }
