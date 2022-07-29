@@ -53,7 +53,7 @@
         "@reduxjs/toolkit": "^1.8.2",
         "@tabler/icons": "1.78.1",
         "@types/styled-components": "5.1.25",
-        "aws-amplify": "4.3.22",
+        "aws-amplify": "4.3.29",
         "nanoid": "4.0.0",
         "newrelic": "8.13.2",
         "next": "12.1.6",
