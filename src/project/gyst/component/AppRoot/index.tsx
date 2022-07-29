@@ -16,8 +16,9 @@ import slice from "gyst/slice";
 import {
     toggleItem, duplicateItem, removePanel,
     insertPanel, insertItem, removeItem,
-    duplicatePanel, removeEmptyPanels,
+    duplicatePanel, removeEmptyPanels, changeItem,
 } from "gyst/component/DragGrid/logic";
+import type { DragItemDTO } from "../DragGrid/DragItem/type";
 
 const {
     actions : {
@@ -122,6 +123,19 @@ export default function AppRoot({ id }: Props) {
         dispatch(updateGroupGridValue(copyGrid));
     };
 
+    const handleChangeItem = (item: DragItemDTO) : void => {
+        console.log(`handleChangeItem ${item.id}`);
+
+        debugger;
+
+        // const copyGrid = copyObject(dragGrid) as DragGridDTO;
+
+        // changeItem(copyGrid, item);
+
+        // dispatch(updateGroupGridValue(copyGrid));
+    };
+
+
     const handleDuplicateItem = (itemId: string) : void => {
         console.log(`handleDuplicateItem ${itemId}`);
 
@@ -142,6 +156,7 @@ export default function AppRoot({ id }: Props) {
         dispatch(updateGroupGridValue(copyGrid));
     };
 
+
     const context : GystAppContextDTO = {
         duplicatePanel : handleDuplicatePanel,
         duplicateItem  : handleDuplicateItem,
@@ -150,6 +165,7 @@ export default function AppRoot({ id }: Props) {
         addNewItem     : handleAddNewItem,
         removeItem     : handleRemoveItem,
         toggleItem     : handleToggleItem,
+        changeItem     : handleChangeItem,
         onHelp         : handleHelp,
     };
 

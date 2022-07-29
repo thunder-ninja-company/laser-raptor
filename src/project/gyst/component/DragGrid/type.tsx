@@ -1,6 +1,5 @@
 import type { DragPanelDTO } from "./DragPanel/type";
-import type { ActionType } from "../AppHeader/type";
-
+import type { DragItemDTO } from "./DragItem/type";
 
 export interface Props {
     onChange : (value: DragGridDTO) => void;
@@ -8,19 +7,19 @@ export interface Props {
 }
 
 export interface DragGridDTO {
-    id     : string;
     panels : DragPanelDTO[];
+    id     : string;
 }
 
 export interface DragGridContextDTO {
-    onChange : (dragDropState : DragDropState) => void;
-    dragGrid : DragGridDTO;
+    onChangeItem : (dragItem : DragItemDTO) => void;
+    onChange     : (dragDropState : DragDropState) => void;
+    dragGrid     : DragGridDTO;
 };
 
 export interface DragDropState {
     dragPanelId : string | null;
-    dragItemId  : string | null;
-
     dropPanelId : string | null;
+    dragItemId  : string | null;
     dropIndex   : number | null;
 }

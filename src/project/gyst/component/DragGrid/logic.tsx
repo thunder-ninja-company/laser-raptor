@@ -257,19 +257,26 @@ const wasDroppedBetweenPanels = (dropPanelId : string | null) : boolean =>
 const wasPanelDropped = (dragPanelId : string | null, dragItemId : string | null, dropPanelId : string | null, dropIndex : number | null) : boolean =>
     dragPanelId !== null && dragItemId === null && dropPanelId === null && dropIndex !== null;
 
-export const handleChange = (
+
+export const changeItem = (
+    dragGrid : DragGridDTO,
+    item : DragItemDTO,
+    onChange : (value : DragGridDTO) => void) => {
+
+    const copyGrid = copyObject(dragGrid) as DragGridDTO;
+
+    const { panelIndex, itemIndex } = indexOfItemAndPanel(copyGrid, item.id);
+
+    copyGrid.panels[panelIndex].items[itemIndex] = item;
+
+    onChange(copyGrid);
+}
+
+export const changeDragDrop = (
     dragGrid : DragGridDTO, {
     dragItemId, dropIndex, dropPanelId, dragPanelId,
 } : DragDropState,
     onChange : (value : DragGridDTO) => void) => {
-
-    // technically unnecessary conditional because it's never
-    // true, but allows typescript to assume they exist aftter that line
-
-    debugger;
-
-    // operate on a copy of the prop since you can't modify the original
-    const gridCopy = copyObject(dragGrid) as DragGridDTO;
 
     const debugInfo = `dragItemId:${dragItemId}, dropIndex:${dropIndex}, dropPanelId:${dropPanelId}, dragPanelId:${dragPanelId}`;
 
@@ -277,7 +284,7 @@ export const handleChange = (
 
         // appease typescript
         if(dragPanelId !== null && dropIndex !== null) {
-            return onChange(panelDropped(gridCopy, dragPanelId, dropIndex));
+            return onChange(panelDropped(dragGrid, dragPanelId, dropIndex));
         } else {
             throw Error(`Unable to drop panel ${debugInfo}`);
         }
@@ -294,13 +301,13 @@ export const handleChange = (
     // If dragging between panels, then add a new panel with the item
     // as the initial seed element
     if (wasDroppedBetweenPanels(dropPanelId))
-        return onChange(dropItemBetweenPanels(gridCopy, dropIndex, itemCopy));
+        return onChange(dropItemBetweenPanels(dragGrid, dropIndex, itemCopy));
 
-    if (wasDroppedOntoSamePanel(gridCopy, dragPanelId, dropPanelId))
-        return onChange(dropOntoSamePanel(gridCopy, dragItemId, dropIndex));
+    if (wasDroppedOntoSamePanel(dragGrid, dragPanelId, dropPanelId))
+        return onChange(dropOntoSamePanel(dragGrid, dragItemId, dropIndex));
 
     if (wasDroppedOntoDifferentPanel(dragPanelId, dropPanelId))
-        return onChange(dropOntoDifferentPanel(gridCopy, dropPanelIndex, dragItemId, dropIndex, itemCopy));
+        return onChange(dropOntoDifferentPanel(dragGrid, dropPanelIndex, dragItemId, dropIndex, itemCopy));
 
     throw Error('Unable to figure out wtf happened dropping the item');
 }

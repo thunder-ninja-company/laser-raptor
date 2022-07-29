@@ -1,29 +1,23 @@
+import type { DragItemDTO } from "gyst/component/DragGrid/DragItem/type";
 import type { DragGridDTO } from "gyst/component/DragGrid/type";
-
 export interface Props {
-    id: string;
+    id : string;
 }
-
 export interface GystAppRoot {
-    dragGrid: DragGridDTO;
-    hello: number;
+    dragGrid : DragGridDTO;
+    hello    : number;
 }
 
 export type ListPosition = 'head' | 'tail';
 
 export interface GystAppContextDTO {
-
-    addNewPanel : (position : ListPosition) => void;
-    addNewItem  : (position : ListPosition, panelId : string) => void;
-
-    removePanel : (panelId : string) => void;
-    removeItem  : (itemId : string) => void;
-
-    toggleItem  : (itemId : string) => void;
+    duplicatePanel : (panelId : string) => void;
     duplicateItem  : (itemId : string) => void;
-    duplicatePanel  : (panelId : string) => void;
-
-
-
-    onHelp  : (id : string) => void;
+    addNewItem     : (position : ListPosition, panelId : string) => void;
+    addNewPanel    : (position : ListPosition) => void;
+    changeItem     : (item : DragItemDTO) => void;
+    removePanel    : (panelId : string) => void;
+    toggleItem     : (itemId : string) => void;
+    removeItem     : (itemId : string) => void;
+    onHelp         : (id : string) => void;
 }

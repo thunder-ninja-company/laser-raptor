@@ -1,15 +1,38 @@
 import { IconRemoveItem, IconDuplicateItem, IconToggleItem } from "gyst/component";
-import { initialDragDropState } from "../constant";
+import { DragGridContext, initialDragDropState } from "../constant";
 import type { DragDropState } from "../type";
-import type { DragItemProps } from "./type";
-import { Box, Group, Text } from "@mantine/core";
+import type { DragItemDTO, DragItemProps } from "./type";
+import { Box, Group, Text, TextInput } from "@mantine/core";
 import { useStyles } from "./style";
 import { useDrag } from "react-dnd";
+import { IconPencil } from "@tabler/icons";
+import { useForm } from '@mantine/form';
+import type { UseFormReturnType } from "@mantine/form/lib/use-form";
+import {useContext } from "react";
 
+interface FormValues {
+    value: string;
+    email: string;
+}
+
+function NameInput({ form }: { form: UseFormReturnType<FormValues> }) {
+    return <TextInput {...form.getInputProps('email')} />;
+}
 
 export default function DragItem({ dragItem, panelId }: DragItemProps) {
 
     const { classes } = useStyles();
+
+    const { id : itemId, value : itemValue } = dragItem;
+
+    const form = useForm<FormValues>({
+        initialValues : {
+            value : dragItem.value,
+            email : '',
+        },
+    });
+
+    const context = useContext(DragGridContext);
 
     const [{ isDragging }, drag, dragPreview] = useDrag(() => ({
         type: "item",
@@ -19,13 +42,31 @@ export default function DragItem({ dragItem, panelId }: DragItemProps) {
         item : {
             ...initialDragDropState,
             dragPanelId : panelId,
-            dragItemId  : dragItem.id,
+            dragItemId  : itemId,
         } as DragDropState,
         end(item, _monitor){
-            console.log(`DragItem has finished dragging ${dragItem.id}`);
+            console.log(`DragItem has finished dragging ${itemId}`);
             console.log(item)
         }
     }));
+    const fieldText = form.getInputProps('value').value;
+
+    const textboxInputIcon =
+        fieldText.length === 0
+            ? <IconPencil />
+            : null;
+
+    console.log(dragItem);
+
+
+    const handleChangeValue = (evt: React.FormEvent<HTMLInputElement>) => {
+        form.setFieldValue('value', evt.currentTarget.value);
+
+        // context?.onChangeItem({
+        //     ...dragItem,
+        //     value : evt.currentTarget.value,
+        // });
+    };
 
     return (
         <Box
@@ -37,17 +78,23 @@ export default function DragItem({ dragItem, panelId }: DragItemProps) {
                     textDecoration: dragItem.status === 'checked' ? 'line-through' : 'none',
                     backgroundColor : isDragging ? '#0fd' : 'transparent',
                 }}>
-                    {`Item ${dragItem.value} ${isDragging ? '!!!!' : ''}`}
+
                 </Text>
+
+                <TextInput
+                    {...form.getInputProps('value')}
+                    onChange={handleChangeValue}
+                    icon={textboxInputIcon} />
+
                 <Group>
                     <IconRemoveItem
-                        id={`remove-item-${dragItem.id}`}
-                        itemId={dragItem.id} />
+                        id={`remove-item-${itemId}`}
+                        itemId={itemId} />
                     <IconToggleItem
-                        id={`toggle-item-${dragItem.id}`}
-                        itemId={dragItem.id} />
+                        id={`toggle-item-${itemId}`}
+                        itemId={itemId} />
                     <IconDuplicateItem
-                        itemId={dragItem.id} />
+                        itemId={itemId} />
                 </Group>
             </div>
         </Box>

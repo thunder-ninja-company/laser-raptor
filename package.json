@@ -65,6 +65,7 @@
         "react-redux": "^8.0.2",
         "styled-components": "5.3.5",
         "tabler-icons-react": "1.48.0",
+        "use-debounce": "8.0.3",
         "web-vitals": "2.1.4"
     },
     "devDependencies": {
