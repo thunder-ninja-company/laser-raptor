@@ -37,6 +37,7 @@ export default function DragPanel({ dragPanel }: Props) {
                 <React.Fragment
                     key={dragItem.id}>
                     <DragItem
+                        key={`drag-item-${dragItem.id}-hack-${dragItem.value}-${dragItem.status}`}
                         panelId={panelId}
                         dragItem={dragItem} />
                     <LandingZone

@@ -1,6 +1,7 @@
 import { IconRemoveItem, IconDuplicateItem, IconToggleItem } from "gyst/component";
 import { DragGridContext, initialDragDropState } from "../constant";
 import type { DragDropState } from "../type";
+import { useDebouncedCallback } from 'use-debounce';
 import type { DragItemDTO, DragItemProps } from "./type";
 import { Box, Group, Text, TextInput } from "@mantine/core";
 import { useStyles } from "./style";
@@ -20,6 +21,8 @@ function NameInput({ form }: { form: UseFormReturnType<FormValues> }) {
 }
 
 export default function DragItem({ dragItem, panelId }: DragItemProps) {
+
+    console.log(`DragItem(${dragItem.value})`);
 
     const { classes } = useStyles();
 
@@ -59,14 +62,38 @@ export default function DragItem({ dragItem, panelId }: DragItemProps) {
     console.log(dragItem);
 
 
-    const handleChangeValue = (evt: React.FormEvent<HTMLInputElement>) => {
-        form.setFieldValue('value', evt.currentTarget.value);
+    const debounced = useDebouncedCallback(_value => {
 
-        // context?.onChangeItem({
-        //     ...dragItem,
-        //     value : evt.currentTarget.value,
-        // });
+        console.log(`useDebouncedCallback(${_value})`);
+
+        const newItem = {
+            ...dragItem,
+            value : form.getInputProps('value').value,
+        };
+
+        console.log('newItem:', newItem);
+
+        context?.onChangeItem(newItem);
+    },
+        // delay in ms
+        2000
+    );
+
+    const handleChangeValue = (evt: React.FormEvent<HTMLInputElement>) => {
+
+        const value = evt.currentTarget.value;
+
+        console.log(`form.setFieldValue('value', '${value}');`)
+
+        form.setFieldValue('value', value);
+
+        debounced(value);
     };
+
+    const handleBlur = (_evt: React.FormEvent<HTMLInputElement>) => {
+        console.log(`Blur ${dragItem.id}`)
+    };
+
 
     return (
         <Box
@@ -84,6 +111,10 @@ export default function DragItem({ dragItem, panelId }: DragItemProps) {
                 <TextInput
                     {...form.getInputProps('value')}
                     onChange={handleChangeValue}
+                    style={{
+                        outline: 'none',
+                    }}
+                    onBlur={handleBlur}
                     icon={textboxInputIcon} />
 
                 <Group>
