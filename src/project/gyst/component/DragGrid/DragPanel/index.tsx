@@ -1,13 +1,14 @@
-import LandingZone from "../LandingZone";
-import type { Props } from "./type";
-import { Menu, Box, Title } from "@mantine/core";
-import { useStyles } from "./style";
-import DragItem from "../DragItem";
-import React from "react";
+import LandingZone from '../LandingZone';
+import type { Props } from './type';
+import { Menu, Box, Grid, Divider } from '@mantine/core';
+import { IconHandMove } from '@tabler/icons';
+import { useStyles } from './style';
+import DragItem from '../DragItem';
+import React from 'react';
 import {
     DragSource, IconDuplicatePanel,
     IconRemovePanel, IconAddItem,
-} from "gyst/component";
+} from 'gyst/component';
 
 export default function DragPanel({ dragPanel }: Props) {
 
@@ -16,23 +17,43 @@ export default function DragPanel({ dragPanel }: Props) {
     const { id : panelId, items } = dragPanel;
 
     return (
-        <DragSource
-            panelId={panelId}>
-            <Box
-                p="md"
-                className={classes.groupPanel}
-                id={panelId}>
+        <Box
+            className={classes.groupPanel}
+            id={panelId}>
+            <DragSource panelId={panelId}>
+                <Grid gutter={0}>
+                    <Grid.Col
+                        className={classes.leftColumn}
+                        span={11}>
+                        <Divider
+                            labelPosition='center'
+                            variant='dashed'
+                            my='xs'
+                            label={
+                                <>
+                                    <IconHandMove size={12} />
+                                    <Box ml={5}>
+                                        {'Drag'}
+                                    </Box>
+                                </>
+                            }
+                        />
+                    </Grid.Col>
+                    <Grid.Col
+                        className={classes.rightColumn}
+                        span={1}>
+                        <Menu>
+                            <Menu.Item>
+                                <IconRemovePanel panelId={panelId} />
+                            </Menu.Item>
+                            <Menu.Item>
+                                <IconDuplicatePanel panelId={panelId} />
+                            </Menu.Item>
+                        </Menu>
+                    </Grid.Col>
+                </Grid>
 
-                <Menu>
-                    <Menu.Item>
-                        <IconRemovePanel
-                            panelId={panelId} />
-                    </Menu.Item>
-                    <Menu.Item>
-                        <IconDuplicatePanel
-                            panelId={panelId} />
-                    </Menu.Item>
-                </Menu>
+
 
                 <DragItem
                     key={`drag-item-${items[0].id}-hack-${items[0].value}-${items[0].status}`}
@@ -44,6 +65,7 @@ export default function DragPanel({ dragPanel }: Props) {
                     panelId={panelId}
                     type='panel'
                     index={0} />
+
                 {items
                     .filter((_, itemIndex) => itemIndex !== 0) // skip first element
                     .map((dragItem, index) => (
@@ -64,7 +86,8 @@ export default function DragPanel({ dragPanel }: Props) {
                     id={`add-item-tail-${dragPanel.id}`}
                     position='tail'
                     panelId={panelId} />
+                    </DragSource>
             </Box>
-        </DragSource>
+
     );
 }
