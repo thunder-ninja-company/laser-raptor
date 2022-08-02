@@ -1,6 +1,6 @@
 import type { DragDropState, DragGridContextDTO, DragGridDTO, Props } from "./type";
-import { changeDragDrop, changeItem } from "./logic";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { changeDragDrop, changeItem } from "./logic";
 import type { DragItemDTO } from "./DragItem/type";
 import { DragGridContext } from "./constant";
 import { copyObject } from "gyst/shared";
@@ -17,9 +17,8 @@ export default function DragGrid({ dragGrid, onChange }: Props) {
         return changeDragDrop(copyGrid, dragDropState, onChange);
     }
 
-    const handleChangeItemHelper = (item : DragItemDTO) => {
-        return changeItem(dragGrid, item, onChange);
-    }
+    const handleChangeItemHelper = (item : DragItemDTO) =>
+        changeItem(dragGrid, item, onChange);
 
     const context : DragGridContextDTO = {
         onChangeItem : handleChangeItemHelper,

@@ -1,24 +1,30 @@
 import { createStyles } from "@mantine/core";
 
-export const useStyles = createStyles((theme) => ({
+export const useStyles = createStyles(_theme => ({
     groupPanel: {
-        // border: '1px solid #ccc',
         display: 'flex',
         width : '100%'
     },
 
     leftColumn : {
-        alignItems : 'center',
-        paddingLeft: '40px',
-        paddingRight: '40px',
+        alignItems: 'center',
+    },
+
+    frameSpacer : {
+        height : '50px',
+        border : '1px solid #0d0',
+        alignItems: 'center',
+        display: 'flex',
+
+    },
+
+    headerGrid : {
+
     },
 
     rightColumn : {
-        // alignItems : 'center',
-        display: 'flex',
-        alignItems: 'center',
         justifyContent: 'center',
-
-
+        alignItems: 'center',
+        display: 'flex',
     },
 }));

@@ -115,7 +115,7 @@ export default function DragItem({ dragItem, panelId, type }: DragItemProps) {
                                 itemId={itemId} />
                         </Grid.Col>
                         <Grid.Col
-                            className={classes.gridItemColumn}
+                            className={classes.columnLeft}
                             span={10}>
                             <TextInput
                                 {...form.getInputProps('value')}
@@ -129,21 +129,22 @@ export default function DragItem({ dragItem, panelId, type }: DragItemProps) {
                                 onBlur={handleBlur} />
                         </Grid.Col>
                         <Grid.Col
-                            className={classes.gridItemColumn}
+                            className={classes.columnRight}
+
                             span={1}>
-                            {isHovering &&
-                                <Menu>
-                                    <Menu.Item>
-                                        <IconDuplicateItem
-                                            itemId={itemId} />
-                                    </Menu.Item>
-                                    <Menu.Item>
-                                        <IconRemoveItem
-                                            id={`remove-item-${itemId}`}
-                                            itemId={itemId} />
-                                    </Menu.Item>
-                                </Menu>
-                            }
+                                {isHovering &&
+                                    <Menu>
+                                        <Menu.Item>
+                                            <IconDuplicateItem
+                                                itemId={itemId} />
+                                        </Menu.Item>
+                                        <Menu.Item>
+                                            <IconRemoveItem
+                                                id={`remove-item-${itemId}`}
+                                                itemId={itemId} />
+                                        </Menu.Item>
+                                    </Menu>
+                                }
                         </Grid.Col>
                     </Grid>
                 </div>

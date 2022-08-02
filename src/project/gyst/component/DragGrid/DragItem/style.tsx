@@ -33,10 +33,15 @@ export const useStyles = createStyles((theme) => ({
         }
     },
 
-    gridItemColumn : {
+    columnLeft : {
         alignItems : 'center',
         display: 'flex',
-        padding : '10px',
+    },
+
+    columnRight : {
+        alignItems : 'center',
+        display: 'flex',
+        width : '50px',
     }
 
 }));

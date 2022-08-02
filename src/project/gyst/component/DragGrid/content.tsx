@@ -11,7 +11,9 @@ export default function DragGridContent({ dragGrid : { id, panels }} : Props) {
     const { classes } = useStyles();
 
     return (
-        <Box id={id} className={classes.dragGrid}>
+        <Box
+            className={classes.dragGrid}
+            id={id}>
             <LandingZone
                 index={0}
                 panelId={null}
