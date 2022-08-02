@@ -1,3 +1,3 @@
-export interface Props {
+export type Props = React.PropsWithChildren<{
     panelId: string;
-}
+}>

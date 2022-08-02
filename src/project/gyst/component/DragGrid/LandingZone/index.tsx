@@ -1,7 +1,7 @@
 import type { LandingZoneProps } from "./type";
 import { DragGridContext } from "../constant";
 import type { DragDropState } from "../type";
-import { Box, Text } from "@mantine/core";
+import { Box } from "@mantine/core";
 import { useStyles  } from "./style";
 import { useDrop } from "react-dnd";
 import { useContext } from "react";
@@ -33,17 +33,16 @@ export default function LandingZone({ index, panelId, type }: LandingZoneProps) 
     }));
 
     const id = `${panelId}:${index}`;
-    const defaultBackgroundColor = type === 'grid' ? '#934' : '#f3a';
+    const defaultBackgroundColor = ''; // type === 'grid' ? '#934' : '#f3a';
 
     return (
         <Box
+            p="md"
             className={classes.landingZone}
             style={isOver ? { backgroundColor: "red" } : { backgroundColor: defaultBackgroundColor }}
             ref={drop}
             id={id}>
-            <Text size='xs'>
-                {canDrop ? `(${id}) Release to drop` : `(${id}) Drag a box here`}
-            </Text>
+
         </Box>
     );
 }

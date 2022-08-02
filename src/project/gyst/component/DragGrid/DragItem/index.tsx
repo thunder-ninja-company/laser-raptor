@@ -1,36 +1,39 @@
-import { IconRemoveItem, IconDuplicateItem, IconToggleItem } from "gyst/component";
-import { DragGridContext, initialDragDropState } from "../constant";
-import type { DragDropState } from "../type";
+import { IconRemoveItem, IconDuplicateItem, IconToggleItem } from 'gyst/component';
+import { DragGridContext, initialDragDropState } from '../constant';
+import { Box, Grid, TextInput } from '@mantine/core';
 import { useDebouncedCallback } from 'use-debounce';
-import type { DragItemDTO, DragItemProps } from "./type";
-import { Box, Group, Text, TextInput } from "@mantine/core";
-import { useStyles } from "./style";
-import { useDrag } from "react-dnd";
-import { IconPencil } from "@tabler/icons";
+import type { DragDropState } from '../type';
+import type { DragItemProps, FormValues } from './type';
+import { IconPencil } from '@tabler/icons';
+import { useHover } from '@mantine/hooks';
+import { IconSize } from 'gyst/constant';
 import { useForm } from '@mantine/form';
-import type { UseFormReturnType } from "@mantine/form/lib/use-form";
-import {useContext } from "react";
+import { Menu } from '@mantine/core';
+import { useStyles } from './style';
+import { useDrag } from 'react-dnd';
+import { useContext } from 'react';
 
-interface FormValues {
-    value: string;
-    email: string;
-}
 
-function NameInput({ form }: { form: UseFormReturnType<FormValues> }) {
-    return <TextInput {...form.getInputProps('email')} />;
-}
 
-export default function DragItem({ dragItem, panelId }: DragItemProps) {
+export default function DragItem({ dragItem, panelId, type }: DragItemProps) {
 
     console.log(`DragItem(${dragItem.value})`);
 
+    const {
+        hovered : isHovering,
+        ref     : refHover,
+    } = useHover();
+
     const { classes } = useStyles();
 
-    const { id : itemId, value : itemValue } = dragItem;
+    const {
+        id : itemId,
+        value : itemValue,
+    } = dragItem;
 
     const form = useForm<FormValues>({
         initialValues : {
-            value : dragItem.value,
+            value : itemValue,
             email : '',
         },
     });
@@ -38,7 +41,7 @@ export default function DragItem({ dragItem, panelId }: DragItemProps) {
     const context = useContext(DragGridContext);
 
     const [{ isDragging }, drag, dragPreview] = useDrag(() => ({
-        type: "item",
+        type: 'item',
         collect: (monitor) => ({
             isDragging: monitor.isDragging()
         }),
@@ -60,7 +63,6 @@ export default function DragItem({ dragItem, panelId }: DragItemProps) {
             : null;
 
     console.log(dragItem);
-
 
     const debounced = useDebouncedCallback(_value => {
 
@@ -94,39 +96,57 @@ export default function DragItem({ dragItem, panelId }: DragItemProps) {
         console.log(`Blur ${dragItem.id}`)
     };
 
-
     return (
         <Box
             className={classes.dragItem}
+            style={{backgroundColor : isHovering ? '#f0faf0' : 'transparent'}}
             ref={dragPreview}>
-
-            <div role="Handle" ref={drag}>
-                <Text style={{
-                    textDecoration: dragItem.status === 'checked' ? 'line-through' : 'none',
-                    backgroundColor : isDragging ? '#0fd' : 'transparent',
-                }}>
-
-                </Text>
-
-                <TextInput
-                    {...form.getInputProps('value')}
-                    onChange={handleChangeValue}
-                    style={{
-                        outline: 'none',
-                    }}
-                    onBlur={handleBlur}
-                    icon={textboxInputIcon} />
-
-                <Group>
-                    <IconRemoveItem
-                        id={`remove-item-${itemId}`}
-                        itemId={itemId} />
-                    <IconToggleItem
-                        id={`toggle-item-${itemId}`}
-                        itemId={itemId} />
-                    <IconDuplicateItem
-                        itemId={itemId} />
-                </Group>
+            <div
+                role='Handle'
+                ref={drag}>
+                <div ref={refHover}>
+                    <Grid gutter={0}>
+                        <Grid.Col
+                            className={classes.gridItemColumn}
+                            span={1}>
+                            <IconToggleItem
+                                id={`toggle-item-${itemId}`}
+                                size={IconSize.small}
+                                itemId={itemId} />
+                        </Grid.Col>
+                        <Grid.Col
+                            className={classes.gridItemColumn}
+                            span={10}>
+                            <TextInput
+                                {...form.getInputProps('value')}
+                                className={
+                                    type === 'head'
+                                        ? classes.largeInput
+                                        : classes.smallInput
+                                }
+                                onChange={handleChangeValue}
+                                icon={textboxInputIcon}
+                                onBlur={handleBlur} />
+                        </Grid.Col>
+                        <Grid.Col
+                            className={classes.gridItemColumn}
+                            span={1}>
+                            {isHovering &&
+                                <Menu>
+                                    <Menu.Item>
+                                        <IconDuplicateItem
+                                            itemId={itemId} />
+                                    </Menu.Item>
+                                    <Menu.Item>
+                                        <IconRemoveItem
+                                            id={`remove-item-${itemId}`}
+                                            itemId={itemId} />
+                                    </Menu.Item>
+                                </Menu>
+                            }
+                        </Grid.Col>
+                    </Grid>
+                </div>
             </div>
         </Box>
     );

@@ -5,7 +5,7 @@ import { useDrag } from "react-dnd";
 import type { Props } from "./type";
 import { initialDragDropState } from "gyst/component/DragGrid/constant";
 
-export default function DragSource({ panelId }: Props) {
+export default function DragSource({ panelId, children }: Props) {
 
     const { classes } = useStyles();
 
@@ -35,8 +35,7 @@ export default function DragSource({ panelId }: Props) {
             ref={dragPreview}>
 
             <div role="Handle" ref={drag}>
-                {'DRAGME'}
-
+                {children}
             </div>
         </Box>
     );

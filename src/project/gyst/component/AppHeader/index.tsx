@@ -1,6 +1,6 @@
 import IconAddPanel from "gyst/component/IconAddPanel";
 import IconHelp from "gyst/component/IconHelp";
-import { Box } from "@mantine/core";
+import { Burger, Header, MediaQuery, Text } from "@mantine/core";
 import { useStyles } from "./style";
 import type { Props } from "./type";
 
@@ -11,15 +11,26 @@ export default function AppHeader({ id }: Props) {
     // const handleClick = () => onClick(id, actionType);
 
     return (
-        <Box
+        <Header
             className={classes.appHeader}
-            onClick={() => ({})}
-            id={id}>
+            height={80}
+            p="md">
+
+            <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+              <Burger
+                opened={false}
+                size="sm"
+                mr="xl"
+              />
+            </MediaQuery>
+
             <IconAddPanel
                 id='add-panel-head'
                 position='head' />
 
             <IconHelp id={`help-${id}`} />
-        </Box>
+
+        </Header>
+
     );
 }

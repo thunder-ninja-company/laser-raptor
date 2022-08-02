@@ -1,4 +1,4 @@
-import { GystAppContext, LargeIconSize } from 'gyst/constant';
+import { GystAppContext, IconSize } from 'gyst/constant';
 import { IconHelp as TablerIconHelp } from '@tabler/icons';
 import type { Props } from "./type";
 import { useContext } from 'react';
@@ -17,7 +17,7 @@ export default function IconHelp({ id }: Props) {
             className={classes.iconHelp}
             onClick={handleClick}
             stroke={1}
-            size={LargeIconSize}
+            size={IconSize.large}
             id={id} />
     );
 }

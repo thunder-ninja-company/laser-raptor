@@ -1,11 +1,12 @@
 
-import { GystAppContext, ItemIconSize } from 'gyst/constant';
+import { GystAppContext, IconSize } from 'gyst/constant';
 import { IconCheckbox } from '@tabler/icons';
 import type { Props } from "./type";
 import { useContext } from 'react';
 import { useStyles } from './style';
+import { Box } from '@mantine/core';
 
-export default function IconToggleItem({ id, itemId }: Props) {
+export default function IconToggleItem({ id, itemId, size }: Props) {
 
     const { classes } = useStyles();
 
@@ -14,11 +15,12 @@ export default function IconToggleItem({ id, itemId }: Props) {
     const handleClick = () => context?.toggleItem(itemId);
 
     return (
-        <IconCheckbox
-            className={classes.iconToggleItem}
-            onClick={handleClick}
-            stroke={2}
-            size={ItemIconSize}
-            id={id} />
+        <Box className={classes.iconToggleItem}>
+            <IconCheckbox
+                onClick={handleClick}
+                stroke={2}
+                size={size}
+                id={id} />
+        </Box>
     );
 }

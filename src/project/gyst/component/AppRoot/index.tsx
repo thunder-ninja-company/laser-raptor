@@ -156,7 +156,6 @@ export default function AppRoot({ id }: Props) {
         dispatch(updateGroupGridValue(copyGrid));
     };
 
-
     const context : GystAppContextDTO = {
         duplicatePanel : handleDuplicatePanel,
         duplicateItem  : handleDuplicateItem,

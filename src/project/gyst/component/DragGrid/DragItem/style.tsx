@@ -1,8 +1,42 @@
-import { createStyles } from "@mantine/core";
+import { createStyles, CSSObject } from "@mantine/core";
+
+
 
 export const useStyles = createStyles((theme) => ({
-    dragItem: {
-        backgroundColor: theme.colors.orange,
-        cursor: 'grab',
+    dragItem : {
+        cursor : 'grab',
     },
+
+    largeInput : {
+        width : '100%',
+
+        input : {
+            backgroundColor : 'transparent',
+            outline         : 'none',
+            resize          : 'none',
+            border          : 'none',
+            height          : 'inherit',
+            fontSize        : '2rem',
+        }
+    },
+
+    smallInput : {
+        width : '100%',
+
+        input : {
+            backgroundColor : 'transparent',
+            outline         : 'none',
+            resize          : 'none',
+            border          : 'none',
+            height          : 'inherit',
+            fontSize        : '1rem',
+        }
+    },
+
+    gridItemColumn : {
+        alignItems : 'center',
+        display: 'flex',
+        padding : '10px',
+    }
+
 }));
