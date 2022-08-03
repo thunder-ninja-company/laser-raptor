@@ -21,7 +21,7 @@ export default function DragPanel({ dragPanel }: Props) {
 
     return (
         <Box
-            className={classes.groupPanel}
+            className={classes.dragPanel}
             ref={refHover}
             id={panelId}>
             <DragSource panelId={panelId}>
@@ -45,28 +45,31 @@ export default function DragPanel({ dragPanel }: Props) {
                     </Menu>
                 </HeaderFooter>
 
-                <DragItem
-                    type='head'
-                    panelId={panelId}
-                    dragItem={items[0]} />
+
                 <LandingZone
                     panelId={panelId}
                     type='panel'
-                    index={0} />
+                    index={0}>
+                    <DragItem
+                        type='head'
+                        panelId={panelId}
+                        dragItem={items[0]} />
+                </LandingZone>
 
                 {items
                     .filter((_, itemIndex) => itemIndex !== 0) // skip first element
                     .map((dragItem, index) => (
                     <React.Fragment
                         key={dragItem.id}>
-                        <DragItem
-                            panelId={panelId}
-                            type='item'
-                            dragItem={dragItem} />
                         <LandingZone
                             panelId={panelId}
                             index={index + 1}
-                            type='panel' />
+                            type='panel'>
+                            <DragItem
+                                panelId={panelId}
+                                type='item'
+                                dragItem={dragItem} />
+                        </LandingZone>
                     </React.Fragment>
                 ))}
 

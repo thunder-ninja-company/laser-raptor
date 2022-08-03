@@ -1,4 +1,4 @@
-import type { LandingZoneProps } from "./type";
+import type { Props } from "./type";
 import { DragGridContext } from "../constant";
 import type { DragDropState } from "../type";
 import { Box } from "@mantine/core";
@@ -6,7 +6,7 @@ import { useStyles  } from "./style";
 import { useDrop } from "react-dnd";
 import { useContext } from "react";
 
-export default function LandingZone({ index, panelId, type }: LandingZoneProps) {
+export default function LandingZone({ index, panelId, type, children }: Props) {
 
     const { classes } = useStyles();
 
@@ -53,7 +53,7 @@ export default function LandingZone({ index, panelId, type }: LandingZoneProps) 
             }}
             ref={drop}
             id={id}>
-
+            {children}
         </Box>
     );
 }
