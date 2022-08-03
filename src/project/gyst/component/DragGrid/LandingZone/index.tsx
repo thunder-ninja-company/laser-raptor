@@ -35,13 +35,13 @@ export default function LandingZone({ index, panelId, type, children }: Props) {
     const id = `${panelId}:${index}`;
 
     const background = isOver
-        ? { backgroundColor: "red" }
+        ? { backgroundColor: "#fdf" }
         : { backgroundColor: '' };
 
 
-    const border = type === 'panel'
-        ? { border: "1px solid #0f0" }
-        : { border: "1px solid #0ff" };
+    // const border = type === 'panel'
+    //     ? { border: "1px solid #0f0" }
+    //     : { border: "1px solid #0ff" };
 
     return (
         <Box
@@ -49,7 +49,6 @@ export default function LandingZone({ index, panelId, type, children }: Props) {
             className={classes.landingZone}
             style={{
                 ...background,
-                ...border,
             }}
             ref={drop}
             id={id}>

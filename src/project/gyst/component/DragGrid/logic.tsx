@@ -253,9 +253,16 @@ const wasDroppedOntoDifferentPanel = (dragPanelId : string, dropPanelId : string
 const wasDroppedBetweenPanels = (dropPanelId : string | null) : boolean =>
     dropPanelId === null;
 
-const wasPanelDropped = (dragPanelId : string | null, dragItemId : string | null, dropPanelId : string | null, dropIndex : number | null) : boolean =>
-    dragPanelId !== null && dragItemId === null && dropPanelId === null && dropIndex !== null;
-
+const wasPanelDropped = (
+    dragPanelId : string | null,
+    dragItemId  : string | null,
+    dropPanelId : string | null,
+    dropIndex   : number | null
+) : boolean =>
+    dragPanelId    !== null
+    && dragItemId  === null
+    && dropPanelId === null
+    && dropIndex   !== null;
 
 export const changeItem = (
     dragGrid : DragGridDTO,

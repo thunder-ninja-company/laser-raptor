@@ -18,10 +18,7 @@ export default function DragGridContent({ dragGrid : { id, panels }} : Props) {
                 {panels.map((dragPanel, index) =>
                     <Grid.Col
                         key={`gp-${dragPanel.id}`}
-                        xs={4}
-                        style={{
-                            border : '1px solid #ee0',
-                        }}>
+                        xs={4}>
                         <LandingZone
                             index={index}
                             panelId={null}
