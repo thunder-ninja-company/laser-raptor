@@ -13,8 +13,6 @@ import { useStyles } from './style';
 import { useDrag } from 'react-dnd';
 import { useContext } from 'react';
 
-
-
 export default function DragItem({ dragItem, panelId, type }: DragItemProps) {
 
     console.log(`DragItem(${dragItem.value})`);
@@ -99,7 +97,7 @@ export default function DragItem({ dragItem, panelId, type }: DragItemProps) {
     return (
         <Box
             className={classes.dragItem}
-            style={{backgroundColor : isHovering ? '#f0faf0' : 'transparent'}}
+
             ref={dragPreview}>
             <div
                 role='Handle'
@@ -107,7 +105,7 @@ export default function DragItem({ dragItem, panelId, type }: DragItemProps) {
                 <div ref={refHover}>
                     <Grid gutter={0}>
                         <Grid.Col
-                            className={classes.gridItemColumn}
+                            className={classes.columnLeft}
                             span={1}>
                             <IconToggleItem
                                 id={`toggle-item-${itemId}`}

@@ -15,9 +15,9 @@ export default function IconAddPanel({ id, position }: Props) {
     return (
         <IconPlus
             className={classes.iconAddPanel}
-            onClick={handleClick}
-            stroke={2}
             size={IconSize.large}
+            onClick={handleClick}
+            stroke={1}
             id={id} />
     );
 }

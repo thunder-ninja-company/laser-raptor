@@ -36,6 +36,7 @@ export const useStyles = createStyles((theme) => ({
     columnLeft : {
         alignItems : 'center',
         display: 'flex',
+
     },
 
     columnRight : {

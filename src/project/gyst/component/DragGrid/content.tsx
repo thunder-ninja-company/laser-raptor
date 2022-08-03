@@ -18,20 +18,21 @@ export default function DragGridContent({ dragGrid : { id, panels }} : Props) {
                 {panels.map((dragPanel, index) =>
                     <Grid.Col
                         key={`gp-${dragPanel.id}`}
-                        xs={4}>
+                        xs={12}
+                        md={6}
+                        lg={4}>
                         <LandingZone
                             index={index}
                             panelId={null}
                             type='grid'>
-                            <DragPanel
-                                dragPanel={dragPanel} />
+                            <DragPanel dragPanel={dragPanel} />
                         </LandingZone>
                     </Grid.Col>
                 )}
             <Grid.Col
-                key={`gp-add-panel-tail`}
+                xs={12}
                 md={6}
-                lg={3}>
+                lg={4}>
                 <IconAddPanel
                     id='add-panel-tail'
                     position='tail' />

@@ -16,3 +16,5 @@ export enum IconSize {
     small = 24,
     large = 48,
 }
+
+export const LessProminentIconColor = "#888";

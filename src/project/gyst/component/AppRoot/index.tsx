@@ -168,12 +168,17 @@ export default function AppRoot({ id }: Props) {
         onHelp         : handleHelp,
     };
 
+    const exampleTheme = {
+        fontFamily : "'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue'",
+    };
+
     return (
         <GystAppContext.Provider value={context}>
             <MantineProvider
                 emotionOptions={{ key: ProjectName }}
                 withNormalizeCSS={true}
-                withGlobalStyles={true}>
+                withGlobalStyles={true}
+                theme={exampleTheme}>
                 <AppShell
                     header={<AppHeader id={`app-header-${id}`} />}
                     navbarOffsetBreakpoint="sm"

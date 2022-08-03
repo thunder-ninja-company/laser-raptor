@@ -23,6 +23,5 @@ export const useStyles = createStyles(_theme => ({
         height : '20px',
         alignItems: 'center',
         display: 'flex',
-
     },
 }));

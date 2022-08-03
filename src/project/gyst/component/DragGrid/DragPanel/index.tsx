@@ -7,6 +7,7 @@ import { useStyles } from './style';
 import DragItem from '../DragItem';
 import React from 'react';
 import HeaderFooter from './component/HeaderFooter';
+import { LessProminentIconColor } from 'gyst/constant';
 
 export default function DragPanel({ dragPanel }: Props) {
 
@@ -54,10 +55,9 @@ export default function DragPanel({ dragPanel }: Props) {
                 </LandingZone>
                 {items
                     .filter((_, itemIndex) => itemIndex !== 0) // skip first element
-                    .map((dragItem, index) => (
-                    <React.Fragment
-                        key={dragItem.id}>
+                    .map((dragItem, index) =>
                         <LandingZone
+                            key={dragItem.id}
                             panelId={panelId}
                             index={index + 1}
                             type='panel'>
@@ -66,8 +66,7 @@ export default function DragPanel({ dragPanel }: Props) {
                                 type='item'
                                 dragItem={dragItem} />
                         </LandingZone>
-                    </React.Fragment>
-                ))}
+                )}
                 <HeaderFooter
                     isHovering={isHovering}
                     justify='left'>

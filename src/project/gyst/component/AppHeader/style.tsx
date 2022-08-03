@@ -4,5 +4,6 @@ export const useStyles = createStyles((theme) => ({
     appHeader: {
         display: "flex",
         justifyContent: "space-between",
+        border : 0,
     },
 }));
