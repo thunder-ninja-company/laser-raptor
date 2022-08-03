@@ -14,31 +14,22 @@ export default function DragGridContent({ dragGrid : { id, panels }} : Props) {
         <Box
             className={classes.dragGrid}
             id={id}>
-            <LandingZone
-                index={0}
-                panelId={null}
-                type='grid' />
             <Grid>
                 {panels.map((dragPanel, index) =>
-                    <React.Fragment key={`gp-${dragPanel.id}`}>
-                        <Grid.Col
-                            xs={3}
-                            style={{
-                                border : '1px solid #0e0',
-                            }}>
+                    <Grid.Col
+                        key={`gp-${dragPanel.id}`}
+                        xs={4}
+                        style={{
+                            border : '1px solid #ee0',
+                        }}>
+                        <LandingZone
+                            index={index}
+                            panelId={null}
+                            type='grid'>
                             <DragPanel
                                 dragPanel={dragPanel} />
-
-                        </Grid.Col>
-                        <Grid.Col xs={1}>
-                            <LandingZone
-                                index={index + 1}
-                                panelId={null}
-                                type='grid' />
-                        </Grid.Col>
-                    </React.Fragment>
-
-
+                        </LandingZone>
+                    </Grid.Col>
                 )}
             <Grid.Col
                 key={`gp-add-panel-tail`}
@@ -49,11 +40,16 @@ export default function DragGridContent({ dragGrid : { id, panels }} : Props) {
                     position='tail' />
                 </Grid.Col>
             </Grid>
-            <br />
-            <LandingZone
-                index={panels.length + 1}
-                panelId={null}
-                type='grid' />
         </Box>
     );
 }
+
+/**
+ * <br />
+            <LandingZone
+                index={panels.length + 1}
+                panelId={null}
+                type='grid'>
+                {'GRID3'}
+            </LandingZone>
+ */

@@ -154,10 +154,10 @@ const panelDropped = (dragGrid : DragGridDTO, dragPanelId : string, dropIndex : 
 
     removePanel(dragGrid, dragPanelId);
 
-    if (dragItemIndex > dropIndex)
+    // if (dragItemIndex > dropIndex)
         dragGrid.panels.splice(dropIndex, 0, panelCopy);
-    else
-        dragGrid.panels.splice(dropIndex - 1, 0, panelCopy);
+    // else
+    //     dragGrid.panels.splice(dropIndex - 1, 0, panelCopy);
 
     return dragGrid;
 };
@@ -191,10 +191,10 @@ const dropOntoSamePanel = (dragGrid : DragGridDTO, dragItemId : string, dropItem
 
     const itemCopy = removeItem(dragGrid, dragItemId);
 
-    if (dragItemIndex > dropItemIndex)
+    // if (dragItemIndex > dropItemIndex)
         dragGrid.panels[panelIndex].items.splice(dropItemIndex, 0, itemCopy);
-    else
-        dragGrid.panels[panelIndex].items.splice(dropItemIndex - 1, 0, itemCopy);
+    // else
+    //     dragGrid.panels[panelIndex].items.splice(dropItemIndex - 1, 0, itemCopy);
 
     return dragGrid;
 };

@@ -33,10 +33,9 @@ export default function DragPanel({ dragPanel }: Props) {
                         <Menu.Item>
                             <IconRemovePanel
                                 panelId={panelId} />
-                                <Text>
+                            <Text>
                                 {'test'}
-                                </Text>
-
+                            </Text>
                         </Menu.Item>
                         <Menu.Item>
                             <IconDuplicatePanel
@@ -44,8 +43,6 @@ export default function DragPanel({ dragPanel }: Props) {
                         </Menu.Item>
                     </Menu>
                 </HeaderFooter>
-
-
                 <LandingZone
                     panelId={panelId}
                     type='panel'
@@ -55,7 +52,6 @@ export default function DragPanel({ dragPanel }: Props) {
                         panelId={panelId}
                         dragItem={items[0]} />
                 </LandingZone>
-
                 {items
                     .filter((_, itemIndex) => itemIndex !== 0) // skip first element
                     .map((dragItem, index) => (
@@ -72,7 +68,6 @@ export default function DragPanel({ dragPanel }: Props) {
                         </LandingZone>
                     </React.Fragment>
                 ))}
-
                 <HeaderFooter
                     isHovering={isHovering}
                     justify='left'>
