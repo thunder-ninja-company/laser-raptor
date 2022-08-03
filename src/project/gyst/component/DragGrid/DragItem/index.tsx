@@ -97,7 +97,6 @@ export default function DragItem({ dragItem, panelId, type }: DragItemProps) {
     return (
         <Box
             className={classes.dragItem}
-
             ref={dragPreview}>
             <div
                 role='Handle'
