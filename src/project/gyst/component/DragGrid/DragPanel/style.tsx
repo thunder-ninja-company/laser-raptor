@@ -10,21 +10,19 @@ export const useStyles = createStyles(_theme => ({
         alignItems: 'center',
     },
 
-    frameSpacer : {
-        height : '50px',
-        border : '1px solid #0d0',
+    hoverBar : {
+        borderTop : '1px solid #eee',
+        borderBottom : '1px solid #eee',
+        marginRight: '8px',
+        marginTop : '9px',
+        width : '100%',
+        height : '4px',
+    },
+
+    headerFooter : {
+        height : '20px',
         alignItems: 'center',
         display: 'flex',
 
-    },
-
-    headerGrid : {
-
-    },
-
-    rightColumn : {
-        justifyContent: 'center',
-        alignItems: 'center',
-        display: 'flex',
     },
 }));

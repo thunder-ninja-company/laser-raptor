@@ -145,7 +145,6 @@ export const removeEmptyPanels = (dragGrid : DragGridDTO) : DragGridDTO => {
 }
 
 const panelDropped = (dragGrid : DragGridDTO, dragPanelId : string, dropIndex : number) : DragGridDTO => {
-    debugger;
 
     const panelCopy = copyObject(
         getPanelById(dragGrid, dragPanelId)

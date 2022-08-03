@@ -1,11 +1,12 @@
 import { DragSource, IconDuplicatePanel, IconRemovePanel, IconAddItem } from 'gyst/component';
-import { Menu, Box, Grid } from '@mantine/core';
+import { Menu, Box, Text } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
 import LandingZone from '../LandingZone';
 import type { Props } from './type';
 import { useStyles } from './style';
 import DragItem from '../DragItem';
 import React from 'react';
+import HeaderFooter from './component/HeaderFooter';
 
 export default function DragPanel({ dragPanel }: Props) {
 
@@ -24,22 +25,25 @@ export default function DragPanel({ dragPanel }: Props) {
             ref={refHover}
             id={panelId}>
             <DragSource panelId={panelId}>
-                <Box
-                    sx={{
-                        justifyContent : 'right'
-                    }}
-                    className={classes.frameSpacer}>
-                    <Menu>
+                <HeaderFooter
+                    isHovering={isHovering}
+                    justify='right'>
+                    <div className={classes.hoverBar} />
+                    <Menu style={{ paddingTop : '8px'}}>
                         <Menu.Item>
                             <IconRemovePanel
                                 panelId={panelId} />
+                                <Text>
+                                {'test'}
+                                </Text>
+
                         </Menu.Item>
                         <Menu.Item>
                             <IconDuplicatePanel
                                 panelId={panelId} />
                         </Menu.Item>
                     </Menu>
-                </Box>
+                </HeaderFooter>
 
                 <DragItem
                     type='head'
@@ -66,16 +70,14 @@ export default function DragPanel({ dragPanel }: Props) {
                     </React.Fragment>
                 ))}
 
-                <Box
-                    className={classes.frameSpacer}
-                    sx={{
-                        justifyContent : 'left'
-                    }}>
+                <HeaderFooter
+                    isHovering={isHovering}
+                    justify='left'>
                     <IconAddItem
                         id={`add-item-tail-${dragPanel.id}`}
                         position='tail'
                         panelId={panelId} />
-                </Box>
+                </HeaderFooter>
             </DragSource>
         </Box>
     );

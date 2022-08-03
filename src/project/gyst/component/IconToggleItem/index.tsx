@@ -1,5 +1,5 @@
 
-import { GystAppContext, IconSize } from 'gyst/constant';
+import { GystAppContext } from 'gyst/constant';
 import { IconCheckbox } from '@tabler/icons';
 import type { Props } from "./type";
 import { useContext } from 'react';

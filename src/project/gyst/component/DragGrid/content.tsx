@@ -24,8 +24,10 @@ export default function DragGridContent({ dragGrid : { id, panels }} : Props) {
                         key={`gp-${dragPanel.id}`}
                         sm={6}
                         lg={4}>
+
                         <DragPanel
                             dragPanel={dragPanel} />
+
                         <LandingZone
                             index={index + 1}
                             panelId={null}
@@ -41,6 +43,7 @@ export default function DragGridContent({ dragGrid : { id, panels }} : Props) {
                     position='tail' />
                 </Grid.Col>
             </Grid>
+            <br />
             <LandingZone
                 index={panels.length + 1}
                 panelId={null}

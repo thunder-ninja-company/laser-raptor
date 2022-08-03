@@ -1,4 +1,4 @@
-import { GystAppContext, ItemIconSize } from 'gyst/constant';
+import { GystAppContext, IconSize } from 'gyst/constant';
 import { IconTrash } from '@tabler/icons';
 import type { Props } from "./type";
 import { useContext } from 'react';
@@ -16,8 +16,8 @@ export default function IconRemoveItem({ id, itemId }: Props) {
         <IconTrash
             className={classes.iconRemoveItem}
             onClick={handleClick}
+            size={IconSize.small}
             stroke={2}
-            size={ItemIconSize}
             id={id} />
     );
 }

@@ -33,13 +33,24 @@ export default function LandingZone({ index, panelId, type }: LandingZoneProps) 
     }));
 
     const id = `${panelId}:${index}`;
-    const defaultBackgroundColor = ''; // type === 'grid' ? '#934' : '#f3a';
+
+    const background = isOver
+        ? { backgroundColor: "red" }
+        : { backgroundColor: '' };
+
+
+    const border = type === 'panel'
+        ? { border: "1px solid #0f0" }
+        : { border: "1px solid #0ff" };
 
     return (
         <Box
             p="md"
             className={classes.landingZone}
-            style={isOver ? { backgroundColor: "red" } : { backgroundColor: defaultBackgroundColor }}
+            style={{
+                ...background,
+                ...border,
+            }}
             ref={drop}
             id={id}>
 

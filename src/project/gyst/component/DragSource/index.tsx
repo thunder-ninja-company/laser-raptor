@@ -1,9 +1,8 @@
-
+import { initialDragDropState } from "gyst/component/DragGrid/constant";
 import { Box } from "@mantine/core";
 import { useStyles } from "./style";
 import { useDrag } from "react-dnd";
 import type { Props } from "./type";
-import { initialDragDropState } from "gyst/component/DragGrid/constant";
 
 export default function DragSource({ panelId, children }: Props) {
 
@@ -25,15 +24,10 @@ export default function DragSource({ panelId, children }: Props) {
         }
     }));
 
-    // const context = useContext(GystAppContext);
-    // const handleClick = () => context?.duplicatePanel(panelId);
-    // onClick={handleClick}
-
     return (
         <Box
             className={classes.dragSource}
             ref={dragPreview}>
-
             <div role="Handle" ref={drag}>
                 {children}
             </div>
