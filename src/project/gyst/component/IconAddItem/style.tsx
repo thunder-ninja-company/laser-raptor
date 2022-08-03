@@ -1,10 +1,10 @@
-import { createStyles } from "@mantine/core";
-import { LessProminentIconColor } from "gyst/constant";
+import { LessProminentIconColor } from 'gyst/constant';
+import { createStyles } from '@mantine/core';
 
 export const useStyles = createStyles(_theme => ({
     iconAddItem: {
-        marginLeft : '16px',
-        cursor      : "pointer",
+        marginLeft : _theme.spacing.md,
+        cursor      : 'pointer',
         color       : LessProminentIconColor,
     },
 }));

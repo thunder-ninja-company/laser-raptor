@@ -4,7 +4,6 @@ import { IconCheckbox } from '@tabler/icons';
 import type { Props } from "./type";
 import { useContext } from 'react';
 import { useStyles } from './style';
-import { Box } from '@mantine/core';
 
 export default function IconToggleItem({ id, itemId, size }: Props) {
 
@@ -15,12 +14,11 @@ export default function IconToggleItem({ id, itemId, size }: Props) {
     const handleClick = () => context?.toggleItem(itemId);
 
     return (
-        <Box className={classes.iconToggleItem}>
-            <IconCheckbox
-                onClick={handleClick}
-                stroke={2}
-                size={size}
-                id={id} />
-        </Box>
+        <IconCheckbox
+            className={classes.iconToggleItem}
+            onClick={handleClick}
+            stroke={1}
+            size={size}
+            id={id} />
     );
 }
