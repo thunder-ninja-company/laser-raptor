@@ -18,7 +18,7 @@ export default function IconToggleItem({ id, itemId, size }: Props) {
             className={classes.iconToggleItem}
             onClick={handleClick}
             stroke={1}
-            size={size}
+
             id={id} />
     );
 }

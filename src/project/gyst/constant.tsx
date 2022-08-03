@@ -13,7 +13,7 @@ export const initialState: GystAppRoot = {
 export const GystAppContext = React.createContext<GystAppContextDTO | undefined>(undefined);
 
 export enum IconSize {
-    small = 24,
+    small = 32,
     large = 48,
 }
 

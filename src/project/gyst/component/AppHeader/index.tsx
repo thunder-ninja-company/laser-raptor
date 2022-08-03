@@ -23,9 +23,10 @@ export default function AppHeader({ id }: Props) {
                     mr="xl" />
             </MediaQuery>
 
-            <IconAddPanel
+            {/* <IconAddPanel
                 id='add-panel-head'
-                position='head' />
+                position='head' /> */}
+            <div />
 
             <IconHelp id={`help-${id}`} />
 
