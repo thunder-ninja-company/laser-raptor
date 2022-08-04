@@ -17,7 +17,7 @@ export default function IconAddPanel({ id, position }: Props) {
             className={classes.iconAddPanel}
             size={IconSize.large}
             onClick={handleClick}
-            stroke={3}
+            stroke={1}
             id={id} />
     );
 }

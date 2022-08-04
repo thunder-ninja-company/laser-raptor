@@ -17,7 +17,7 @@ export default function IconAddItem({ id, panelId, position, isHovering }: Props
             className={classes.iconAddItem}
             onClick={handleClick}
             size={IconSize.small}
-            stroke={2}
+            stroke={1}
             id={id} />
     );
 }

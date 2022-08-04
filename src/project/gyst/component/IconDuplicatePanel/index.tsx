@@ -18,6 +18,6 @@ export default function IconDuplicatePanel({ panelId }: Props) {
             className={classes.iconDuplicatePanel}
             onClick={handleClick}
             size={IconSize.small}
-            stroke={2} />
+            stroke={1} />
     );
 }

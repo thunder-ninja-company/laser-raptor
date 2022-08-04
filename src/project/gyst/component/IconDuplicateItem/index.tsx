@@ -17,6 +17,6 @@ export default function IconDuplicateItem({ itemId }: Props) {
             className={classes.iconDuplicateItem}
             onClick={handleClick}
             size={IconSize.small}
-            stroke={2} />
+            stroke={1} />
     );
 }

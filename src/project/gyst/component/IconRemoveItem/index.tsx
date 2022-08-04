@@ -17,7 +17,7 @@ export default function IconRemoveItem({ id, itemId }: Props) {
             className={classes.iconRemoveItem}
             onClick={handleClick}
             size={IconSize.small}
-            stroke={2}
+            stroke={1}
             id={id} />
     );
 }
