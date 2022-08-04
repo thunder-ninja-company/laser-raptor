@@ -8,6 +8,7 @@ import DragItem from '../DragItem';
 import React from 'react';
 import HeaderFooter from './component/HeaderFooter';
 import { LessProminentIconColor } from 'gyst/constant';
+import { IconSettings } from '@tabler/icons';
 
 export default function DragPanel({ dragPanel }: Props) {
 
@@ -30,13 +31,17 @@ export default function DragPanel({ dragPanel }: Props) {
                     justify='right'>
                     <div className={classes.hoverBar} />
                     <Menu className={classes.panelMenu}>
-                        <Menu.Item>
-                            <IconRemovePanel
-                                panelId={panelId} />
+                        <Menu.Item
+                            icon={
+                                <IconRemovePanel panelId={panelId} />
+                            }>
+                            {'Remove Group'}
                         </Menu.Item>
-                        <Menu.Item>
-                            <IconDuplicatePanel
-                                panelId={panelId} />
+                        <Menu.Item
+                            icon={
+                                <IconDuplicatePanel panelId={panelId} />
+                            }>
+                            {'Copy Group'}
                         </Menu.Item>
                     </Menu>
                 </HeaderFooter>

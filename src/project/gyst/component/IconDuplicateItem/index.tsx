@@ -1,4 +1,4 @@
-import { GystAppContext, ItemIconSize } from 'gyst/constant';
+import { GystAppContext, IconSize } from 'gyst/constant';
 import { IconCopy } from '@tabler/icons';
 import type { Props } from "./type";
 import { useContext } from 'react';
@@ -16,7 +16,7 @@ export default function IconDuplicateItem({ itemId }: Props) {
         <IconCopy
             className={classes.iconDuplicateItem}
             onClick={handleClick}
-            size={ItemIconSize}
+            size={IconSize.small}
             stroke={2} />
     );
 }

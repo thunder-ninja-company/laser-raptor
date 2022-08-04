@@ -128,17 +128,23 @@ export default function DragItem({ dragItem, panelId, type }: DragItemProps) {
                         <Grid.Col
                             className={classes.columnRight}
                             span={1}>
-                                <Menu className={classes.itemMenu}>
-                                    <Menu.Item>
+                            <Menu className={classes.itemMenu}>
+                                <Menu.Item
+                                    icon={
                                         <IconDuplicateItem
                                             itemId={itemId} />
-                                    </Menu.Item>
-                                    <Menu.Item>
+                                    }>
+                                    {'Remove'}
+                                </Menu.Item>
+                                <Menu.Item
+                                    icon={
                                         <IconRemoveItem
                                             id={`remove-item-${itemId}`}
                                             itemId={itemId} />
-                                    </Menu.Item>
-                                </Menu>
+                                    }>
+                                    {'Copy'}
+                                </Menu.Item>
+                            </Menu>
                         </Grid.Col>
                     </Grid>
                 </div>

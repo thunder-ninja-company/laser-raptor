@@ -1,4 +1,4 @@
-import { GystAppContext, ItemIconSize } from 'gyst/constant';
+import { GystAppContext, IconSize } from 'gyst/constant';
 import { IconCopy } from '@tabler/icons';
 import type { Props } from "./type";
 import { useStyles } from './style';
@@ -17,7 +17,7 @@ export default function IconDuplicatePanel({ panelId }: Props) {
         <IconCopy
             className={classes.iconDuplicatePanel}
             onClick={handleClick}
-            size={ItemIconSize}
+            size={IconSize.small}
             stroke={2} />
     );
 }

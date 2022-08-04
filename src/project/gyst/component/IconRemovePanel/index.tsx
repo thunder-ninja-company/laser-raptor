@@ -17,6 +17,7 @@ export default function IconRemovePanel({ id, panelId }: Props) {
             className={classes.iconRemovePanel}
             onClick={handleClick}
             size={IconSize.small}
-            stroke={2} />
+            stroke={2}
+            id={id} />
     );
 }
