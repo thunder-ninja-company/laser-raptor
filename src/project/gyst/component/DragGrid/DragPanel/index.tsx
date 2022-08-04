@@ -11,14 +11,14 @@ import { LessProminentIconColor } from 'gyst/constant';
 
 export default function DragPanel({ dragPanel }: Props) {
 
-    const { classes } = useStyles();
-
     const { id : panelId, items } = dragPanel;
 
     const {
         hovered : isHovering,
         ref     : refHover,
     } = useHover();
+
+    const { classes } = useStyles({ isHovering });
 
     return (
         <Box
@@ -27,10 +27,9 @@ export default function DragPanel({ dragPanel }: Props) {
             id={panelId}>
             <DragSource panelId={panelId}>
                 <HeaderFooter
-                    isHovering={isHovering}
                     justify='right'>
                     <div className={classes.hoverBar} />
-                    <Menu style={{ paddingTop : '8px'}}>
+                    <Menu className={classes.panelMenu}>
                         <Menu.Item>
                             <IconRemovePanel
                                 panelId={panelId} />
@@ -68,7 +67,6 @@ export default function DragPanel({ dragPanel }: Props) {
                         </LandingZone>
                 )}
                 <HeaderFooter
-                    isHovering={isHovering}
                     justify='left'>
                     <IconAddItem
                         id={`add-item-tail-${dragPanel.id}`}

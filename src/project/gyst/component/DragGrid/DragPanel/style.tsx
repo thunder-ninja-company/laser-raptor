@@ -1,6 +1,7 @@
+import type { PropsHeaderFooter } from "./type";
 import { createStyles } from "@mantine/core";
 
-export const useStyles = createStyles(_theme => ({
+export const useStyles = createStyles((_theme, { isHovering } : { isHovering : boolean; }) => ({
     dragPanel: {
         display: 'flex',
         width : '100%'
@@ -11,17 +12,19 @@ export const useStyles = createStyles(_theme => ({
     },
 
     hoverBar : {
-        borderTop : '1px solid #eee',
-        borderBottom : '1px solid #eee',
+        borderTop : `1px solid ${isHovering ? ' #ccc' : '#fff'}`,
+        borderBottom : `1px solid ${isHovering ? ' #ccc' : '#fff'}`,
         marginRight: '8px',
         marginTop : '9px',
         width : '100%',
         height : '4px',
     },
 
-    headerFooter : {
-        height : '20px',
-        alignItems: 'center',
-        display: 'flex',
-    },
+    panelMenu : {
+        paddingTop : '8px',
+
+        button : {
+            color : isHovering ? ' #ccc' : '#fff',
+        }
+    }
 }));

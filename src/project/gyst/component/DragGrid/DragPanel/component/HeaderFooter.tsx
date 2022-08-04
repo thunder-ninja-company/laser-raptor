@@ -1,9 +1,9 @@
 import type { PropsHeaderFooter } from '../type';
-import { useStyles } from '../style';
+import { useStyles } from './style';
 import { Box} from '@mantine/core';
 import React from 'react';
 
-export default function HeaderFooter({ children, justify, isHovering }: PropsHeaderFooter) {
+export default function HeaderFooter({ children, justify }: PropsHeaderFooter) {
 
     const { classes } = useStyles();
 
@@ -15,7 +15,7 @@ export default function HeaderFooter({ children, justify, isHovering }: PropsHea
         <Box
             className={classes.headerFooter}
             sx={customStyle}>
-            {isHovering && children}
+            {children}
         </Box>
     );
 }

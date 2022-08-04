@@ -7,10 +7,7 @@ export type Props = React.PropsWithChildren<{
 
 export type PropsHeaderFooter = React.PropsWithChildren<{
     justify : 'left'  | 'right';
-    isHovering : boolean;
 }>
-
-
 
 export interface DragPanelDTO {
     id: string;
