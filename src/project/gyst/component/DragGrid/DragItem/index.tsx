@@ -22,7 +22,7 @@ export default function DragItem({ dragItem, panelId, type }: DragItemProps) {
         ref     : refHover,
     } = useHover();
 
-    const { classes } = useStyles();
+    const { classes } = useStyles({ isHovering });
 
     const {
         id : itemId,
@@ -127,11 +127,9 @@ export default function DragItem({ dragItem, panelId, type }: DragItemProps) {
                         </Grid.Col>
                         <Grid.Col
                             className={classes.columnRight}
-
                             span={1}>
-
-                                <Menu>
-                                    <Menu.Item sx={{ color : isHovering ? 'red' : 'blue' }}>
+                                <Menu className={classes.itemMenu}>
+                                    <Menu.Item>
                                         <IconDuplicateItem
                                             itemId={itemId} />
                                     </Menu.Item>

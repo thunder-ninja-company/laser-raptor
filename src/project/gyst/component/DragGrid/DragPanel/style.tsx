@@ -12,8 +12,8 @@ export const useStyles = createStyles((_theme, { isHovering } : { isHovering : b
     },
 
     hoverBar : {
-        borderTop : `1px solid ${isHovering ? ' #ccc' : '#fff'}`,
-        borderBottom : `1px solid ${isHovering ? ' #ccc' : '#fff'}`,
+        borderTop : `1px solid ${isHovering ? ' #aaa' : '#fff'}`,
+        borderBottom : `1px solid ${isHovering ? ' #aaa' : '#fff'}`,
         marginRight: '8px',
         marginTop : '9px',
         width : '100%',
@@ -24,7 +24,7 @@ export const useStyles = createStyles((_theme, { isHovering } : { isHovering : b
         paddingTop : '8px',
 
         button : {
-            color : isHovering ? ' #ccc' : '#fff',
+            color : isHovering ? ' #aaa' : '#fff',
         }
     }
 }));

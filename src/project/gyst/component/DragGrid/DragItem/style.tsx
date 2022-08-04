@@ -2,7 +2,7 @@ import { createStyles, CSSObject } from "@mantine/core";
 
 
 
-export const useStyles = createStyles((theme) => ({
+export const useStyles = createStyles((theme, { isHovering } : { isHovering : boolean;}) => ({
     dragItem : {
         cursor : 'grab',
     },
@@ -43,6 +43,10 @@ export const useStyles = createStyles((theme) => ({
         alignItems : 'center',
         display: 'flex',
         width : '50px',
+    },
+    itemMenu : {
+        button : {
+            color : isHovering ? ' #aaa' : '#fff',
+        }
     }
-
 }));

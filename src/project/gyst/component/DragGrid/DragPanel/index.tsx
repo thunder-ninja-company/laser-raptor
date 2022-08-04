@@ -33,9 +33,6 @@ export default function DragPanel({ dragPanel }: Props) {
                         <Menu.Item>
                             <IconRemovePanel
                                 panelId={panelId} />
-                            <Text>
-                                {'test'}
-                            </Text>
                         </Menu.Item>
                         <Menu.Item>
                             <IconDuplicatePanel
@@ -69,6 +66,7 @@ export default function DragPanel({ dragPanel }: Props) {
                 <HeaderFooter
                     justify='left'>
                     <IconAddItem
+                        isHovering={isHovering}
                         id={`add-item-tail-${dragPanel.id}`}
                         position='tail'
                         panelId={panelId} />
