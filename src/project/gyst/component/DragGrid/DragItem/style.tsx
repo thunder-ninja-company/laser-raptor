@@ -1,9 +1,16 @@
 import { createStyles, CSSObject } from "@mantine/core";
 import { LessProminentIconColor } from "gyst/constant";
+import type { DragItemType, ItemStatus } from "./type";
 
-
-
-export const useStyles = createStyles((theme, { isHovering } : { isHovering : boolean;}) => ({
+export const useStyles = createStyles((theme, {
+    isHovering,
+    itemStatus,
+    position,
+} : {
+    isHovering : boolean;
+    itemStatus : ItemStatus;
+    position   : DragItemType;
+}) => ({
     dragItem : {
         cursor : 'grab',
     },
@@ -35,9 +42,14 @@ export const useStyles = createStyles((theme, { isHovering } : { isHovering : bo
     },
 
     iconToggleItem: {
-        marginLeft : theme.spacing.md,
+        paddingRight : theme.spacing.md,
+        paddingTop : (position === 'head'
+            ? theme.spacing.xs
+            : 6),
         cursor     : 'pointer',
-        color      : isHovering ? ' #aaa' : '#fff',
+        color      : itemStatus === 'checked'
+            ? '#000'
+            : (isHovering ? ' #aaa' : '#fff'),
     },
 
     columnLeft : {

@@ -12,7 +12,7 @@ export const useStyles = createStyles((_theme, { isHovering } : { isHovering : b
     },
 
     hoverBar : {
-        borderTop : `1px solid ${isHovering ? ' #aaa' : '#fff'}`,
+        // borderTop : `1px solid ${isHovering ? ' #aaa' : '#fff'}`,
         borderBottom : `1px solid ${isHovering ? ' #aaa' : '#fff'}`,
         marginRight: '8px',
         marginTop : '9px',

@@ -51,7 +51,6 @@ export default function DragPanel({ dragPanel }: Props) {
                             onClick={handleRemovePanel}
                             icon={
                                 <IconRemovePanel id={panelId} />
-
                             }>
                             {'Remove All'}
                         </Menu.Item>
@@ -62,7 +61,7 @@ export default function DragPanel({ dragPanel }: Props) {
                     type='panel'
                     index={0}>
                     <DragItem
-                        type='head'
+                        position='head'
                         panelId={panelId}
                         dragItem={items[0]} />
                 </LandingZone>
@@ -76,10 +75,14 @@ export default function DragPanel({ dragPanel }: Props) {
                             type='panel'>
                             <DragItem
                                 panelId={panelId}
-                                type='item'
+                                position='item'
                                 dragItem={dragItem} />
                         </LandingZone>
                 )}
+                <LandingZone
+                    panelId={panelId}
+                    type='panel'
+                    index={items.length} />
                 <HeaderFooter
                     justify='left'>
                     <IconAddItem

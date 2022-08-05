@@ -12,12 +12,12 @@ export interface FormValues {
     email: string;
 }
 
-
-type DragItemType = 'head' | 'item' | 'tail';
+// rename this, doesnt make sense anymore
+export type DragItemType = 'head' | 'item' | 'tail';
 
 
 export interface DragItemProps {
     dragItem: DragItemDTO;
     panelId: string;
-    type : DragItemType;
+    position : DragItemType;
 }

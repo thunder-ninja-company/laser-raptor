@@ -4,7 +4,7 @@ import { Box, Grid, TextInput } from '@mantine/core';
 import { useDebouncedCallback } from 'use-debounce';
 import type { DragDropState } from '../type';
 import type { DragItemProps, FormValues } from './type';
-import { IconPencil, IconCheckbox, IconSquare } from '@tabler/icons';
+import { IconPencil, IconSquareCheck, IconSquare, IconCheckbox } from '@tabler/icons';
 import { useHover } from '@mantine/hooks';
 import { IconSize, GystAppContext } from 'gyst/constant';
 import { useForm } from '@mantine/form';
@@ -13,7 +13,7 @@ import { useStyles } from './style';
 import { useDrag } from 'react-dnd';
 import { useContext } from 'react';
 
-export default function DragItem({ dragItem, panelId, type }: DragItemProps) {
+export default function DragItem({ dragItem, panelId, position }: DragItemProps) {
 
     console.log(`DragItem(${dragItem.value})`);
 
@@ -22,12 +22,22 @@ export default function DragItem({ dragItem, panelId, type }: DragItemProps) {
         ref     : refHover,
     } = useHover();
 
-    const { classes } = useStyles({ isHovering });
+    const {
+        hovered : isHoveringCheckbox,
+        ref     : refHoverCheckbox,
+    } = useHover();
 
     const {
-        id : itemId,
-        value : itemValue,
+        status : itemStatus,
+        value  : itemValue,
+        id     : itemId,
     } = dragItem;
+
+    const { classes } = useStyles({
+        isHovering,
+        itemStatus,
+        position,
+    });
 
     const form = useForm<FormValues>({
         initialValues : {
@@ -39,7 +49,7 @@ export default function DragItem({ dragItem, panelId, type }: DragItemProps) {
     const context = useContext(DragGridContext);
     const gystAppContext = useContext(GystAppContext);
 
-    const [{ isDragging }, drag, dragPreview] = useDrag(() => ({
+    const [{ isDragging : _ }, drag, dragPreview] = useDrag(() => ({
         type: 'item',
         collect: (monitor) => ({
             isDragging: monitor.isDragging()
@@ -118,14 +128,19 @@ export default function DragItem({ dragItem, panelId, type }: DragItemProps) {
                             className={classes.columnLeft}
                             span={1}>
                             <Box
-                            className={classes.iconToggleItem}
-                                onClick={handleToggleItem}>
-                                {/* <IconCheckbox
-                                    size={IconSize.small}
-                                    stroke={1} /> */}
-                                <IconSquare
-                                    size={IconSize.small}
-                                    stroke={1} />
+                                className={classes.iconToggleItem}
+                                onClick={handleToggleItem}
+                                ref={refHoverCheckbox}>
+                                {itemStatus === 'checked'
+                                    ? <IconCheckbox
+
+                                        stroke={1} />
+                                    : isHoveringCheckbox
+                                        ? <IconSquareCheck
+                                            stroke={1} />
+                                        : <IconSquare
+                                            stroke={1} />
+                                }
                             </Box>
                         </Grid.Col>
                         <Grid.Col
@@ -134,7 +149,7 @@ export default function DragItem({ dragItem, panelId, type }: DragItemProps) {
                             <TextInput
                                 {...form.getInputProps('value')}
                                 className={
-                                    type === 'head'
+                                    position === 'head'
                                         ? classes.largeInput
                                         : classes.smallInput
                                 }
