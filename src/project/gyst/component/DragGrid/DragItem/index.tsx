@@ -6,7 +6,7 @@ import type { DragDropState } from '../type';
 import type { DragItemProps, FormValues } from './type';
 import { IconPencil } from '@tabler/icons';
 import { useHover } from '@mantine/hooks';
-import { IconSize } from 'gyst/constant';
+import { IconSize, GystAppContext } from 'gyst/constant';
 import { useForm } from '@mantine/form';
 import { Menu } from '@mantine/core';
 import { useStyles } from './style';
@@ -37,6 +37,7 @@ export default function DragItem({ dragItem, panelId, type }: DragItemProps) {
     });
 
     const context = useContext(DragGridContext);
+    const gystAppContext = useContext(GystAppContext);
 
     const [{ isDragging }, drag, dragPreview] = useDrag(() => ({
         type: 'item',
@@ -94,6 +95,15 @@ export default function DragItem({ dragItem, panelId, type }: DragItemProps) {
         console.log(`Blur ${dragItem.id}`)
     };
 
+    const handleRemoveItem = () => {
+        gystAppContext?.removeItem(itemId);
+    };
+
+    const handleDuplicateItem = () => {
+        debugger;
+        gystAppContext?.duplicateItem(itemId);
+    };
+
     return (
         <Box
             className={classes.dragItem}
@@ -130,20 +140,22 @@ export default function DragItem({ dragItem, panelId, type }: DragItemProps) {
                             span={1}>
                             <Menu className={classes.itemMenu}>
                                 <Menu.Item
+                                    onClick={handleDuplicateItem}
                                     icon={
                                         <IconDuplicateItem
-                                            itemId={itemId} />
+                                            id={itemId} />
+                                    }>
+                                    {'Duplicate'}
+                                </Menu.Item>
+                                <Menu.Item
+                                    onClick={handleRemoveItem}
+                                    icon={
+                                        <IconRemoveItem
+                                            id={`remove-item-${itemId}`} />
                                     }>
                                     {'Remove'}
                                 </Menu.Item>
-                                <Menu.Item
-                                    icon={
-                                        <IconRemoveItem
-                                            id={`remove-item-${itemId}`}
-                                            itemId={itemId} />
-                                    }>
-                                    {'Copy'}
-                                </Menu.Item>
+
                             </Menu>
                         </Grid.Col>
                     </Grid>

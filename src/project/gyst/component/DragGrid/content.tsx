@@ -41,13 +41,3 @@ export default function DragGridContent({ dragGrid : { id, panels }} : Props) {
         </Box>
     );
 }
-
-/**
- * <br />
-            <LandingZone
-                index={panels.length + 1}
-                panelId={null}
-                type='grid'>
-                {'GRID3'}
-            </LandingZone>
- */

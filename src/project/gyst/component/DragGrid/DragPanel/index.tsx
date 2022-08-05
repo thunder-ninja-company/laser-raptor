@@ -1,14 +1,14 @@
 import { DragSource, IconDuplicatePanel, IconRemovePanel, IconAddItem } from 'gyst/component';
 import { Menu, Box, Text } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
+import { useContext } from 'react';
 import LandingZone from '../LandingZone';
 import type { Props } from './type';
 import { useStyles } from './style';
 import DragItem from '../DragItem';
 import React from 'react';
 import HeaderFooter from './component/HeaderFooter';
-import { LessProminentIconColor } from 'gyst/constant';
-import { IconSettings } from '@tabler/icons';
+import { GystAppContext } from 'gyst/constant';
 
 export default function DragPanel({ dragPanel }: Props) {
 
@@ -21,6 +21,15 @@ export default function DragPanel({ dragPanel }: Props) {
 
     const { classes } = useStyles({ isHovering });
 
+    const gystAppContext = useContext(GystAppContext);
+
+    const handleDuplicatePanel = () => {
+        gystAppContext?.duplicatePanel(panelId);
+    }
+    const handleRemovePanel = () => {
+        gystAppContext?.removePanel(panelId);
+    }
+
     return (
         <Box
             className={classes.dragPanel}
@@ -32,16 +41,19 @@ export default function DragPanel({ dragPanel }: Props) {
                     <div className={classes.hoverBar} />
                     <Menu className={classes.panelMenu}>
                         <Menu.Item
+                            onClick={handleDuplicatePanel}
                             icon={
-                                <IconRemovePanel panelId={panelId} />
+                                <IconDuplicatePanel id={panelId} />
                             }>
-                            {'Remove Group'}
+                            {'Duplicate All'}
                         </Menu.Item>
                         <Menu.Item
+                            onClick={handleRemovePanel}
                             icon={
-                                <IconDuplicatePanel panelId={panelId} />
+                                <IconRemovePanel id={panelId} />
+
                             }>
-                            {'Copy Group'}
+                            {'Remove All'}
                         </Menu.Item>
                     </Menu>
                 </HeaderFooter>
