@@ -18,7 +18,7 @@ export const useStyles = createStyles((theme, {
     largeInput : {
         width : '100%',
 
-        input : {
+        textarea : {
             backgroundColor : 'transparent',
             outline         : 'none',
             resize          : 'none',
@@ -31,7 +31,7 @@ export const useStyles = createStyles((theme, {
     smallInput : {
         width : '100%',
 
-        input : {
+        textarea : {
             backgroundColor : 'transparent',
             outline         : 'none',
             resize          : 'none',

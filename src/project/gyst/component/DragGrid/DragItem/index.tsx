@@ -1,6 +1,6 @@
 import { IconRemoveItem, IconDuplicateItem } from 'gyst/component';
 import { DragGridContext, initialDragDropState } from '../constant';
-import { Box, Grid, TextInput } from '@mantine/core';
+import { Box, Grid, TextInput, Textarea } from '@mantine/core';
 import { useDebouncedCallback } from 'use-debounce';
 import type { DragDropState } from '../type';
 import type { DragItemProps, FormValues } from './type';
@@ -11,7 +11,7 @@ import { useForm } from '@mantine/form';
 import { Menu } from '@mantine/core';
 import { useStyles } from './style';
 import { useDrag } from 'react-dnd';
-import { useContext } from 'react';
+import { ChangeEventHandler, useContext } from 'react';
 
 export default function DragItem({ dragItem, panelId, position }: DragItemProps) {
 
@@ -90,7 +90,7 @@ export default function DragItem({ dragItem, panelId, position }: DragItemProps)
         2000
     );
 
-    const handleChangeValue = (evt: React.FormEvent<HTMLInputElement>) => {
+    const handleChangeValue = (evt: { currentTarget: { value: any; }; }) => {
 
         const value = evt.currentTarget.value;
 
@@ -132,9 +132,7 @@ export default function DragItem({ dragItem, panelId, position }: DragItemProps)
                                 onClick={handleToggleItem}
                                 ref={refHoverCheckbox}>
                                 {itemStatus === 'checked'
-                                    ? <IconCheckbox
-
-                                        stroke={1} />
+                                    ? <IconCheckbox stroke={1} />
                                     : isHoveringCheckbox
                                         ? <IconSquareCheck
                                             stroke={1} />
@@ -146,16 +144,17 @@ export default function DragItem({ dragItem, panelId, position }: DragItemProps)
                         <Grid.Col
                             className={classes.columnMiddle}
                             span={10}>
-                            <TextInput
+                            <Textarea
                                 {...form.getInputProps('value')}
+                                onChange={handleChangeValue}
+                                autosize={true}
+                                minRows={1}
                                 className={
                                     position === 'head'
                                         ? classes.largeInput
                                         : classes.smallInput
-                                }
-                                onChange={handleChangeValue}
-                                icon={textboxInputIcon}
-                                onBlur={handleBlur} />
+                                } />
+
                         </Grid.Col>
                         <Grid.Col
                             className={classes.columnRight}

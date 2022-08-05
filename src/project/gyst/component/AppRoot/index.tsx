@@ -90,8 +90,6 @@ export default function AppRoot({ id }: Props) {
     };
 
     const handleRemovePanel = (panelId: string) : void => {
-        debugger;
-
         console.log(`handleRemovePanel ${panelId}`);
 
         const copyGrid = copyObject(dragGrid) as DragGridDTO;

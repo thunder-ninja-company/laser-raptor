@@ -57,6 +57,16 @@ export const DragGridInitialState: DragGridDTO = {
                     id: "id-beta",
                     value: "Fix deep render issue in react",
                 },
+                {
+                    ...initialDragItem,
+                    id: "id-epsilon",
+                    value: "Fix drag drop weirdness in copying item",
+                },
+                {
+                    ...initialDragItem,
+                    id: "id-epsilon",
+                    value: "Fix this text cutoff issue on long test alalalalala al sdafkjasldkfj aoisdf oaierjg oiaejrg ojaerg",
+                },
             ],
         },
         {
