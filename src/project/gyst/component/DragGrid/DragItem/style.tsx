@@ -1,4 +1,5 @@
 import { createStyles, CSSObject } from "@mantine/core";
+import { LessProminentIconColor } from "gyst/constant";
 
 
 
@@ -33,16 +34,27 @@ export const useStyles = createStyles((theme, { isHovering } : { isHovering : bo
         }
     },
 
+    iconToggleItem: {
+        marginLeft : theme.spacing.md,
+        cursor     : 'pointer',
+        color      : isHovering ? ' #aaa' : '#fff',
+    },
+
     columnLeft : {
         alignItems : 'center',
-        display: 'flex',
+        display    : 'flex',
+    },
+
+    columnMiddle : {
+        alignItems : 'center',
+        display    : 'flex',
 
     },
 
     columnRight : {
         alignItems : 'center',
-        display: 'flex',
-        width : '50px',
+        display    : 'flex',
+        width      : '50px',
     },
     itemMenu : {
         button : {

@@ -1,24 +1,17 @@
-
-import { GystAppContext } from 'gyst/constant';
 import { IconCheckbox } from '@tabler/icons';
+import { IconSize } from 'gyst/constant';
 import type { Props } from "./type";
-import { useContext } from 'react';
 import { useStyles } from './style';
 
-export default function IconToggleItem({ id, itemId, size }: Props) {
+export default function IconToggleItem({ id }: Props) {
 
     const { classes } = useStyles();
-
-    const context = useContext(GystAppContext);
-
-    const handleClick = () => context?.toggleItem(itemId);
 
     return (
         <IconCheckbox
             className={classes.iconToggleItem}
-            onClick={handleClick}
+            size={IconSize.small}
             stroke={1}
-
             id={id} />
     );
 }

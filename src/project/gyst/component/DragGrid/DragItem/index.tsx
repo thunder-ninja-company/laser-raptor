@@ -1,10 +1,10 @@
-import { IconRemoveItem, IconDuplicateItem, IconToggleItem } from 'gyst/component';
+import { IconRemoveItem, IconDuplicateItem } from 'gyst/component';
 import { DragGridContext, initialDragDropState } from '../constant';
 import { Box, Grid, TextInput } from '@mantine/core';
 import { useDebouncedCallback } from 'use-debounce';
 import type { DragDropState } from '../type';
 import type { DragItemProps, FormValues } from './type';
-import { IconPencil } from '@tabler/icons';
+import { IconPencil, IconCheckbox, IconSquare } from '@tabler/icons';
 import { useHover } from '@mantine/hooks';
 import { IconSize, GystAppContext } from 'gyst/constant';
 import { useForm } from '@mantine/form';
@@ -100,9 +100,10 @@ export default function DragItem({ dragItem, panelId, type }: DragItemProps) {
     };
 
     const handleDuplicateItem = () => {
-        debugger;
         gystAppContext?.duplicateItem(itemId);
     };
+
+    const handleToggleItem = () => gystAppContext?.toggleItem(itemId);
 
     return (
         <Box
@@ -116,13 +117,19 @@ export default function DragItem({ dragItem, panelId, type }: DragItemProps) {
                         <Grid.Col
                             className={classes.columnLeft}
                             span={1}>
-                            <IconToggleItem
-                                id={`toggle-item-${itemId}`}
-                                size={IconSize.small}
-                                itemId={itemId} />
+                            <Box
+                            className={classes.iconToggleItem}
+                                onClick={handleToggleItem}>
+                                {/* <IconCheckbox
+                                    size={IconSize.small}
+                                    stroke={1} /> */}
+                                <IconSquare
+                                    size={IconSize.small}
+                                    stroke={1} />
+                            </Box>
                         </Grid.Col>
                         <Grid.Col
-                            className={classes.columnLeft}
+                            className={classes.columnMiddle}
                             span={10}>
                             <TextInput
                                 {...form.getInputProps('value')}
