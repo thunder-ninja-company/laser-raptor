@@ -29,14 +29,20 @@ export default function DragGridContent({ dragGrid : { id, panels }} : Props) {
                         </LandingZone>
                     </Grid.Col>
                 )}
-            <Grid.Col
-                xs={12}
-                md={6}
-                lg={4}>
-                <IconAddPanel
-                    id='add-panel-tail'
-                    position='tail' />
+                <Grid.Col
+                    xs={12}
+                    md={6}
+                    lg={4}>
+                    <LandingZone
+                        index={panels.length}
+                        panelId={null}
+                        type='grid'>
+                        <IconAddPanel
+                            id='add-panel-tail'
+                            position='tail' />
+                    </LandingZone>
                 </Grid.Col>
+
             </Grid>
         </Box>
     );
