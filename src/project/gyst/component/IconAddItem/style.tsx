@@ -3,7 +3,7 @@ import { createStyles } from '@mantine/core';
 
 export const useStyles = createStyles((_theme, { isHovering } : { isHovering : boolean; }) => ({
     iconAddItem: {
-        marginLeft : _theme.spacing.xs * 2 + 4,
+        marginLeft : _theme.spacing.xs + 2,
         cursor      : 'pointer',
         color       : isHovering
             ? LessProminentIconColor

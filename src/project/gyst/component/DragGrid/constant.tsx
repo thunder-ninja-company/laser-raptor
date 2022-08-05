@@ -50,12 +50,12 @@ export const DragGridInitialState: DragGridDTO = {
                 {
                     ...initialDragItem,
                     id: "id-alpha",
-                    value: "Alpha",
+                    value: "Todo",
                 },
                 {
                     ...initialDragItem,
                     id: "id-beta",
-                    value: "Beta",
+                    value: "Fix deep render issue in react",
                 },
             ],
         },
@@ -65,7 +65,7 @@ export const DragGridInitialState: DragGridDTO = {
                 {
                     ...initialDragItem,
                     id: "id-charlie",
-                    value: "Charlie",
+                    value: "Done",
                 },
                 {
                     ...initialDragItem,
