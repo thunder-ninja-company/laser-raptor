@@ -6,7 +6,7 @@ const selectState = (state : GystAppRoot) => state
 export const selectDragGrid = createSelector(
     selectState,
   (_selectState) => {
-    debugger;
+    // debugger;
     return _selectState.dragGrid;
   }
 )

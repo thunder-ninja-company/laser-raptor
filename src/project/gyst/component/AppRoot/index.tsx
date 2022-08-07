@@ -1,8 +1,9 @@
 import { initialDragItem, initialDragPanel } from "gyst/component/DragGrid/constant";
+import { AppHeader, AppBody, DragGrid, KeyValueList } from "gyst/component";
+import type { DragItemDTO } from "gyst/component/DragGrid/DragItem/type";
 import type { GystAppContextDTO, ListPosition } from "gyst/type";
 import type { DragGridDTO } from "gyst/component/DragGrid/type";
 import { AppShell, Grid, MantineProvider } from "@mantine/core";
-import { AppHeader, AppBody, DragGrid } from "gyst/component";
 import { GystAppContext, ProjectName } from "gyst/constant";
 import { selectDragGrid } from "gyst/selector";
 import { useAppDispatch } from 'core/hooks';
@@ -10,7 +11,6 @@ import { useSelector } from "react-redux";
 import { copyObject } from "gyst/shared";
 import { useStyles } from "./style";
 import type { Props } from "./type";
-import { useEffect } from "react";
 import { nanoid } from "nanoid";
 import slice from "gyst/slice";
 import {
@@ -18,7 +18,6 @@ import {
     insertPanel, insertItem, removeItem,
     duplicatePanel, removeEmptyPanels,
 } from "gyst/component/DragGrid/logic";
-import type { DragItemDTO } from "../DragGrid/DragItem/type";
 
 const {
     actions : {
@@ -190,6 +189,9 @@ export default function AppRoot({ id }: Props) {
                     <AppBody id={`app-body-${id}`}>
                         <Grid>
                             <Grid.Col span={12}>
+                                {/* Idea for keyvalue list is to type hint all tyoes and have custom handlers for each
+                                eacy to use everywhere and locally customizable for weird code */}
+                                <KeyValueList value={dragGrid} />
                                 <DragGrid
                                     onChange={handleChange}
                                     dragGrid={dragGrid} />
