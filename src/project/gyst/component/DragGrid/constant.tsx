@@ -49,23 +49,23 @@ export const DragGridInitialState: DragGridDTO = {
             items: [
                 {
                     ...initialDragItem,
-                    id: "id-alpha",
-                    value: "Todo",
+                    id: "item-alpha",
+                    value: "alpha",
                 },
                 {
                     ...initialDragItem,
-                    id: "id-beta",
-                    value: "Fix deep render issue in react",
+                    id: "item-beta",
+                    value: "beta",
                 },
                 {
                     ...initialDragItem,
-                    id: "id-epsilon",
-                    value: "Fix drag drop weirdness in copying item",
+                    id: "item-charlie",
+                    value: "charlie",
                 },
                 {
                     ...initialDragItem,
-                    id: "id-epsilon",
-                    value: "Fix this text cutoff issue on long test alalalalala al sdafkjasldkfj aoisdf oaierjg oiaejrg ojaerg",
+                    id: "item-delta",
+                    value: "delta",
                 },
             ],
         },
@@ -74,13 +74,13 @@ export const DragGridInitialState: DragGridDTO = {
             items: [
                 {
                     ...initialDragItem,
-                    id: "id-charlie",
-                    value: "Done",
+                    id: "item-echo",
+                    value: "echo",
                 },
                 {
                     ...initialDragItem,
-                    id: "id-delta",
-                    value: "Delta",
+                    id: "item-foxtrot",
+                    value: "foxtrot",
                 },
             ],
         },

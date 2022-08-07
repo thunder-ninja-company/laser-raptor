@@ -15,7 +15,7 @@ import { ChangeEventHandler, useContext } from 'react';
 
 export default function DragItem({ dragItem, panelId, position }: DragItemProps) {
 
-    console.log(`DragItem(${dragItem.value})`);
+    console.log('DragItem dragItem is now: ', dragItem);
 
     const {
         hovered : isHovering,
@@ -64,33 +64,9 @@ export default function DragItem({ dragItem, panelId, position }: DragItemProps)
             console.log(item)
         }
     }));
-    const fieldText = form.getInputProps('value').value;
-
-    const textboxInputIcon =
-        fieldText.length === 0
-            ? <IconPencil />
-            : null;
-
-    console.log(dragItem);
-
-    const debounced = useDebouncedCallback(_value => {
-
-        console.log(`useDebouncedCallback(${_value})`);
-
-        const newItem = {
-            ...dragItem,
-            value : form.getInputProps('value').value,
-        };
-
-        console.log('newItem:', newItem);
-
-        context?.onChangeItem(newItem);
-    },
-        // delay in ms
-        2000
-    );
 
     const handleChangeValue = (evt: { currentTarget: { value: any; }; }) => {
+        debugger;
 
         const value = evt.currentTarget.value;
 
@@ -98,11 +74,12 @@ export default function DragItem({ dragItem, panelId, position }: DragItemProps)
 
         form.setFieldValue('value', value);
 
-        debounced(value);
-    };
+        const newItem = {
+            ...dragItem,
+            value,
+        };
 
-    const handleBlur = (_evt: React.FormEvent<HTMLInputElement>) => {
-        console.log(`Blur ${dragItem.id}`)
+        context?.onChangeItem(newItem);
     };
 
     const handleRemoveItem = () => {
@@ -113,7 +90,11 @@ export default function DragItem({ dragItem, panelId, position }: DragItemProps)
         gystAppContext?.duplicateItem(itemId);
     };
 
-    const handleToggleItem = () => gystAppContext?.toggleItem(itemId);
+    const handleToggleItem = () => {
+        debugger;
+
+        gystAppContext?.toggleItem(itemId);
+    }
 
     return (
         <Box

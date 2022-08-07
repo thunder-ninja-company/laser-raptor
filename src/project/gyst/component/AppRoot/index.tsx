@@ -16,7 +16,7 @@ import slice from "gyst/slice";
 import {
     toggleItem, duplicateItem, removePanel,
     insertPanel, insertItem, removeItem,
-    duplicatePanel, removeEmptyPanels, changeItem,
+    duplicatePanel, removeEmptyPanels,
 } from "gyst/component/DragGrid/logic";
 import type { DragItemDTO } from "../DragGrid/DragItem/type";
 
@@ -33,12 +33,13 @@ export default function AppRoot({ id }: Props) {
 
     const dragGrid = useSelector(selectDragGrid);
 
-    useEffect(() => {
-    }, [dragGrid]);
+    console.log('AppRoot Drag grid is now: ', dragGrid);
 
     const dispatch = useAppDispatch();
 
     const handleChange = (value: DragGridDTO) => {
+        debugger;
+
         dispatch(updateGroupGridValue(value));
     }
 
@@ -124,6 +125,7 @@ export default function AppRoot({ id }: Props) {
     };
 
     const handleChangeItem = (item: DragItemDTO) : void => {
+        debugger;
         console.log(`handleChangeItem ${item.id}`);
 
         debugger;
@@ -189,9 +191,8 @@ export default function AppRoot({ id }: Props) {
                         <Grid>
                             <Grid.Col span={12}>
                                 <DragGrid
-                                    dragGrid={{...dragGrid}}
                                     onChange={handleChange}
-                                    key={nanoid()} />
+                                    dragGrid={dragGrid} />
                             </Grid.Col>
                         </Grid>
                     </AppBody>

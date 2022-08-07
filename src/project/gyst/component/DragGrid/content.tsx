@@ -10,6 +10,8 @@ export default function DragGridContent({ dragGrid : { id, panels }} : Props) {
 
     const { classes } = useStyles();
 
+    console.log('DragGridContent dragGrid is now: ', { id, panels });
+
     return (
         <Box
             className={classes.dragGrid}

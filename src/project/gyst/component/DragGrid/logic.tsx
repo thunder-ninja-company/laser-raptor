@@ -212,6 +212,8 @@ const dropOntoDifferentPanel = (
         itemIndex  : dragItemIndex,
     } = indexOfItemAndPanel(dragGrid, dragItemId);
 
+    debugger;
+
     dragGrid.panels[dragPanelIndex].items.splice(dragItemIndex, 1);
     dragGrid.panels[dropPanelIndex].items.splice(dropIndex, 0, itemCopy);
 

@@ -13,13 +13,10 @@ export default createSlice({
     reducers: {
         // Use the PayloadAction type to declare the contents of `action.payload`
         updateGroupGridValue: (state, action: PayloadAction<DragGridDTO>) => {
+            // debugger;
+            // console.log('updateGroupGridValue');
 
-            state.dragGrid = {
-                ...action.payload,
-            }
-
-            console.log('slice value now:');
-            console.log(state.dragGrid);
+            state.dragGrid = copyObject(action.payload) as DragGridDTO;
         },
     },
 });

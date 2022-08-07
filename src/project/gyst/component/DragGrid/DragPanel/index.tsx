@@ -14,6 +14,8 @@ export default function DragPanel({ dragPanel }: Props) {
 
     const { id : panelId, items } = dragPanel;
 
+    console.log('DragPanel dragPanel is now: ', dragPanel);
+
     const {
         hovered : isHovering,
         ref     : refHover,
@@ -29,6 +31,7 @@ export default function DragPanel({ dragPanel }: Props) {
     const handleRemovePanel = () => {
         gystAppContext?.removePanel(panelId);
     }
+
 
     return (
         <Box
@@ -56,28 +59,37 @@ export default function DragPanel({ dragPanel }: Props) {
                         </Menu.Item>
                     </Menu>
                 </HeaderFooter>
-                <LandingZone
-                    panelId={panelId}
-                    type='panel'
-                    index={0}>
-                    <DragItem
-                        position='head'
-                        panelId={panelId}
-                        dragItem={items[0]} />
-                </LandingZone>
+
                 {items
-                    .filter((_, itemIndex) => itemIndex !== 0) // skip first element
-                    .map((dragItem, index) =>
-                        <LandingZone
-                            key={dragItem.id}
-                            panelId={panelId}
-                            index={index + 1}
-                            type='panel'>
-                            <DragItem
+                    // .filter((_, itemIndex) => itemIndex !== 0) // skip first element
+                    .map((dragItem, index) => {
+                        return (
+                            index === 0
+                            ? <LandingZone
                                 panelId={panelId}
-                                position='item'
-                                dragItem={dragItem} />
-                        </LandingZone>
+                                type='panel'
+                                index={index}>
+                                    {`HEAD landing-zone-${dragItem.value}-${index}`}
+                                <DragItem
+                                    key={`landing-zone-${dragItem.value}-${index}`}
+                                    position='head'
+                                    panelId={panelId}
+                                    dragItem={dragItem} />
+                            </LandingZone>
+                            : <LandingZone
+                                key={`ITEM landing-zone-${dragItem.value}-${index + 1}`}
+                                panelId={panelId}
+                                index={index + 1}
+                                type='panel'>
+                                    {`ITEM landing-zone-${dragItem.value}-${index + 1}`}
+                                <DragItem
+                                    panelId={panelId}
+                                    position='item'
+                                    dragItem={dragItem} />
+                            </LandingZone>
+                        );
+                    }
+
                 )}
                 <LandingZone
                     panelId={panelId}

@@ -11,20 +11,25 @@ import React from "react";
 export default function DragGrid({ dragGrid, onChange }: Props) {
 
     const handleChangeDragDropHelper = (dragDropState : DragDropState) => {
+        debugger;
 
         const copyGrid = copyObject(dragGrid) as DragGridDTO;
 
         return changeDragDrop(copyGrid, dragDropState, onChange);
     }
 
-    const handleChangeItemHelper = (item : DragItemDTO) =>
-        changeItem(dragGrid, item, onChange);
+    const handleChangeItemHelper = (item : DragItemDTO) => {
+        return changeItem(dragGrid, item, onChange);
+    };
 
     const context : DragGridContextDTO = {
         onChangeItem : handleChangeItemHelper,
         onChange     : handleChangeDragDropHelper,
         dragGrid     : dragGrid,
     };
+
+    // DragGrid
+    console.log('DragGrid dragGrid is now: ', dragGrid);
 
     return (
         <DragGridContext.Provider value={context}>
