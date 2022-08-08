@@ -1,37 +1,37 @@
-import { IconRemoveItem, IconDuplicateItem } from 'gyst/component';
+import { Box, Grid, Textarea } from '@mantine/core';
+import type { DragDropState, DragGridContextDTO } from '../type';
 import { DragGridContext, initialDragDropState } from '../constant';
-import { Box, Grid, TextInput, Textarea } from '@mantine/core';
-import { useDebouncedCallback } from 'use-debounce';
-import type { DragDropState } from '../type';
 import type { DragItemProps, FormValues } from './type';
-import { IconPencil, IconSquareCheck, IconSquare, IconCheckbox } from '@tabler/icons';
-import { useHover } from '@mantine/hooks';
-import { IconSize, GystAppContext } from 'gyst/constant';
-import { useForm } from '@mantine/form';
-import { Menu } from '@mantine/core';
-import { useStyles } from './style';
-import { useDrag } from 'react-dnd';
-import { ChangeEventHandler, useContext } from 'react';
+import { IconCheckbox, IconSquare, IconSquareCheck } from '@tabler/icons';
+import { IconDuplicateItem, IconRemoveItem } from 'gyst/component';
 
-export default function DragItem({ dragItem, panelId, position }: DragItemProps) {
+import { Menu } from '@mantine/core';
+import { useContext } from 'react';
+import { useDrag } from 'react-dnd';
+import { useForm } from '@mantine/form';
+import { useHover } from '@mantine/hooks';
+import { useStyles } from './style';
+
+export default function DragItem({
+    dragItemIndex,
+    dragPanelIndex,
+    panelId,
+    position,
+}: DragItemProps) {
+    const context = useContext(DragGridContext);
+
+    const { duplicateItem, removeItem, toggleItem, dragGrid } =
+        context as DragGridContextDTO;
+
+    const dragItem = dragGrid.panels[dragPanelIndex].items[dragItemIndex];
 
     console.log('DragItem dragItem is now: ', dragItem);
 
-    const {
-        hovered : isHovering,
-        ref     : refHover,
-    } = useHover();
+    const { hovered: isHovering, ref: refHover } = useHover();
 
-    const {
-        hovered : isHoveringCheckbox,
-        ref     : refHoverCheckbox,
-    } = useHover();
+    const { hovered: isHoveringCheckbox, ref: refHoverCheckbox } = useHover();
 
-    const {
-        status : itemStatus,
-        value  : itemValue,
-        id     : itemId,
-    } = dragItem;
+    const { status: itemStatus, value: itemValue, id: itemId } = dragItem;
 
     const { classes } = useStyles({
         isHovering,
@@ -40,37 +40,35 @@ export default function DragItem({ dragItem, panelId, position }: DragItemProps)
     });
 
     const form = useForm<FormValues>({
-        initialValues : {
-            value : itemValue,
-            email : '',
+        initialValues: {
+            value: itemValue,
+            email: '',
         },
     });
 
-    const context = useContext(DragGridContext);
-    const gystAppContext = useContext(GystAppContext);
-
-    const [{ isDragging : _ }, drag, dragPreview] = useDrag(() => ({
+    const [{ isDragging: _ }, drag, dragPreview] = useDrag(() => ({
         type: 'item',
         collect: (monitor) => ({
-            isDragging: monitor.isDragging()
+            isDragging: monitor.isDragging(),
         }),
-        item : {
+
+        item: {
             ...initialDragDropState,
-            dragPanelId : panelId,
-            dragItemId  : itemId,
+            dragPanelId: panelId,
+            dragItemId: itemId,
         } as DragDropState,
-        end(item, _monitor){
+        end(item) {
             console.log(`DragItem has finished dragging ${itemId}`);
-            console.log(item)
-        }
+            console.log(item);
+        },
     }));
 
-    const handleChangeValue = (evt: { currentTarget: { value: any; }; }) => {
+    const handleChangeValue = (evt: { currentTarget: { value: any } }) => {
         debugger;
 
         const value = evt.currentTarget.value;
 
-        console.log(`form.setFieldValue('value', '${value}');`)
+        console.log(`form.setFieldValue('value', '${value}');`);
 
         form.setFieldValue('value', value);
 
@@ -79,52 +77,44 @@ export default function DragItem({ dragItem, panelId, position }: DragItemProps)
             value,
         };
 
-        context?.onChangeItem(newItem);
+        context?.changeItem(newItem);
     };
 
     const handleRemoveItem = () => {
-        gystAppContext?.removeItem(itemId);
+        removeItem(itemId);
     };
 
     const handleDuplicateItem = () => {
-        gystAppContext?.duplicateItem(itemId);
+        duplicateItem(itemId);
     };
 
     const handleToggleItem = () => {
         debugger;
 
-        gystAppContext?.toggleItem(itemId);
-    }
+        toggleItem(itemId);
+    };
 
     return (
-        <Box
-            className={classes.dragItem}
-            ref={dragPreview}>
-            <div
-                role='Handle'
-                ref={drag}>
+        <Box className={classes.dragItem} ref={dragPreview}>
+            <div role="Handle" ref={drag}>
                 <div ref={refHover}>
                     <Grid gutter={0}>
-                        <Grid.Col
-                            className={classes.columnLeft}
-                            span={1}>
+                        <Grid.Col className={classes.columnLeft} span={1}>
                             <Box
                                 className={classes.iconToggleItem}
                                 onClick={handleToggleItem}
-                                ref={refHoverCheckbox}>
-                                {itemStatus === 'checked'
-                                    ? <IconCheckbox stroke={1} />
-                                    : isHoveringCheckbox
-                                        ? <IconSquareCheck
-                                            stroke={1} />
-                                        : <IconSquare
-                                            stroke={1} />
-                                }
+                                ref={refHoverCheckbox}
+                            >
+                                {itemStatus === 'checked' ? (
+                                    <IconCheckbox stroke={1} />
+                                ) : isHoveringCheckbox ? (
+                                    <IconSquareCheck stroke={1} />
+                                ) : (
+                                    <IconSquare stroke={1} />
+                                )}
                             </Box>
                         </Grid.Col>
-                        <Grid.Col
-                            className={classes.columnMiddle}
-                            span={10}>
+                        <Grid.Col className={classes.columnMiddle} span={10}>
                             <Textarea
                                 {...form.getInputProps('value')}
                                 onChange={handleChangeValue}
@@ -134,30 +124,27 @@ export default function DragItem({ dragItem, panelId, position }: DragItemProps)
                                     position === 'head'
                                         ? classes.largeInput
                                         : classes.smallInput
-                                } />
-
+                                }
+                            />
                         </Grid.Col>
-                        <Grid.Col
-                            className={classes.columnRight}
-                            span={1}>
+                        <Grid.Col className={classes.columnRight} span={1}>
                             <Menu className={classes.itemMenu}>
                                 <Menu.Item
                                     onClick={handleDuplicateItem}
-                                    icon={
-                                        <IconDuplicateItem
-                                            id={itemId} />
-                                    }>
+                                    icon={<IconDuplicateItem id={itemId} />}
+                                >
                                     {'Duplicate'}
                                 </Menu.Item>
                                 <Menu.Item
                                     onClick={handleRemoveItem}
                                     icon={
                                         <IconRemoveItem
-                                            id={`remove-item-${itemId}`} />
-                                    }>
+                                            id={`remove-item-${itemId}`}
+                                        />
+                                    }
+                                >
                                     {'Remove'}
                                 </Menu.Item>
-
                             </Menu>
                         </Grid.Col>
                     </Grid>

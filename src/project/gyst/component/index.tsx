@@ -3,6 +3,7 @@ export { default as IconDuplicateItem } from "./IconDuplicateItem";
 export { default as IconRemovePanel } from "./IconRemovePanel";
 export { default as IconRemoveItem } from "./IconRemoveItem";
 export { default as IconToggleItem } from "./IconToggleItem";
+export { default as KeyValueList } from "./KeyValueList";
 export { default as IconAddPanel } from "./IconAddPanel";
 export { default as IconAddItem } from "./IconAddItem";
 export { default as IconAction } from "./IconAddPanel";

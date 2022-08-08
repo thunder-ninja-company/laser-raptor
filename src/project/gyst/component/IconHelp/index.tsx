@@ -1,10 +1,10 @@
 import { IconHelp as TablerIconHelp } from '@tabler/icons';
 import { GystAppContext, IconSize } from 'gyst/constant';
-import type { Props } from "./type";
-import { useContext } from 'react';
+import type { Props } from './type';
 import { useStyles } from './style';
+import { useContext } from 'react';
 
-export default function IconHelp({ id }: Props) {
+export default function IconHelp({ id } : Props) {
 
     const { classes } = useStyles();
 

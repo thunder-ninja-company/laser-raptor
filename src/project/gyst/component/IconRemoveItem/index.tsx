@@ -1,9 +1,9 @@
 import { IconTrash } from '@tabler/icons';
 import { IconSize } from 'gyst/constant';
-import type { Props } from "./type";
+import type { Props } from './type';
 import { useStyles } from './style';
 
-export default function IconRemoveItem({ id }: Props) {
+export default function IconRemoveItem({ id } : Props) {
 
     const { classes } = useStyles();
 

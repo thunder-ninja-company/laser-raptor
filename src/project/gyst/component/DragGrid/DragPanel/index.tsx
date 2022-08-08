@@ -1,20 +1,27 @@
 import { DragSource, IconDuplicatePanel, IconRemovePanel, IconAddItem } from 'gyst/component';
-import { Menu, Box, Text } from '@mantine/core';
+import HeaderFooter from './component/HeaderFooter';
+import type { DragGridContextDTO } from '../type';
+import { DragGridContext } from '../constant';
+import { Menu, Box } from '@mantine/core';
 import { useHover } from '@mantine/hooks';
-import { useContext } from 'react';
 import LandingZone from '../LandingZone';
 import type { Props } from './type';
 import { useStyles } from './style';
+import { useContext } from 'react';
 import DragItem from '../DragItem';
 import React from 'react';
-import HeaderFooter from './component/HeaderFooter';
-import { GystAppContext } from 'gyst/constant';
 
-export default function DragPanel({ dragPanel }: Props) {
+export default function DragPanel({ dragPanelIndex }: Props) {
 
-    const { id : panelId, items } = dragPanel;
+    const {
+        duplicatePanel, removePanel, dragGrid,
+    } = useContext(DragGridContext) as DragGridContextDTO;
 
-    console.log('DragPanel dragPanel is now: ', dragPanel);
+    const panel = dragGrid.panels[dragPanelIndex];
+
+    const { id : panelId, items } = panel;
+
+    console.log('DragPanel dragPanel is now: ', panel);
 
     const {
         hovered : isHovering,
@@ -23,15 +30,9 @@ export default function DragPanel({ dragPanel }: Props) {
 
     const { classes } = useStyles({ isHovering });
 
-    const gystAppContext = useContext(GystAppContext);
+    const handleDuplicatePanel = () => duplicatePanel(panelId);
 
-    const handleDuplicatePanel = () => {
-        gystAppContext?.duplicatePanel(panelId);
-    }
-    const handleRemovePanel = () => {
-        gystAppContext?.removePanel(panelId);
-    }
-
+    const handleRemovePanel = () => removePanel(panelId);
 
     return (
         <Box
@@ -60,48 +61,47 @@ export default function DragPanel({ dragPanel }: Props) {
                     </Menu>
                 </HeaderFooter>
 
-                {items
-                    // .filter((_, itemIndex) => itemIndex !== 0) // skip first element
-                    .map((dragItem, index) => {
+                {items.map((dragItem, dragItemIndex) => {
                         return (
-                            index === 0
+                            dragItemIndex === 0
                             ? <LandingZone
+                                index={dragItemIndex}
                                 panelId={panelId}
-                                type='panel'
-                                index={index}>
-                                    {`HEAD landing-zone-${dragItem.value}-${index}`}
+                                type='panel'>
+                                    {`HEAD landing-zone-${dragItem.value}-${dragItemIndex}`}
                                 <DragItem
-                                    key={`landing-zone-${dragItem.value}-${index}`}
+                                    key={`landing-zone-${dragItem.value}-${dragItemIndex}`}
+                                    dragPanelIndex={dragPanelIndex}
+                                    dragItemIndex={dragItemIndex}
                                     position='head'
-                                    panelId={panelId}
-                                    dragItem={dragItem} />
+                                    panelId={panelId} />
                             </LandingZone>
                             : <LandingZone
-                                key={`ITEM landing-zone-${dragItem.value}-${index + 1}`}
+                                key={`ITEM landing-zone-${dragItem.value}-${dragItemIndex + 1}`}
+                                index={dragItemIndex + 1}
                                 panelId={panelId}
-                                index={index + 1}
                                 type='panel'>
-                                    {`ITEM landing-zone-${dragItem.value}-${index + 1}`}
+                                {`ITEM landing-zone-${dragItem.value}-${dragItemIndex + 1}`}
                                 <DragItem
+                                    dragPanelIndex={dragPanelIndex}
+                                    dragItemIndex={dragItemIndex}
                                     panelId={panelId}
-                                    position='item'
-                                    dragItem={dragItem} />
+                                    position='item' />
                             </LandingZone>
                         );
                     }
-
                 )}
                 <LandingZone
+                    index={items.length}
                     panelId={panelId}
-                    type='panel'
-                    index={items.length} />
+                    type='panel' />
                 <HeaderFooter
                     justify='left'>
                     <IconAddItem
+                        id={`add-item-tail-${panelId}`}
                         isHovering={isHovering}
-                        id={`add-item-tail-${dragPanel.id}`}
-                        position='tail'
-                        panelId={panelId} />
+                        panelId={panelId}
+                        position='tail' />
                 </HeaderFooter>
             </DragSource>
         </Box>

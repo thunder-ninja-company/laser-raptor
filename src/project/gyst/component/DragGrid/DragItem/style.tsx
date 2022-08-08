@@ -1,5 +1,4 @@
-import { createStyles, CSSObject } from "@mantine/core";
-import { LessProminentIconColor } from "gyst/constant";
+import { createStyles } from "@mantine/core";
 import type { DragItemType, ItemStatus } from "./type";
 
 export const useStyles = createStyles((theme, {

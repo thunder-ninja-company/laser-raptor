@@ -1,10 +1,10 @@
-import { Burger, Header, MediaQuery } from "@mantine/core";
-import IconAddPanel from "gyst/component/IconAddPanel";
-import IconHelp from "gyst/component/IconHelp";
-import { useStyles } from "./style";
-import type { Props } from "./type";
+import { Burger, Header, MediaQuery } from '@mantine/core';
+import IconHelp from 'gyst/component/IconHelp';
 
-export default function AppHeader({ id }: Props) {
+import type { Props } from './type';
+import { useStyles } from './style';
+
+export default function AppHeader({ id } : Props) {
 
     const { classes } = useStyles();
 
@@ -14,13 +14,15 @@ export default function AppHeader({ id }: Props) {
         <Header
             className={classes.appHeader}
             height={80}
-            p="md">
+            p='md'>
 
-            <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+            <MediaQuery
+                largerThan='sm'
+                styles={{ display : 'none' }}>
                 <Burger
                     opened={false}
-                    size="sm"
-                    mr="xl" />
+                    size='sm'
+                    mr='xl' />
             </MediaQuery>
 
             {/* <IconAddPanel

@@ -1,37 +1,32 @@
-import { initialDragItem, initialDragPanel } from "gyst/component/DragGrid/constant";
+
+import { AppHeader, AppBody, DragGrid, KeyValueList } from "gyst/component";
+import type { DragItemDTO } from "gyst/component/DragGrid/DragItem/type";
+import { AppShell, Grid, MantineProvider, Dialog } from "@mantine/core";
+import { selectDragGrid, selectIsDebugDialogOpen } from "gyst/selector";
 import type { GystAppContextDTO, ListPosition } from "gyst/type";
 import type { DragGridDTO } from "gyst/component/DragGrid/type";
-import { AppShell, Grid, MantineProvider } from "@mantine/core";
-import { AppHeader, AppBody, DragGrid } from "gyst/component";
 import { GystAppContext, ProjectName } from "gyst/constant";
-import { selectDragGrid } from "gyst/selector";
 import { useAppDispatch } from 'core/hooks';
 import { useSelector } from "react-redux";
 import { copyObject } from "gyst/shared";
 import { useStyles } from "./style";
 import type { Props } from "./type";
-import { useEffect } from "react";
-import { nanoid } from "nanoid";
+
 import slice from "gyst/slice";
-import {
-    toggleItem, duplicateItem, removePanel,
-    insertPanel, insertItem, removeItem,
-    duplicatePanel, removeEmptyPanels,
-} from "gyst/component/DragGrid/logic";
-import type { DragItemDTO } from "../DragGrid/DragItem/type";
 
 const {
     actions : {
         updateGroupGridValue,
+        toggleDebugDialog
     },
 } =  slice;
-
 
 export default function AppRoot({ id }: Props) {
 
     const { classes } = useStyles();
 
     const dragGrid = useSelector(selectDragGrid);
+    const isDebugDialogOpen = useSelector(selectIsDebugDialogOpen);
 
     console.log('AppRoot Drag grid is now: ', dragGrid);
 
@@ -43,135 +38,24 @@ export default function AppRoot({ id }: Props) {
         dispatch(updateGroupGridValue(value));
     }
 
-    const handleAddNewPanel = (position : ListPosition) => {
-
-        const copyGrid = copyObject(dragGrid) as DragGridDTO;
-
-        const newPanel = {
-            ...initialDragPanel,
-            id: nanoid(),
-            items: [{
-                ...initialDragItem,
-                id: nanoid(),
-            }]
-        };
-
-        switch(position) {
-            case 'head':
-                insertPanel(copyGrid, 0, newPanel);
-                break;
-
-            case 'tail':
-                insertPanel(copyGrid, copyGrid.panels.length, newPanel);
-                break;
-
-            default:
-                throw Error(`Unknown actionId ${position}`);
-        }
-
-        dispatch(updateGroupGridValue(copyGrid));
-    };
-
-    const handleAddNewItem = (position : ListPosition, panelId : string) => {
-        const copyGrid = copyObject(dragGrid) as DragGridDTO;
-
-        const newItem = {
-            ...initialDragItem,
-            id: nanoid(),
-        }
-
-        insertItem(copyGrid, panelId, position, newItem);
-
-        dispatch(updateGroupGridValue(copyGrid));
-    };
-
     const handleHelp = (id : string) : void => {
         console.log(`handleHelp(${id})`);
-        debugger;
-    };
 
-    const handleRemovePanel = (panelId: string) : void => {
-        console.log(`handleRemovePanel ${panelId}`);
-
-        const copyGrid = copyObject(dragGrid) as DragGridDTO;
-
-        removePanel(copyGrid, panelId);
-
-        dispatch(updateGroupGridValue(copyGrid));
-
-    };
-
-    const handleRemoveItem = (itemId: string) : void => {
-        const copyGrid = copyObject(dragGrid) as DragGridDTO;
-
-        console.log(`handleRemoveItem ${itemId}`);
-
-        removeItem(copyGrid, itemId);
-
-        removeEmptyPanels(copyGrid);
-
-        dispatch(updateGroupGridValue(copyGrid));
+        dispatch(toggleDebugDialog());
     };
 
 
-    const handleToggleItem = (itemId: string) : void => {
-        console.log(`handleToggleItem ${itemId}`);
-
-        const copyGrid = copyObject(dragGrid) as DragGridDTO;
-
-        toggleItem(copyGrid, itemId);
-
-        dispatch(updateGroupGridValue(copyGrid));
-    };
-
-    const handleChangeItem = (item: DragItemDTO) : void => {
-        debugger;
-        console.log(`handleChangeItem ${item.id}`);
-
-        debugger;
-
-        // const copyGrid = copyObject(dragGrid) as DragGridDTO;
-
-        // changeItem(copyGrid, item);
-
-        // dispatch(updateGroupGridValue(copyGrid));
-    };
-
-
-    const handleDuplicateItem = (itemId: string) : void => {
-        console.log(`handleDuplicateItem ${itemId}`);
-
-        const copyGrid = copyObject(dragGrid) as DragGridDTO;
-
-        duplicateItem(copyGrid, itemId);
-
-        dispatch(updateGroupGridValue(copyGrid));
-    };
-
-    const handleDuplicatePanel = (panelId: string) : void => {
-        console.log(`handleDuplicatePanel ${panelId}`);
-
-        const copyGrid = copyObject(dragGrid) as DragGridDTO;
-
-        duplicatePanel(copyGrid, panelId);
-
-        dispatch(updateGroupGridValue(copyGrid));
-    };
 
     const context : GystAppContextDTO = {
-        duplicatePanel : handleDuplicatePanel,
-        duplicateItem  : handleDuplicateItem,
-        addNewPanel    : handleAddNewPanel,
-        removePanel    : handleRemovePanel,
-        addNewItem     : handleAddNewItem,
-        removeItem     : handleRemoveItem,
-        toggleItem     : handleToggleItem,
-        changeItem     : handleChangeItem,
-        onHelp         : handleHelp,
+        onHelp : handleHelp,
     };
 
     const exampleTheme = {
         fontFamily : "'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue'",
+    };
+
+    const handleCloseDialog = () => {
+        debugger;
     };
 
     return (
@@ -188,6 +72,13 @@ export default function AppRoot({ id }: Props) {
                     className={classes.appRoot}
                     fixed={true}>
                     <AppBody id={`app-body-${id}`}>
+                        <Dialog
+                            onClose={handleCloseDialog}
+                            opened={isDebugDialogOpen}>
+                            <KeyValueList
+                                id='drag-grid-data'
+                                value={dragGrid} />
+                        </Dialog>
                         <Grid>
                             <Grid.Col span={12}>
                                 <DragGrid

@@ -1,6 +1,174 @@
 {
-    "extends": ["next", "next/core-web-vitals"],
+    "plugins": [
+        "editorconfig"
+    ],
+    "extends": [
+        "next",
+        "next/core-web-vitals",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
     "rules": {
-        "@next/next/no-img-element": "off"
+        "no-debugger": "warn",
+        "editorconfig/charset": "error",
+        "editorconfig/eol-last": "error",
+        "editorconfig/indent": "off",
+        "editorconfig/linebreak-style": "error",
+        "editorconfig/no-trailing-spaces": "error",
+        "@next/next/no-img-element": "off",
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "react/jsx-first-prop-new-line": [
+            "error",
+            "multiline"
+        ],
+        "import/prefer-default-export": "off",
+        "@typescript-eslint/quotes": [
+            "error",
+            "single"
+        ],
+        "react/jsx-boolean-value": [
+            "error",
+            "always"
+        ],
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 2
+            }
+        ],
+        "react/jsx-indent-props": [
+            2,
+            4
+        ],
+        "spaced-comment": [
+            "error",
+            "always"
+        ],
+        "comma-dangle": [
+            "error",
+            {
+                "arrays": "only-multiline",
+                "objects": "only-multiline",
+                "imports": "only-multiline",
+                "exports": "only-multiline",
+                "functions": "only-multiline"
+            }
+        ],
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": [
+            "error", // or "error"
+            {
+                "argsIgnorePattern": "^_",
+                "varsIgnorePattern": "^_",
+                "caughtErrorsIgnorePattern": "^_"
+            }
+        ],
+        "arrow-parens": [
+            "error",
+            "as-needed"
+        ],
+        "quote-props": [
+            "error",
+            "as-needed"
+        ],
+        "jsx-quotes": [
+            "error",
+            "prefer-single"
+        ],
+        "max-len": [
+            "error",
+            {
+                "code": 140
+            }
+        ],
+        "react/jsx-indent": [
+            "error",
+            4,
+            {
+                "indentLogicalExpressions": true
+            }
+        ],
+        "react/jsx-max-props-per-line": [
+            1,
+            {
+                "maximum": 1
+            }
+        ],
+        "react/jsx-curly-brace-presence": [
+            "error",
+            {
+                "props": "never",
+                "children": "always"
+            }
+        ],
+        "@typescript-eslint/indent": [
+            "error",
+            4,
+            {
+                "ArrayExpression": "first",
+                "ObjectExpression": "first",
+                "FunctionDeclaration": {
+                    "parameters": "first"
+                },
+                "FunctionExpression": {
+                    "parameters": "first"
+                },
+                "SwitchCase": 1
+            }
+        ],
+        "key-spacing": [
+            2,
+            {
+                "singleLine": {
+                    "beforeColon": true,
+                    "afterColon": true
+                },
+                "multiLine": {
+                    "beforeColon": true,
+                    "afterColon": true,
+                    "align": "colon"
+                }
+            }
+        ],
+        "@typescript-eslint/type-annotation-spacing": [
+            "error",
+            {
+                "before": true,
+                "after": true
+            }
+        ],
+        "react/jsx-closing-bracket-location": [
+            "error",
+            {
+                "selfClosing": "after-props",
+                "nonEmpty": "after-props"
+            }
+        ],
+        "padding-line-between-statements": [
+            "error",
+            {
+                "blankLine": "always",
+                "prev": "*",
+                "next": "return"
+            }
+        ],
+        "no-restricted-imports": [
+            "error",
+            {
+                "paths": [
+                    {
+                        "name": "styled-components",
+                        "message": "Please import from styled-components/macro."
+                    }
+                ],
+                "patterns": [
+                    "!styled-components/macro"
+                ]
+            }
+        ]
     }
 }
