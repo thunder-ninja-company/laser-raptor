@@ -1,15 +1,173 @@
 {
-    "plugins": ["prettier"],
-  "extends": [
-    "next",
-    "next/core-web-vitals",
-    "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
-  ],
-  "rules": {
-    "@next/next/no-img-element": "off",
-    "quotes" : ["error", "single"]
-  }
+    "plugins": ["editorconfig"],
+    "extends": [
+        "next",
+        "next/core-web-vitals",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "rules": {
+        "editorconfig/charset": "error",
+        "editorconfig/eol-last": "error",
+        "editorconfig/indent": "error",
+        "editorconfig/linebreak-style": "error",
+        "editorconfig/no-trailing-spaces": "error",
+
+        "@next/next/no-img-element": "off",
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "cypress/assertion-before-screenshot": "warn",
+        "cypress/no-assigning-return-values": "error",
+        "cypress/no-unnecessary-waiting": "error",
+        "react/jsx-first-prop-new-line": [
+            "error",
+            "multiline"
+        ],
+        "import/prefer-default-export": "off",
+        "@typescript-eslint/quotes": [
+            "error",
+            "single"
+        ],
+        "react/jsx-boolean-value": [
+            "error",
+            "always"
+        ],
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 2
+            }
+        ],
+        "react/jsx-indent-props": [
+            2,
+            4
+        ],
+        "cypress/no-async-tests": "error",
+        "cypress/no-force": "warn",
+        "spaced-comment": [
+            "error",
+            "always"
+        ],
+        "comma-dangle": [
+            "error",
+            {
+                "arrays": "only-multiline",
+                "objects": "only-multiline",
+                "imports": "only-multiline",
+                "exports": "only-multiline",
+                "functions": "only-multiline"
+            }
+        ],
+        "arrow-parens": [
+            "error",
+            "as-needed"
+        ],
+        "quote-props": [
+            "error",
+            "as-needed"
+        ],
+        "jsx-quotes": [
+            "error",
+            "prefer-single"
+        ],
+        "max-len": [
+            "error",
+            {
+                "code": 140
+            }
+        ],
+        "jest/prefer-to-have-length": "warn",
+        "jest/no-identical-title": "error",
+        "jest/no-disabled-tests": "warn",
+        "jest/no-focused-tests": "error",
+        "jest/valid-expect": "error",
+        "react/jsx-indent": [
+            "error",
+            4,
+            {
+                "indentLogicalExpressions": true
+            }
+        ],
+        "react/jsx-max-props-per-line": [
+            1,
+            {
+                "maximum": 1
+            }
+        ],
+        "react/jsx-curly-brace-presence": [
+            "error",
+            {
+                "props": "never",
+                "children": "always"
+            }
+        ],
+        "@typescript-eslint/indent": [
+            "error",
+            4,
+            {
+                "ArrayExpression": "first",
+                "ObjectExpression": "first",
+                "FunctionDeclaration": {
+                    "parameters": "first"
+                },
+                "FunctionExpression": {
+                    "parameters": "first"
+                },
+                "SwitchCase": 1
+            }
+        ],
+        "key-spacing": [
+            2,
+            {
+                "singleLine": {
+                    "beforeColon": true,
+                    "afterColon": true
+                },
+                "multiLine": {
+                    "beforeColon": true,
+                    "afterColon": true,
+                    "align": "colon"
+                }
+            }
+        ],
+        "@typescript-eslint/type-annotation-spacing": [
+            "error",
+            {
+                "before": true,
+                "after": true
+            }
+        ],
+        "react/jsx-closing-bracket-location": [
+            "error",
+            {
+                "selfClosing": "after-props",
+                "nonEmpty": "after-props"
+            }
+        ],
+        "padding-line-between-statements": [
+            "error",
+            {
+                "blankLine": "always",
+                "prev": "*",
+                "next": "return"
+            }
+        ],
+        "no-restricted-imports": [
+            "error",
+            {
+                "paths": [
+                    {
+                        "name": "styled-components",
+                        "message": "Please import from styled-components/macro."
+                    }
+                ],
+                "patterns": [
+                    "!styled-components/macro"
+                ]
+            }
+        ]
+    }
 }

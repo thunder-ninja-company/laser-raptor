@@ -1,15 +1,16 @@
-import { DragGridContext, initialDragDropState } from '../constant';
-import type { DragDropState, DragGridContextDTO } from '../type';
-import { useStyles } from './style';
-import type { DragItemProps, FormValues } from './type';
 import { Box, Grid, Textarea } from '@mantine/core';
+import type { DragDropState, DragGridContextDTO } from '../type';
+import { DragGridContext, initialDragDropState } from '../constant';
+import type { DragItemProps, FormValues } from './type';
+import { IconCheckbox, IconSquare, IconSquareCheck } from '@tabler/icons';
+import { IconDuplicateItem, IconRemoveItem } from 'gyst/component';
+
 import { Menu } from '@mantine/core';
-import { useForm } from '@mantine/form';
-import { useHover } from '@mantine/hooks';
-import { IconSquareCheck, IconSquare, IconCheckbox } from '@tabler/icons';
-import { IconRemoveItem, IconDuplicateItem } from 'gyst/component';
 import { useContext } from 'react';
 import { useDrag } from 'react-dnd';
+import { useForm } from '@mantine/form';
+import { useHover } from '@mantine/hooks';
+import { useStyles } from './style';
 
 export default function DragItem({
     dragItemIndex,
