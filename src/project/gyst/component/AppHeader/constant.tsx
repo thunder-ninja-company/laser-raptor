@@ -1,3 +1,3 @@
-import { localConstant } from "core/constants";
+import { localConstant } from 'core/constants';
 
-export const COMPONENT_NAME = localConstant("AppHeader");
+export const COMPONENT_NAME = localConstant('AppHeader');
