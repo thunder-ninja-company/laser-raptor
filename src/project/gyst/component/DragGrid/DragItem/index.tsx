@@ -1,19 +1,26 @@
-import { IconRemoveItem, IconDuplicateItem } from 'gyst/component';
+import { IconSquareCheck, IconSquare, IconCheckbox } from '@tabler/icons';
 import { DragGridContext, initialDragDropState } from '../constant';
-import { Box, Grid, TextInput, Textarea } from '@mantine/core';
-import { useDebouncedCallback } from 'use-debounce';
-import type { DragDropState } from '../type';
+import { IconRemoveItem, IconDuplicateItem } from 'gyst/component';
+import type { DragDropState, DragGridContextDTO } from '../type';
 import type { DragItemProps, FormValues } from './type';
-import { IconPencil, IconSquareCheck, IconSquare, IconCheckbox } from '@tabler/icons';
+import { Box, Grid, Textarea } from '@mantine/core';
+import { GystAppContext } from 'gyst/constant';
 import { useHover } from '@mantine/hooks';
-import { IconSize, GystAppContext } from 'gyst/constant';
 import { useForm } from '@mantine/form';
 import { Menu } from '@mantine/core';
 import { useStyles } from './style';
 import { useDrag } from 'react-dnd';
-import { ChangeEventHandler, useContext } from 'react';
+import { useContext } from 'react';
 
-export default function DragItem({ dragItem, panelId, position }: DragItemProps) {
+export default function DragItem({ dragItemIndex, dragPanelIndex, panelId, position }: DragItemProps) {
+
+    const context = useContext(DragGridContext);
+
+    const {
+        duplicateItem, removeItem, toggleItem, dragGrid,
+    } = context as DragGridContextDTO;
+
+    const dragItem = dragGrid.panels[dragPanelIndex].items[dragItemIndex];
 
     console.log('DragItem dragItem is now: ', dragItem);
 
@@ -46,13 +53,13 @@ export default function DragItem({ dragItem, panelId, position }: DragItemProps)
         },
     });
 
-    const context = useContext(DragGridContext);
+
     const gystAppContext = useContext(GystAppContext);
 
     const [{ isDragging : _ }, drag, dragPreview] = useDrag(() => ({
-        type: 'item',
-        collect: (monitor) => ({
-            isDragging: monitor.isDragging()
+        type    : 'item',
+        collect : (monitor) => ({
+            isDragging : monitor.isDragging()
         }),
         item : {
             ...initialDragDropState,
@@ -83,17 +90,17 @@ export default function DragItem({ dragItem, panelId, position }: DragItemProps)
     };
 
     const handleRemoveItem = () => {
-        gystAppContext?.removeItem(itemId);
+        removeItem(itemId);
     };
 
     const handleDuplicateItem = () => {
-        gystAppContext?.duplicateItem(itemId);
+        duplicateItem(itemId);
     };
 
     const handleToggleItem = () => {
         debugger;
 
-        gystAppContext?.toggleItem(itemId);
+        toggleItem(itemId);
     }
 
     return (

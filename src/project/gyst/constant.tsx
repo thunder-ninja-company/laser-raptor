@@ -6,8 +6,8 @@ export const ProjectName = "gyst";
 
 // Define the initial state using that type
 export const initialState: GystAppRoot = {
-    dragGrid: DragGridInitialState,
-    hello: 123,
+    isDebugDialogOpen : false,
+    dragGrid          : DragGridInitialState,
 };
 
 export const GystAppContext = React.createContext<GystAppContextDTO | undefined>(undefined);
