@@ -6,7 +6,7 @@ import { COMPONENT_NAME } from "./constant";
 export default {
     title: "Gyst/DragItemItem",
     component: DragItemItem,
-    parameters: {
+ parameters: {
         // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
         layout: "fullscreen",
     },
@@ -19,9 +19,8 @@ const Template: ComponentStory<typeof DragItemItem> = (args) => (
 export const ComponentParameters = Template.bind({});
 
 ComponentParameters.args = {
-    value: {
-        id : '1',
-        value : 'imma value',
-    },
-    panelId: `panelId-${COMPONENT_NAME}`,
+    dragPanelIndex : 0,
+    dragItemIndex  : 0,
+    position       : 'head',
+    panelId        : `panelId-${COMPONENT_NAME}`,
 };

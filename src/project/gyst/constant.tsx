@@ -6,15 +6,17 @@ export const ProjectName = "gyst";
 
 // Define the initial state using that type
 export const initialState: GystAppRoot = {
-    isDebugDialogOpen : false,
-    dragGrid          : DragGridInitialState,
+       isDebugDialogOpen: false,
+       dragGrid: DragGridInitialState,
 };
 
-export const GystAppContext = React.createContext<GystAppContextDTO | undefined>(undefined);
+export const GystAppContext = React.createContext<
+       GystAppContextDTO | undefined
+>(undefined);
 
 export enum IconSize {
-    small = 32,
-    large = 48,
+       small = 32,
+       large = 48,
 }
 
 export const LessProminentIconColor = "#888";
