@@ -1,26 +1,25 @@
-import { initialDragItem, initialDragPanel } from "gyst/component/DragGrid/constant";
-import type { DragDropState, DragGridContextDTO, DragGridDTO, Props } from "./type";
-import KeyValueList from "gyst/component/KeyValueList";
-import { HTML5Backend } from "react-dnd-html5-backend";
-import type { DragItemDTO } from "./DragItem/type";
-import type { ListPosition } from "gyst/type";
-import { DragGridContext } from "./constant";
-import { IconAddPanel } from "gyst/component";
-import { Box, Grid } from "@mantine/core";
-import { copyObject } from "gyst/shared";
+import { initialDragItem, initialDragPanel } from 'gyst/component/DragGrid/constant';
+import type { DragDropState, DragGridContextDTO, DragGridDTO, Props } from './type';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import KeyValueList from 'gyst/component/KeyValueList';
+import type { DragItemDTO } from './DragItem/type';
+import { IconAddPanel } from 'gyst/component';
+import type { ListPosition } from 'gyst/type';
+import { DragGridContext } from './constant';
+import { Box, Grid } from '@mantine/core';
+import { copyObject } from 'gyst/shared';
 import { DndProvider } from 'react-dnd';
-import LandingZone from "./LandingZone";
-import { useStyles } from "./style";
-import DragPanel from "./DragPanel";
-import { nanoid } from "nanoid";
+import LandingZone from './LandingZone';
+import { useStyles } from './style';
+import DragPanel from './DragPanel';
+import { nanoid } from 'nanoid';
 import Logic from './logic';
-import React from "react";
 
-export default function DragGrid({ dragGrid, onChange }: Props) {
+export default function DragGrid({ dragGrid, onChange } : Props) {
 
     const { classes } = useStyles();
 
-    const duplicatePanel = (panelId: string) : void => {
+    const duplicatePanel = (panelId : string) : void => {
         console.log(`handleDuplicatePanel ${panelId}`);
 
         const copyGrid = copyObject(dragGrid) as DragGridDTO;
@@ -30,7 +29,7 @@ export default function DragGrid({ dragGrid, onChange }: Props) {
         onChange(dragGrid);
     };
 
-    const duplicateItem = (itemId: string) : void => {
+    const duplicateItem = (itemId : string) : void => {
         console.log(`handleDuplicateItem ${itemId}`);
 
         const copyGrid = copyObject(dragGrid) as DragGridDTO;
@@ -40,7 +39,7 @@ export default function DragGrid({ dragGrid, onChange }: Props) {
         onChange(dragGrid);
     };
 
-    const removePanel = (panelId: string) : void => {
+    const removePanel = (panelId : string) : void => {
         console.log(`handleRemovePanel ${panelId}`);
 
         const copyGrid = copyObject(dragGrid) as DragGridDTO;
@@ -50,7 +49,7 @@ export default function DragGrid({ dragGrid, onChange }: Props) {
         onChange(copyGrid);
     };
 
-    const removeItem = (itemId: string) : void => {
+    const removeItem = (itemId : string) : void => {
         const copyGrid = copyObject(dragGrid) as DragGridDTO;
 
         console.log(`handleRemoveItem ${itemId}`);
@@ -62,7 +61,7 @@ export default function DragGrid({ dragGrid, onChange }: Props) {
         onChange(copyGrid);
     };
 
-    const toggleItem = (itemId: string) : void => {
+    const toggleItem = (itemId : string) : void => {
         console.log(`handleToggleItem ${itemId}`);
 
         const copyGrid = copyObject(dragGrid) as DragGridDTO;
@@ -82,14 +81,14 @@ export default function DragGrid({ dragGrid, onChange }: Props) {
 
         const newPanel = {
             ...initialDragPanel,
-            id: nanoid(),
-            items: [{
+            id    : nanoid(),
+            items : [{
                 ...initialDragItem,
-                id: nanoid(),
+                id : nanoid(),
             }]
         };
 
-        switch(position) {
+        switch (position) {
             case 'head':
                 Logic.insertPanel(copyGrid, 0, newPanel);
                 break;
@@ -107,7 +106,7 @@ export default function DragGrid({ dragGrid, onChange }: Props) {
         onChange(copyGrid);
     };
 
-    const changeItem = (item: DragItemDTO) : void => {
+    const changeItem = (item : DragItemDTO) : void => {
         console.log(`handleChangeItem ${item.id}`);
 
         debugger;
@@ -117,7 +116,6 @@ export default function DragGrid({ dragGrid, onChange }: Props) {
         Logic.changeItem(copyGrid, item);
 
         onChange(copyGrid);
-        // dispatch(updateGroupGridValue(copyGrid));
     };
 
     const addNewItem = (position : ListPosition, panelId : string) => {
@@ -125,7 +123,7 @@ export default function DragGrid({ dragGrid, onChange }: Props) {
 
         const newItem = {
             ...initialDragItem,
-            id: nanoid(),
+            id : nanoid(),
         }
 
         Logic.insertItem(copyGrid, panelId, position, newItem);
@@ -159,52 +157,47 @@ export default function DragGrid({ dragGrid, onChange }: Props) {
         dragGrid,
     };
 
-    // DragGrid
-    console.log('DragGrid dragGrid is now: ', dragGrid);
-
-    // const { dragGrid : { id, panels } } = context as DragGridContextDTO;
-
     return (
         <DragGridContext.Provider value={context}>
             <DndProvider backend={HTML5Backend}>
                 <KeyValueList
                     id='debug-primary-list'
-                    value={dragGrid}  />
-                    <Box
-                        className={classes.dragGrid}
-                        id={dragGrid.id}>
-                        <Grid>
-                            <>
-                                {dragGrid.panels.map((dragPanel, dragPanelIndex) =>
-                                    <Grid.Col
-                                        key={`gp-${dragPanel.id}`}
-                                        xs={12}
-                                        md={6}
-                                        lg={4}>
-                                        <LandingZone
-                                            index={dragPanelIndex}
-                                            panelId={null}
-                                            type='grid'>
-                                            <DragPanel dragPanelIndex={dragPanelIndex} />
-                                        </LandingZone>
-                                    </Grid.Col>
-                                )}
+                    value={dragGrid} />
+                <Box
+                    className={classes.dragGrid}
+                    id={dragGrid.id}>
+                    <Grid>
+                        <>
+                            {dragGrid.panels.map((dragPanel, dragPanelIndex) =>
                                 <Grid.Col
+                                    key={`gp-${dragPanel.id}`}
                                     xs={12}
                                     md={6}
                                     lg={4}>
                                     <LandingZone
-                                        index={dragGrid.panels.length}
+                                        index={dragPanelIndex}
                                         panelId={null}
                                         type='grid'>
-                                        <IconAddPanel
-                                            id='add-panel-tail'
-                                            position='tail' />
+                                        <DragPanel dragPanelIndex={dragPanelIndex} />
                                     </LandingZone>
                                 </Grid.Col>
-                            </>
-                        </Grid>
-                    </Box>
+                            )}
+                            <Grid.Col
+                                xs={12}
+                                md={6}
+                                lg={4}>
+                                <LandingZone
+                                    index={dragGrid.panels.length}
+                                    panelId={null}
+                                    type='grid'>
+                                    <IconAddPanel
+                                        id='add-panel-tail'
+                                        position='tail' />
+                                </LandingZone>
+                            </Grid.Col>
+                        </>
+                    </Grid>
+                </Box>
             </DndProvider>
         </DragGridContext.Provider>
 

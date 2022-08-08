@@ -10,9 +10,10 @@
         "plugin:@typescript-eslint/recommended"
     ],
     "rules": {
+        "no-debugger": "warn",
         "editorconfig/charset": "error",
         "editorconfig/eol-last": "error",
-        "editorconfig/indent": "error",
+        "editorconfig/indent": "off",
         "editorconfig/linebreak-style": "error",
         "editorconfig/no-trailing-spaces": "error",
         "@next/next/no-img-element": "off",
