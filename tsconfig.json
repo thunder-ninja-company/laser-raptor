@@ -6,7 +6,7 @@
         "moduleResolution": "node",
         "resolveJsonModule": true,
         "esModuleInterop": true,
-        "isolatedModules": true,
+        "isolatedModules": false,
         "skipLibCheck": true,
         "incremental": true,
         "module": "esnext",
