@@ -1,19 +1,19 @@
-import { DragGridContext } from "../constant";
-import type { DragDropState } from "../type";
-import { useStyles  } from "./style";
-import { Box } from "@mantine/core";
-import type { Props } from "./type";
-import { useDrop } from "react-dnd";
-import { useContext } from "react";
+import { DragGridContext } from '../constant';
+import type { DragDropState } from '../type';
+import { useStyles  } from './style';
+import { Box } from '@mantine/core';
+import type { Props } from './type';
+import { useDrop } from 'react-dnd';
+import { useContext } from 'react';
 
-export default function LandingZone({ index, panelId, type, children }: Props) {
+export default function LandingZone({ index, panelId, type, children } : Props) {
 
     const { classes } = useStyles();
 
     const context = useContext(DragGridContext);
 
-    const [{ isOver, canDrop }, drop] = useDrop(() => ({
-        accept: type === 'panel'
+    const [{ isOver, _canDrop }, drop] = useDrop(() => ({
+        accept : type === 'panel'
             ? 'item'
             : 'panel',
 
@@ -25,10 +25,10 @@ export default function LandingZone({ index, panelId, type, children }: Props) {
             });
         },
 
-        collect: (monitor) => ({
+        collect : monitor => ({
             isOver        : monitor.isOver(),
             canDrop       : monitor.canDrop(),
-            isOverCurrent : monitor.isOver({ shallow: true }),
+            isOverCurrent : monitor.isOver({ shallow : true }),
         }),
     }));
 
@@ -36,10 +36,10 @@ export default function LandingZone({ index, panelId, type, children }: Props) {
 
     return (
         <Box
-            style={{ backgroundColor: isOver ? "#fdf" : '' }}
+            style={{ backgroundColor : isOver ? '#fdf' : '' }}
             className={classes.landingZone}
             ref={drop}
-            p="md">
+            p='md'>
             {children}
         </Box>
     );

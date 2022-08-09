@@ -9,7 +9,7 @@ export default function AppBody({ id, children } : Props) {
     return (
         <Box
             id={id}
-            className={classes.root}>
+            className={classes.appBody}>
             {children}
         </Box>
     );

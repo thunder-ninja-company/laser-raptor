@@ -10,6 +10,9 @@
         "plugin:@typescript-eslint/recommended"
     ],
     "rules": {
+        "semi": "off",
+        "@typescript-eslint/semi": ["error", "never"],
+
         "no-debugger": "warn",
         "editorconfig/charset": "error",
         "editorconfig/eol-last": "error",
@@ -48,6 +51,7 @@
             "error",
             "always"
         ],
+        "no-unexpected-multiline": "error",
         "comma-dangle": [
             "error",
             {

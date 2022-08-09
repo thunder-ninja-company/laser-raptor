@@ -1,9 +1,9 @@
 import { Table, Title, Box } from '@mantine/core';
-import type { Props } from "./type";
+import type { Props } from './type';
 import { useStyles } from './style';
 
 
-export default function KeyValueList({ value, id }: Props) {
+export default function KeyValueList({ value, id } : Props) {
 
     const { classes } = useStyles();
 
@@ -14,7 +14,6 @@ export default function KeyValueList({ value, id }: Props) {
             <Title>
                 {value.id}
             </Title>
-
             {value.panels.map(panel =>
                 <Box key={`kvl-${id}-${panel.id}`}>
                     <Title order={3}>
@@ -47,7 +46,6 @@ export default function KeyValueList({ value, id }: Props) {
                         </tbody>
                     </Table>
                 </Box>
-
             )}
         </Box>
     );

@@ -1,6 +1,6 @@
-import type { DragGridDTO } from "gyst/component/DragGrid/type";
+import type { DragGridDTO } from 'gyst/component/DragGrid/type';
 
 export interface Props {
     value : DragGridDTO;
-    id : string;
+    id    : string;
 }

@@ -1,8 +1,7 @@
-import type { DragItemDTO } from "../DragItem/type";
-
+import type { DragItemDTO } from '../DragItem/type';
 
 export type Props = React.PropsWithChildren<{
-    dragPanelIndex: number;
+    dragPanelIndex : number;
 }>
 
 export type PropsHeaderFooter = React.PropsWithChildren<{
@@ -10,6 +9,6 @@ export type PropsHeaderFooter = React.PropsWithChildren<{
 }>
 
 export interface DragPanelDTO {
-    id: string;
-    items: DragItemDTO[];
+    items : DragItemDTO[];
+    id    : string;
 }

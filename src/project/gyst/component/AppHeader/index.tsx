@@ -1,8 +1,8 @@
 import { Burger, Header, MediaQuery } from '@mantine/core';
 import IconHelp from 'gyst/component/IconHelp';
-
 import type { Props } from './type';
 import { useStyles } from './style';
+
 
 export default function AppHeader({ id } : Props) {
 
@@ -25,13 +25,9 @@ export default function AppHeader({ id } : Props) {
                     mr='xl' />
             </MediaQuery>
 
-            {/* <IconAddPanel
-                id='add-panel-head'
-                position='head' /> */}
             <div />
 
             <IconHelp id={`help-${id}`} />
-
         </Header>
 
     );

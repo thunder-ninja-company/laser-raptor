@@ -8,7 +8,7 @@ export default {
     title: 'Shared/panel/Dashboard',
     component: Dashboard,
     parameters: {
-        // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
+
         layout: 'fullscreen'
     }
 } as ComponentMeta<typeof Dashboard>;

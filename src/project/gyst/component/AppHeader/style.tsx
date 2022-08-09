@@ -1,9 +1,9 @@
-import { createStyles } from "@mantine/core";
+import { createStyles } from '@mantine/core';
 
-export const useStyles = createStyles((theme) => ({
-    appHeader: {
-        display: "flex",
-        justifyContent: "space-between",
-        border : 0,
+export const useStyles = createStyles(_theme => ({
+    appHeader : {
+        justifyContent : 'space-between',
+        display        : 'flex',
+        border         : 0,
     },
 }));

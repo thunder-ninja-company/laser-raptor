@@ -7,7 +7,7 @@ export default {
     title      : 'Gyst/AppBody',
     component  : AppBody,
     parameters : {
-        // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
+
         layout : 'fullscreen',
     },
 } as ComponentMeta<typeof AppBody>;

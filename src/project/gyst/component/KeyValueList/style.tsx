@@ -1,12 +1,9 @@
-import { LessProminentIconColor } from 'gyst/constant';
 import { createStyles } from '@mantine/core';
 
-export const useStyles = createStyles((_theme) => ({
-    keyValueList: {
-        // backgroundColor : '#f0f',
+export const useStyles = createStyles(_theme => ({
+    keyValueList : {
     },
 
     itemList : {
-        // backgroundColor : '#0f0',
     }
 }));

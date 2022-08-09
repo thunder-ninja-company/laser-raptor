@@ -1,23 +1,21 @@
-import type { ComponentMeta, ComponentStory } from "@storybook/react";
-
-import IconToggleItem from ".";
-import { COMPONENT_NAME } from "./constant";
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import { COMPONENT_NAME } from './constant';
+import IconToggleItem from '.';
 
 export default {
-    title: "Gyst/IconToggleItem",
-    component: IconToggleItem,
-    parameters: {
-        // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
-        layout: "fullscreen",
+    title      : 'Gyst/IconToggleItem',
+    component  : IconToggleItem,
+    parameters : {
+        layout : 'fullscreen',
     },
 } as ComponentMeta<typeof IconToggleItem>;
 
-const Template: ComponentStory<typeof IconToggleItem> = (args) => (
+const Template : ComponentStory<typeof IconToggleItem> = args => (
     <IconToggleItem {...args} />
 );
 
 export const ComponentParameters = Template.bind({});
 
 ComponentParameters.args = {
-    id: `component-${COMPONENT_NAME}`,
+    id : `component-${COMPONENT_NAME}`,
 };

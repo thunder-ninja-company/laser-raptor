@@ -20,6 +20,7 @@ export default function DragGrid({ dragGrid, onChange } : Props) {
     const { classes } = useStyles();
 
     const duplicatePanel = (panelId : string) : void => {
+
         console.log(`handleDuplicatePanel ${panelId}`);
 
         const copyGrid = copyObject(dragGrid) as DragGridDTO;
@@ -30,6 +31,7 @@ export default function DragGrid({ dragGrid, onChange } : Props) {
     };
 
     const duplicateItem = (itemId : string) : void => {
+
         console.log(`handleDuplicateItem ${itemId}`);
 
         const copyGrid = copyObject(dragGrid) as DragGridDTO;
@@ -40,6 +42,7 @@ export default function DragGrid({ dragGrid, onChange } : Props) {
     };
 
     const removePanel = (panelId : string) : void => {
+
         console.log(`handleRemovePanel ${panelId}`);
 
         const copyGrid = copyObject(dragGrid) as DragGridDTO;
@@ -50,6 +53,7 @@ export default function DragGrid({ dragGrid, onChange } : Props) {
     };
 
     const removeItem = (itemId : string) : void => {
+
         const copyGrid = copyObject(dragGrid) as DragGridDTO;
 
         console.log(`handleRemoveItem ${itemId}`);
@@ -62,6 +66,7 @@ export default function DragGrid({ dragGrid, onChange } : Props) {
     };
 
     const toggleItem = (itemId : string) : void => {
+
         console.log(`handleToggleItem ${itemId}`);
 
         const copyGrid = copyObject(dragGrid) as DragGridDTO;
@@ -107,6 +112,7 @@ export default function DragGrid({ dragGrid, onChange } : Props) {
     };
 
     const changeItem = (item : DragItemDTO) : void => {
+
         console.log(`handleChangeItem ${item.id}`);
 
         debugger;
@@ -119,6 +125,7 @@ export default function DragGrid({ dragGrid, onChange } : Props) {
     };
 
     const addNewItem = (position : ListPosition, panelId : string) => {
+
         const copyGrid = copyObject(dragGrid) as DragGridDTO;
 
         const newItem = {
@@ -148,9 +155,9 @@ export default function DragGrid({ dragGrid, onChange } : Props) {
         duplicatePanel,
         duplicateItem,
         removePanel,
+        addNewPanel,
         removeItem,
         toggleItem,
-        addNewPanel,
         changeItem,
         addNewItem,
         dragDrap,

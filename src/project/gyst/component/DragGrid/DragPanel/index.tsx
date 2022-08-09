@@ -11,7 +11,7 @@ import { useContext } from 'react';
 import DragItem from '../DragItem';
 import React from 'react';
 
-export default function DragPanel({ dragPanelIndex }: Props) {
+export default function DragPanel({ dragPanelIndex } : Props) {
 
     const {
         duplicatePanel, removePanel, dragGrid,
@@ -62,13 +62,13 @@ export default function DragPanel({ dragPanelIndex }: Props) {
                 </HeaderFooter>
 
                 {items.map((dragItem, dragItemIndex) => {
-                        return (
-                            dragItemIndex === 0
+                    return (
+                        dragItemIndex === 0
                             ? <LandingZone
                                 index={dragItemIndex}
                                 panelId={panelId}
                                 type='panel'>
-                                    {`HEAD landing-zone-${dragItem.value}-${dragItemIndex}`}
+                                {`HEAD landing-zone-${dragItem.value}-${dragItemIndex}`}
                                 <DragItem
                                     key={`landing-zone-${dragItem.value}-${dragItemIndex}`}
                                     dragPanelIndex={dragPanelIndex}
@@ -88,8 +88,8 @@ export default function DragPanel({ dragPanelIndex }: Props) {
                                     panelId={panelId}
                                     position='item' />
                             </LandingZone>
-                        );
-                    }
+                    );
+                }
                 )}
                 <LandingZone
                     index={items.length}

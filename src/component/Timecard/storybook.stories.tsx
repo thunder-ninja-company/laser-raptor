@@ -6,7 +6,7 @@ export default {
     title: "shared/component/Timecard",
     component: Timecard,
     parameters: {
-        // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
+
         layout: "fullscreen",
     },
 } as ComponentMeta<typeof Timecard>;

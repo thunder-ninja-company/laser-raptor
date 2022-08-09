@@ -1,5 +1,5 @@
-import { createStyles } from "@mantine/core";
-import type { DragItemType, ItemStatus } from "./type";
+import { createStyles } from '@mantine/core';
+import type { DragItemType, ItemStatus } from './type';
 
 export const useStyles = createStyles((theme, {
     isHovering,
@@ -40,13 +40,13 @@ export const useStyles = createStyles((theme, {
         }
     },
 
-    iconToggleItem: {
+    iconToggleItem : {
         paddingRight : theme.spacing.md,
-        paddingTop : (position === 'head'
+        paddingTop   : (position === 'head'
             ? theme.spacing.xs
             : 6),
-        cursor     : 'pointer',
-        color      : itemStatus === 'checked'
+        cursor : 'pointer',
+        color  : itemStatus === 'checked'
             ? '#000'
             : (isHovering ? ' #aaa' : '#fff'),
     },
