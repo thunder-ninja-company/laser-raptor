@@ -8,7 +8,6 @@ export default {
     title: 'Shared/panel/Login',
     component: Login,
     parameters: {
-
         layout: 'fullscreen'
     }
 } as ComponentMeta<typeof Login>;

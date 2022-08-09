@@ -1,4 +1,4 @@
-import { createStyles } from '@mantine/core';
+import { createStyles } from '@mantine/core'
 
 export const useStyles = createStyles((_theme, {
     isHovering
@@ -29,4 +29,4 @@ export const useStyles = createStyles((_theme, {
             color : isHovering ? ' #aaa' : '#fff',
         }
     }
-}));
+}))

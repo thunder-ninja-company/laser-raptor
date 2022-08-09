@@ -1,4 +1,4 @@
-import type { DragItemDTO } from '../DragItem/type';
+import type { DragItemDTO } from '../DragItem/type'
 
 export type Props = React.PropsWithChildren<{
     dragPanelIndex : number;

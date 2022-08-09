@@ -11,12 +11,19 @@
     ],
     "rules": {
         "semi": "off",
-        "@typescript-eslint/semi": ["error", "never"],
-
+        "@typescript-eslint/no-empty-interface": "off",
+        "@typescript-eslint/semi": [
+            "error",
+            "never"
+        ],
         "no-debugger": "warn",
         "editorconfig/charset": "error",
-        "editorconfig/eol-last": "error",
-        "editorconfig/indent": "off",
+        "editorconfig/eol-last": [
+            "error"
+        ],
+        "editorconfig/indent": [
+            "off"
+        ],
         "editorconfig/linebreak-style": "error",
         "editorconfig/no-trailing-spaces": "error",
         "@next/next/no-img-element": "off",
@@ -73,7 +80,10 @@
         ],
         "arrow-parens": [
             "error",
-            "as-needed"
+            "as-needed",
+            {
+                "requireForBlockBody": false
+            }
         ],
         "quote-props": [
             "error",
@@ -172,6 +182,12 @@
                 "patterns": [
                     "!styled-components/macro"
                 ]
+            }
+        ],
+        "array-callback-return": [
+            "error",
+            {
+                "allowImplicit": true
             }
         ]
     }

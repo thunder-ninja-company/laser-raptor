@@ -1,16 +1,16 @@
-import { IconHelp as TablerIconHelp } from '@tabler/icons';
-import { GystAppContext, IconSize } from 'gyst/constant';
-import type { Props } from './type';
-import { useStyles } from './style';
-import { useContext } from 'react';
+import { IconHelp as TablerIconHelp } from '@tabler/icons'
+import { GystAppContext, IconSize } from 'gyst/constant'
+import type { Props } from './type'
+import { useStyles } from './style'
+import { useContext } from 'react'
 
 export default function IconHelp({ id } : Props) {
 
-    const { classes } = useStyles();
+    const { classes } = useStyles()
 
-    const context = useContext(GystAppContext);
+    const context = useContext(GystAppContext)
 
-    const handleClick = () => context?.onHelp(id);
+    const handleClick = () => context?.onHelp(id)
 
     return (
         <TablerIconHelp
@@ -19,5 +19,5 @@ export default function IconHelp({ id } : Props) {
             size={IconSize.large}
             stroke={1}
             id={id} />
-    );
+    )
 }

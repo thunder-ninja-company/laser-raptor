@@ -1,10 +1,10 @@
-export const NAMESPACE = 'Dyson';
+export const NAMESPACE = 'Dyson'
 
-type MakeConstantFunction = (namespace: string) => string;
+type MakeConstantFunction = (namespace : string) => string
 
 export const makeConstant =
-    (namespace: string = ''): MakeConstantFunction =>
-    (name: string): string =>
-        `${namespace || NAMESPACE}/${name}`;
+    (namespace  = '') : MakeConstantFunction =>
+        (name : string) : string =>
+            `${namespace || NAMESPACE}/${name}`
 
-export const localConstant = makeConstant(NAMESPACE);
+export const localConstant = makeConstant(NAMESPACE)

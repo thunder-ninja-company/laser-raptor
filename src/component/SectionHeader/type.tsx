@@ -1,4 +1,4 @@
 export type Props = {
-    opened : boolean;
-    onSetOpened: (opened: boolean) => void;
+    onSetOpened : (opened : boolean) => void;
+    opened      : boolean;
 }

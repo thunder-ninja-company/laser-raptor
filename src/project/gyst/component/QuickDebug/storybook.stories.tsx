@@ -1,7 +1,7 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { ComponentMeta, ComponentStory } from '@storybook/react'
 
-import QuickDebug from '.';
-import { COMPONENT_NAME } from './constant';
+import QuickDebug from '.'
+import { COMPONENT_NAME } from './constant'
 
 export default {
     title      : 'Gyst/QuickDebug',
@@ -9,14 +9,12 @@ export default {
     parameters : {
         layout : 'fullscreen',
     },
-} as ComponentMeta<typeof QuickDebug>;
+} as ComponentMeta<typeof QuickDebug>
 
-const Template : ComponentStory<typeof QuickDebug> = args => (
+const Template : ComponentStory<typeof QuickDebug> = args =>
     <QuickDebug {...args} />
-);
 
-export const ComponentParameters = Template.bind({});
+export const ComponentParameters = Template.bind({})
 
 ComponentParameters.args = {
-    id : `component-${COMPONENT_NAME}`,
-};
+}

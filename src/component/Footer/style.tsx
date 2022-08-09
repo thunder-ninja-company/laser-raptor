@@ -1,21 +1,21 @@
-import { createStyles } from "@mantine/core";
+import { createStyles } from '@mantine/core'
 
-export const useStyles = createStyles((theme) => ({
-    inner: {
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: `${theme.spacing.md}px ${theme.spacing.md}px`,
+export const useStyles = createStyles(theme => ({
+    inner : {
+        justifyContent : 'space-between',
+        alignItems     : 'center',
+        padding        : `${theme.spacing.md}px ${theme.spacing.md}px`,
+        display        : 'flex',
 
-        [theme.fn.smallerThan("sm")]: {
-            flexDirection: "column",
+        [theme.fn.smallerThan('sm')] : {
+            flexDirection : 'column',
         },
     },
 
-    links: {
-        [theme.fn.smallerThan("sm")]: {
-            marginTop: theme.spacing.lg,
-            marginBottom: theme.spacing.sm,
+    links : {
+        [theme.fn.smallerThan('sm')] : {
+            marginBottom : theme.spacing.sm,
+            marginTop    : theme.spacing.lg,
         },
     },
-}));
+}))

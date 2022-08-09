@@ -1,21 +1,21 @@
-import { Paper, useMantineTheme } from "@mantine/core";
-import React from "react";
+import { Paper, useMantineTheme } from '@mantine/core'
+import type { Props } from './type'
+import React from 'react'
 
-import type { Props } from "./type";
 
-const SectionBox: React.FC<Props> = ({ children }: Props) => {
-    const theme = useMantineTheme();
+const SectionBox : React.FC<Props> = ({ children } : Props) => {
+
+    const theme = useMantineTheme()
 
     return (
         <Paper
-            p="xl"
+            shadow={theme.shadows.sm}
             radius={theme.radius.sm}
             withBorder={true}
-            shadow={theme.shadows.sm}
-        >
+            p='xl'>
             {children}
         </Paper>
-    );
-};
+    )
+}
 
-export default SectionBox;
+export default SectionBox

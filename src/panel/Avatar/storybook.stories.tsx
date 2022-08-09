@@ -6,7 +6,6 @@ export default {
     title: 'Shared/panel/ProfileSummary',
     component: ProfileSummary,
     parameters: {
-
         layout: 'fullscreen'
     }
 } as ComponentMeta<typeof ProfileSummary>;

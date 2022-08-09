@@ -1,5 +1,5 @@
-import { createStyles } from '@mantine/core';
-import type { DragItemType, ItemStatus } from './type';
+import type { DragItemType, ItemStatus } from './type'
+import { createStyles } from '@mantine/core'
 
 export const useStyles = createStyles((theme, {
     isHovering,
@@ -72,4 +72,4 @@ export const useStyles = createStyles((theme, {
             color : isHovering ? ' #aaa' : '#fff',
         }
     }
-}));
+}))

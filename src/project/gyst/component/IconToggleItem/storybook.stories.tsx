@@ -1,6 +1,6 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import { COMPONENT_NAME } from './constant';
-import IconToggleItem from '.';
+import type { ComponentMeta, ComponentStory } from '@storybook/react'
+import { COMPONENT_NAME } from './constant'
+import IconToggleItem from '.'
 
 export default {
     title      : 'Gyst/IconToggleItem',
@@ -8,14 +8,13 @@ export default {
     parameters : {
         layout : 'fullscreen',
     },
-} as ComponentMeta<typeof IconToggleItem>;
+} as ComponentMeta<typeof IconToggleItem>
 
 const Template : ComponentStory<typeof IconToggleItem> = args => (
     <IconToggleItem {...args} />
-);
+)
 
-export const ComponentParameters = Template.bind({});
+export const ComponentParameters = Template.bind({})
 
 ComponentParameters.args = {
-    id : `component-${COMPONENT_NAME}`,
-};
+}

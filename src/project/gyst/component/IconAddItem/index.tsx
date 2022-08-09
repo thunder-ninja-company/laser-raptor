@@ -1,8 +1,8 @@
-import { GystAppContext, IconSize } from 'gyst/constant';
-import { IconPlus } from '@tabler/icons';
-import type { Props } from './type';
-import { useContext } from 'react';
-import { useStyles } from './style';
+import { GystAppContext, IconSize } from 'gyst/constant'
+import { IconPlus } from '@tabler/icons'
+import type { Props } from './type'
+import { useContext } from 'react'
+import { useStyles } from './style'
 
 export default function IconAddItem({
     id,
@@ -11,12 +11,12 @@ export default function IconAddItem({
     isHovering,
 } : Props) {
 
-    const { classes } = useStyles({ isHovering });
+    const { classes } = useStyles({ isHovering })
 
-    const _context = useContext(GystAppContext);
+    const _context = useContext(GystAppContext)
 
     const handleClick = () => {
-        debugger;
+        debugger
 
         // context?.(position, panelId);
     }
@@ -28,5 +28,5 @@ export default function IconAddItem({
             size={IconSize.small}
             stroke={1}
             id={id} />
-    );
+    )
 }

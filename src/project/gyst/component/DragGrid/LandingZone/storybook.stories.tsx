@@ -1,23 +1,24 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { ComponentMeta, ComponentStory } from '@storybook/react'
 
-import LandingZone from '.';
-import { COMPONENT_NAME } from './constant';
+import LandingZone from '.'
+import { COMPONENT_NAME } from './constant'
 
 export default {
     title      : 'Gyst/LandingZone',
     component  : LandingZone,
     parameters : {
-
         layout : 'fullscreen',
     },
-} as ComponentMeta<typeof LandingZone>;
+} as ComponentMeta<typeof LandingZone>
 
 const Template : ComponentStory<typeof LandingZone> = args => (
     <LandingZone {...args} />
-);
+)
 
-export const ComponentParameters = Template.bind({});
+export const ComponentParameters = Template.bind({})
 
 ComponentParameters.args = {
-    id : `component-${COMPONENT_NAME}`,
-};
+    panelId : `component-${COMPONENT_NAME}`,
+    index   : 0,
+    type    : 'grid',
+}

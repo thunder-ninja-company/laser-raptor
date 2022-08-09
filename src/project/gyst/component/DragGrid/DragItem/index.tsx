@@ -1,15 +1,15 @@
-import { IconCheckbox, IconSquare, IconSquareCheck } from '@tabler/icons';
-import { DragGridContext, initialDragDropState } from '../constant';
-import { IconDuplicateItem, IconRemoveItem } from 'gyst/component';
-import type { DragDropState, DragGridContextDTO } from '../type';
-import type { DragItemProps, FormValues } from './type';
-import { Box, Grid, Textarea } from '@mantine/core';
-import { useHover } from '@mantine/hooks';
-import { useForm } from '@mantine/form';
-import { Menu } from '@mantine/core';
-import { useDrag } from 'react-dnd';
-import { useStyles } from './style';
-import { useContext } from 'react';
+import { IconCheckbox, IconSquare, IconSquareCheck } from '@tabler/icons'
+import { DragGridContext, initialDragDropState } from '../constant'
+import { IconDuplicateItem, IconRemoveItem } from 'gyst/component'
+import type { DragDropState, DragGridContextDTO } from '../type'
+import type { DragItemProps, FormValues } from './type'
+import { Box, Grid, Textarea } from '@mantine/core'
+import { useHover } from '@mantine/hooks'
+import { useForm } from '@mantine/form'
+import { Menu } from '@mantine/core'
+import { useDrag } from 'react-dnd'
+import { useStyles } from './style'
+import { useContext } from 'react'
 
 export default function DragItem({
     dragPanelIndex,
@@ -17,33 +17,33 @@ export default function DragItem({
     position,
     panelId,
 } : DragItemProps) {
-    const context = useContext(DragGridContext);
+    const context = useContext(DragGridContext)
 
     const { duplicateItem, removeItem, toggleItem, dragGrid } =
-        context as DragGridContextDTO;
+        context as DragGridContextDTO
 
-    const dragItem = dragGrid.panels[dragPanelIndex].items[dragItemIndex];
+    const dragItem = dragGrid.panels[dragPanelIndex].items[dragItemIndex]
 
-    console.log('DragItem dragItem is now: ', dragItem);
+    console.log('DragItem dragItem is now: ', dragItem)
 
-    const { hovered: isHovering, ref: refHover } = useHover();
+    const { hovered: isHovering, ref: refHover } = useHover()
 
-    const { hovered: isHoveringCheckbox, ref: refHoverCheckbox } = useHover();
+    const { hovered: isHoveringCheckbox, ref: refHoverCheckbox } = useHover()
 
-    const { status: itemStatus, value: itemValue, id: itemId } = dragItem;
+    const { status: itemStatus, value: itemValue, id: itemId } = dragItem
 
     const { classes } = useStyles({
         isHovering,
         itemStatus,
         position,
-    });
+    })
 
     const form = useForm<FormValues>({
         initialValues : {
             value : itemValue,
             email : '',
         },
-    });
+    })
 
     const [{ isDragging: _ }, drag, dragPreview] = useDrag(() => ({
         type    : 'item',
@@ -57,41 +57,41 @@ export default function DragItem({
             dragItemId  : itemId,
         } as DragDropState,
         end(item) {
-            console.log(`DragItem has finished dragging ${itemId}`);
-            console.log(item);
+            console.log(`DragItem has finished dragging ${itemId}`)
+            console.log(item)
         },
-    }));
+    }))
 
     const handleChangeValue = (evt : { currentTarget : { value : any } }) => {
-        debugger;
+        debugger
 
-        const value = evt.currentTarget.value;
+        const value = evt.currentTarget.value
 
-        console.log(`form.setFieldValue('value', '${value}');`);
+        console.log(`form.setFieldValue('value', '${value}');`)
 
-        form.setFieldValue('value', value);
+        form.setFieldValue('value', value)
 
         const newItem = {
             ...dragItem,
             value,
-        };
+        }
 
-        context?.changeItem(newItem);
-    };
+        context?.changeItem(newItem)
+    }
 
     const handleRemoveItem = () => {
-        removeItem(itemId);
-    };
+        removeItem(itemId)
+    }
 
     const handleDuplicateItem = () => {
-        duplicateItem(itemId);
-    };
+        duplicateItem(itemId)
+    }
 
     const handleToggleItem = () => {
-        debugger;
+        debugger
 
-        toggleItem(itemId);
-    };
+        toggleItem(itemId)
+    }
 
     return (
         <Box
@@ -155,5 +155,5 @@ export default function DragItem({
                 </div>
             </div>
         </Box>
-    );
+    )
 }

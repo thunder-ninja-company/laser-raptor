@@ -7,7 +7,6 @@ export default {
     title      : 'Gyst/IconRemoveItem',
     component  : IconRemoveItem,
     parameters : {
-
         layout : 'fullscreen',
     },
 } as ComponentMeta<typeof IconRemoveItem>;

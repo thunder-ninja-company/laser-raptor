@@ -8,7 +8,6 @@ export default {
     title: 'Shared/panel/Template',
     component: Template,
     parameters: {
-
         layout: 'fullscreen'
     }
 } as ComponentMeta<typeof Template>;

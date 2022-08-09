@@ -1,4 +1,4 @@
-import { createStyles } from '@mantine/core';
+import { createStyles } from '@mantine/core'
 
 export const useStyles = createStyles(theme => ({
 
@@ -10,4 +10,4 @@ export const useStyles = createStyles(theme => ({
         height          : '500',
         width           : '300px',
     },
-}));
+}))

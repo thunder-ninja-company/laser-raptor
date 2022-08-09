@@ -1,6 +1,6 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import { COMPONENT_NAME } from './constant';
-import IconAddPanel from '.';
+import type { ComponentMeta, ComponentStory } from '@storybook/react'
+import { COMPONENT_NAME } from './constant'
+import IconAddPanel from '.'
 
 export default {
     title      : 'Gyst/IconAddPanel',
@@ -8,14 +8,14 @@ export default {
     parameters : {
         layout : 'fullscreen',
     },
-} as ComponentMeta<typeof IconAddPanel>;
+} as ComponentMeta<typeof IconAddPanel>
 
 const Template : ComponentStory<typeof IconAddPanel> = args => (
     <IconAddPanel {...args} />
-);
+)
 
-export const ComponentParameters = Template.bind({});
+export const ComponentParameters = Template.bind({})
 
 ComponentParameters.args = {
     id : `component-${COMPONENT_NAME}`,
-};
+}

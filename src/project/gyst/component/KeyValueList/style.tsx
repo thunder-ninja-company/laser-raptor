@@ -1,4 +1,4 @@
-import { createStyles } from '@mantine/core';
+import { createStyles } from '@mantine/core'
 
 export const useStyles = createStyles(_theme => ({
     keyValueList : {
@@ -6,4 +6,4 @@ export const useStyles = createStyles(_theme => ({
 
     itemList : {
     }
-}));
+}))

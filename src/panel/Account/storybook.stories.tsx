@@ -6,7 +6,6 @@ export default {
     title: "Shared/panel/Account",
     component: Account,
     parameters: {
-
         layout: "fullscreen",
     },
 } as ComponentMeta<typeof Account>;

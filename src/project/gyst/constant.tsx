@@ -1,22 +1,22 @@
-import { DragGridInitialState } from 'gyst/component/DragGrid/constant';
-import type { GystAppContextDTO, GystAppRoot } from 'gyst/type';
-import React from 'react';
+import { DragGridInitialState } from 'gyst/component/DragGrid/constant'
+import type { GystAppContextDTO, GystAppRoot } from 'gyst/type'
+import React from 'react'
 
-export const ProjectName = 'gyst';
+export const ProjectName = 'gyst'
 
 // Define the initial state using that type
 export const initialState : GystAppRoot = {
     isDebugDialogOpen : false,
     dragGrid          : DragGridInitialState,
-};
+}
 
 export const GystAppContext = React.createContext<
 GystAppContextDTO | undefined
->(undefined);
+>(undefined)
 
 export enum IconSize {
     small = 32,
     large = 48,
 }
 
-export const LessProminentIconColor = '#888';
+export const LessProminentIconColor = '#888'

@@ -1,5 +1,5 @@
-import { LessProminentIconColor } from 'gyst/constant';
-import { createStyles } from '@mantine/core';
+import { LessProminentIconColor } from 'gyst/constant'
+import { createStyles } from '@mantine/core'
 
 export const useStyles = createStyles(theme => ({
     iconAddPanel : {
@@ -8,4 +8,4 @@ export const useStyles = createStyles(theme => ({
         cursor     : 'pointer',
         color      : LessProminentIconColor,
     },
-}));
+}))

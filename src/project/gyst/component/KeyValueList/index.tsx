@@ -1,11 +1,11 @@
-import { Table, Title, Box } from '@mantine/core';
-import type { Props } from './type';
-import { useStyles } from './style';
+import { Table, Title, Box } from '@mantine/core'
+import type { Props } from './type'
+import { useStyles } from './style'
 
 
 export default function KeyValueList({ value, id } : Props) {
 
-    const { classes } = useStyles();
+    const { classes } = useStyles()
 
     return (
         <Box
@@ -48,5 +48,5 @@ export default function KeyValueList({ value, id } : Props) {
                 </Box>
             )}
         </Box>
-    );
+    )
 }

@@ -7,7 +7,6 @@ export default {
     title      : 'Gyst/IconHelp',
     component  : IconHelp,
     parameters : {
-
         layout : 'fullscreen',
     },
 } as ComponentMeta<typeof IconHelp>;

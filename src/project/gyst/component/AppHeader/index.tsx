@@ -1,12 +1,12 @@
-import { Burger, Header, MediaQuery } from '@mantine/core';
-import IconHelp from 'gyst/component/IconHelp';
-import type { Props } from './type';
-import { useStyles } from './style';
+import { Burger, Header, MediaQuery } from '@mantine/core'
+import IconHelp from 'gyst/component/IconHelp'
+import type { Props } from './type'
+import { useStyles } from './style'
 
 
 export default function AppHeader({ id } : Props) {
 
-    const { classes } = useStyles();
+    const { classes } = useStyles()
 
     // const handleClick = () => onClick(id, actionType);
 
@@ -30,5 +30,5 @@ export default function AppHeader({ id } : Props) {
             <IconHelp id={`help-${id}`} />
         </Header>
 
-    );
+    )
 }

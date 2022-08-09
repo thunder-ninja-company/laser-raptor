@@ -8,7 +8,6 @@ export default {
     title: 'Shared/panel/Dashboard',
     component: Dashboard,
     parameters: {
-
         layout: 'fullscreen'
     }
 } as ComponentMeta<typeof Dashboard>;

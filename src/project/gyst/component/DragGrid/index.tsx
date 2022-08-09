@@ -1,86 +1,86 @@
-import { initialDragItem, initialDragPanel } from 'gyst/component/DragGrid/constant';
-import type { DragDropState, DragGridContextDTO, DragGridDTO, Props } from './type';
-import { HTML5Backend } from 'react-dnd-html5-backend';
-import KeyValueList from 'gyst/component/KeyValueList';
-import type { DragItemDTO } from './DragItem/type';
-import { IconAddPanel } from 'gyst/component';
-import type { ListPosition } from 'gyst/type';
-import { DragGridContext } from './constant';
-import { Box, Grid } from '@mantine/core';
-import { copyObject } from 'gyst/shared';
-import { DndProvider } from 'react-dnd';
-import LandingZone from './LandingZone';
-import { useStyles } from './style';
-import DragPanel from './DragPanel';
-import { nanoid } from 'nanoid';
-import Logic from './logic';
+import { initialDragItem, initialDragPanel } from 'gyst/component/DragGrid/constant'
+import type { DragDropState, DragGridContextDTO, DragGridDTO, Props } from './type'
+import { HTML5Backend } from 'react-dnd-html5-backend'
+import KeyValueList from 'gyst/component/KeyValueList'
+import type { DragItemDTO } from './DragItem/type'
+import { IconAddPanel } from 'gyst/component'
+import type { ListPosition } from 'gyst/type'
+import { DragGridContext } from './constant'
+import { Box, Grid } from '@mantine/core'
+import { copyObject } from 'gyst/shared'
+import { DndProvider } from 'react-dnd'
+import LandingZone from './LandingZone'
+import { useStyles } from './style'
+import DragPanel from './DragPanel'
+import { nanoid } from 'nanoid'
+import Logic from './logic'
 
 export default function DragGrid({ dragGrid, onChange } : Props) {
 
-    const { classes } = useStyles();
+    const { classes } = useStyles()
 
     const duplicatePanel = (panelId : string) : void => {
 
-        console.log(`handleDuplicatePanel ${panelId}`);
+        console.log(`handleDuplicatePanel ${panelId}`)
 
-        const copyGrid = copyObject(dragGrid) as DragGridDTO;
+        const copyGrid = copyObject(dragGrid) as DragGridDTO
 
-        Logic.duplicatePanel(copyGrid, panelId);
+        Logic.duplicatePanel(copyGrid, panelId)
 
-        onChange(dragGrid);
-    };
+        onChange(dragGrid)
+    }
 
     const duplicateItem = (itemId : string) : void => {
 
-        console.log(`handleDuplicateItem ${itemId}`);
+        console.log(`handleDuplicateItem ${itemId}`)
 
-        const copyGrid = copyObject(dragGrid) as DragGridDTO;
+        const copyGrid = copyObject(dragGrid) as DragGridDTO
 
-        Logic.duplicateItem(copyGrid, itemId);
+        Logic.duplicateItem(copyGrid, itemId)
 
-        onChange(dragGrid);
-    };
+        onChange(dragGrid)
+    }
 
     const removePanel = (panelId : string) : void => {
 
-        console.log(`handleRemovePanel ${panelId}`);
+        console.log(`handleRemovePanel ${panelId}`)
 
-        const copyGrid = copyObject(dragGrid) as DragGridDTO;
+        const copyGrid = copyObject(dragGrid) as DragGridDTO
 
-        Logic.removePanel(copyGrid, panelId);
+        Logic.removePanel(copyGrid, panelId)
 
-        onChange(copyGrid);
-    };
+        onChange(copyGrid)
+    }
 
     const removeItem = (itemId : string) : void => {
 
-        const copyGrid = copyObject(dragGrid) as DragGridDTO;
+        const copyGrid = copyObject(dragGrid) as DragGridDTO
 
-        console.log(`handleRemoveItem ${itemId}`);
+        console.log(`handleRemoveItem ${itemId}`)
 
-        Logic.removeItem(copyGrid, itemId);
+        Logic.removeItem(copyGrid, itemId)
 
-        Logic.removeEmptyPanels(copyGrid);
+        Logic.removeEmptyPanels(copyGrid)
 
-        onChange(copyGrid);
-    };
+        onChange(copyGrid)
+    }
 
     const toggleItem = (itemId : string) : void => {
 
-        console.log(`handleToggleItem ${itemId}`);
+        console.log(`handleToggleItem ${itemId}`)
 
-        const copyGrid = copyObject(dragGrid) as DragGridDTO;
+        const copyGrid = copyObject(dragGrid) as DragGridDTO
 
-        Logic.toggleItem(copyGrid, itemId);
+        Logic.toggleItem(copyGrid, itemId)
 
-        debugger;
+        debugger
 
-        onChange(copyGrid);
-    };
+        onChange(copyGrid)
+    }
 
     const addNewPanel = (position : ListPosition) => {
 
-        const copyGrid = copyObject(dragGrid) as DragGridDTO;
+        const copyGrid = copyObject(dragGrid) as DragGridDTO
 
         // todo move into logic portion
 
@@ -91,64 +91,64 @@ export default function DragGrid({ dragGrid, onChange } : Props) {
                 ...initialDragItem,
                 id : nanoid(),
             }]
-        };
+        }
 
         switch (position) {
             case 'head':
-                Logic.insertPanel(copyGrid, 0, newPanel);
-                break;
+                Logic.insertPanel(copyGrid, 0, newPanel)
+                break
 
             case 'tail':
-                Logic.insertPanel(copyGrid, copyGrid.panels.length, newPanel);
-                break;
+                Logic.insertPanel(copyGrid, copyGrid.panels.length, newPanel)
+                break
 
             default:
-                throw Error(`Unknown actionId ${position}`);
+                throw Error(`Unknown actionId ${position}`)
         }
 
-        debugger;
+        debugger
 
-        onChange(copyGrid);
-    };
+        onChange(copyGrid)
+    }
 
     const changeItem = (item : DragItemDTO) : void => {
 
-        console.log(`handleChangeItem ${item.id}`);
+        console.log(`handleChangeItem ${item.id}`)
 
-        debugger;
+        debugger
 
-        const copyGrid = copyObject(dragGrid) as DragGridDTO;
+        const copyGrid = copyObject(dragGrid) as DragGridDTO
 
-        Logic.changeItem(copyGrid, item);
+        Logic.changeItem(copyGrid, item)
 
-        onChange(copyGrid);
-    };
+        onChange(copyGrid)
+    }
 
     const addNewItem = (position : ListPosition, panelId : string) => {
 
-        const copyGrid = copyObject(dragGrid) as DragGridDTO;
+        const copyGrid = copyObject(dragGrid) as DragGridDTO
 
         const newItem = {
             ...initialDragItem,
             id : nanoid(),
         }
 
-        Logic.insertItem(copyGrid, panelId, position, newItem);
+        Logic.insertItem(copyGrid, panelId, position, newItem)
 
-        debugger;
+        debugger
 
-        onChange(copyGrid);
+        onChange(copyGrid)
 
         // dispatch(updateGroupGridValue(copyGrid));
-    };
+    }
 
     const dragDrap = (dragDropState : DragDropState) => {
 
-        const copyGrid = copyObject(dragGrid) as DragGridDTO;
+        const copyGrid = copyObject(dragGrid) as DragGridDTO
 
-        Logic.changeDragDrop(copyGrid, dragDropState, onChange);
+        Logic.changeDragDrop(copyGrid, dragDropState, onChange)
 
-        onChange(copyGrid);
+        onChange(copyGrid)
     }
 
     const context : DragGridContextDTO = {
@@ -162,7 +162,7 @@ export default function DragGrid({ dragGrid, onChange } : Props) {
         addNewItem,
         dragDrap,
         dragGrid,
-    };
+    }
 
     return (
         <DragGridContext.Provider value={context}>
@@ -208,5 +208,5 @@ export default function DragGrid({ dragGrid, onChange } : Props) {
             </DndProvider>
         </DragGridContext.Provider>
 
-    );
+    )
 }

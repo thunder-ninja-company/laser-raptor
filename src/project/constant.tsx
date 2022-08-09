@@ -11,7 +11,7 @@ export const MainLinks = [
         label : 'SUPPORT OPTIONS',
         link  : 'SUPPORT OPTIONS'
     }
-];
+]
 
 export const UserLinks = [
     {
@@ -34,4 +34,4 @@ export const UserLinks = [
         label : 'FORUMS',
         link  : 'FORUMS'
     }
-];
+]

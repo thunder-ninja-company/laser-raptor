@@ -1,12 +1,12 @@
-import { initialDragDropState } from 'gyst/component/DragGrid/constant';
-import { Box } from '@mantine/core';
-import { useStyles } from './style';
-import { useDrag } from 'react-dnd';
-import type { Props } from './type';
+import { initialDragDropState } from 'gyst/component/DragGrid/constant'
+import { Box } from '@mantine/core'
+import { useStyles } from './style'
+import { useDrag } from 'react-dnd'
+import type { Props } from './type'
 
 export default function DragSource({ panelId, children } : Props) {
 
-    const { classes } = useStyles();
+    const { classes } = useStyles()
 
     const [{ isDragging : _isDragging }, drag, dragPreview] = useDrag(() => ({
         type    : 'panel',
@@ -19,10 +19,10 @@ export default function DragSource({ panelId, children } : Props) {
             dragItemId  : null,
         },
         end(item, _monitor){
-            console.log(`DragItem has finished dragging ${panelId}`);
+            console.log(`DragItem has finished dragging ${panelId}`)
             console.log(item)
         }
-    }));
+    }))
 
     return (
         <Box
@@ -34,5 +34,5 @@ export default function DragSource({ panelId, children } : Props) {
                 {children}
             </div>
         </Box>
-    );
+    )
 }

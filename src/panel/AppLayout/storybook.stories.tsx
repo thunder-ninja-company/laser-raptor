@@ -6,7 +6,6 @@ export default {
     title: "Shared/panel/AppLayout",
     component: AppLayout,
     parameters: {
-
         layout: "fullscreen",
     },
 } as ComponentMeta<typeof AppLayout>;

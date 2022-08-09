@@ -1,6 +1,6 @@
-import type { DragPanelDTO } from './DragPanel/type';
-import type { DragItemDTO } from './DragItem/type';
-import type { ListPosition } from 'gyst/type';
+import type { DragPanelDTO } from './DragPanel/type'
+import type { DragItemDTO } from './DragItem/type'
+import type { ListPosition } from 'gyst/type'
 
 export interface Props {
     onChange : (value : DragGridDTO) => void;

@@ -1,17 +1,15 @@
-import { useStyles } from './style';
-import type { Props } from './type';
-import { Box } from '@mantine/core';
-import React from 'react';
+import { useStyles } from './style'
+import type { Props } from './type'
+import { Box } from '@mantine/core'
+import React from 'react'
 
-export default function QuickDebug({ value, id  } : Props) {
+export default function QuickDebug({ value  } : Props) {
 
-    const { classes } = useStyles();
+    const { classes } = useStyles()
 
     return (
-        <Box
-            id={id}
-            classNames={classes.quickDebug}>
+        <Box classNames={classes.quickDebug}>
             {value}
         </Box>
-    );
+    )
 }

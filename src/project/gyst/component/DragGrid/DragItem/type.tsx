@@ -1,4 +1,4 @@
-export type ItemStatus = 'default' | 'checked';
+export type ItemStatus = 'default' | 'checked'
 
 export interface DragItemDTO {
     status : ItemStatus;
@@ -12,7 +12,7 @@ export interface FormValues {
 }
 
 // rename this, doesnt make sense anymore
-export type DragItemType = 'head' | 'item' | 'tail';
+export type DragItemType = 'head' | 'item' | 'tail'
 
 export interface DragItemProps {
     dragPanelIndex : number;

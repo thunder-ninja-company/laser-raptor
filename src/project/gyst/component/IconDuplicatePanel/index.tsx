@@ -1,17 +1,16 @@
-import { IconCopy } from '@tabler/icons';
-import {IconSize } from 'gyst/constant';
-import type { Props } from './type';
-import { useStyles } from './style';
+import { IconCopy } from '@tabler/icons'
+import {IconSize } from 'gyst/constant'
+import type { Props } from './type'
+import { useStyles } from './style'
 
-export default function IconDuplicatePanel({ id } : Props) {
+export default function IconDuplicatePanel({} : Props) {
 
-    const { classes } = useStyles();
+    const { classes } = useStyles()
 
     return (
         <IconCopy
             className={classes.iconDuplicatePanel}
             size={IconSize.small}
-            stroke={1}
-            id={id} />
-    );
+            stroke={1} />
+    )
 }

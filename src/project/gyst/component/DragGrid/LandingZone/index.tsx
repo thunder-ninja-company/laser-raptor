@@ -1,16 +1,16 @@
-import { DragGridContext } from '../constant';
-import type { DragDropState } from '../type';
-import { useStyles  } from './style';
-import { Box } from '@mantine/core';
-import type { Props } from './type';
-import { useDrop } from 'react-dnd';
-import { useContext } from 'react';
+import { DragGridContext } from '../constant'
+import type { DragDropState } from '../type'
+import { useStyles  } from './style'
+import { Box } from '@mantine/core'
+import type { Props } from './type'
+import { useDrop } from 'react-dnd'
+import { useContext } from 'react'
 
 export default function LandingZone({ index, panelId, type, children } : Props) {
 
-    const { classes } = useStyles();
+    const { classes } = useStyles()
 
-    const context = useContext(DragGridContext);
+    const context = useContext(DragGridContext)
 
     const [{ isOver, _canDrop }, drop] = useDrop(() => ({
         accept : type === 'panel'
@@ -18,11 +18,11 @@ export default function LandingZone({ index, panelId, type, children } : Props) 
             : 'panel',
 
         drop(dragDropState : DragDropState, _monitor) {
-            context?.onChange({
+            context?.changeItem({
                 ...dragDropState,
                 dropPanelId : panelId,
                 dropIndex   : index,
-            });
+            })
         },
 
         collect : monitor => ({
@@ -30,9 +30,7 @@ export default function LandingZone({ index, panelId, type, children } : Props) 
             canDrop       : monitor.canDrop(),
             isOverCurrent : monitor.isOver({ shallow : true }),
         }),
-    }));
-
-    const id = `${panelId}:${index}`;
+    }))
 
     return (
         <Box
@@ -42,5 +40,5 @@ export default function LandingZone({ index, panelId, type, children } : Props) 
             p='md'>
             {children}
         </Box>
-    );
+    )
 }
