@@ -3,7 +3,6 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 import { initialState } from './constant'
 import { ProjectName } from './constant'
-import { copyObject } from 'gyst/shared'
 
 export default createSlice({
     initialState,
@@ -11,7 +10,7 @@ export default createSlice({
     reducers : {
         updateGroupGridValue : (state, action : PayloadAction<DragGridDTO>) => {
 
-            state.dragGrid = copyObject(action.payload) as DragGridDTO
+            state.dragGrid = action.payload
         },
 
         toggleDebugDialog : state => {

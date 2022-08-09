@@ -1,7 +1,6 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react'
 
 import QuickDebug from '.'
-import { COMPONENT_NAME } from './constant'
 
 export default {
     title      : 'Gyst/QuickDebug',

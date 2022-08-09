@@ -11,8 +11,6 @@ export default function IconAddPanel({ position : _position } : Props) {
     const _context = useContext(GystAppContext)
 
     const handleClick = () =>  {
-        debugger
-
         // context?.addNewPanel(position);
     }
 

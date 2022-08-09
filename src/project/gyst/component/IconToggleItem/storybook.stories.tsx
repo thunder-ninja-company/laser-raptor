@@ -1,5 +1,4 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react'
-import { COMPONENT_NAME } from './constant'
 import IconToggleItem from '.'
 
 export default {

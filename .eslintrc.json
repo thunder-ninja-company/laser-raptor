@@ -1,6 +1,7 @@
 {
     "plugins": [
-        "editorconfig"
+        "editorconfig",
+        "unused-imports"
     ],
     "extends": [
         "next",
@@ -10,6 +11,17 @@
         "plugin:@typescript-eslint/recommended"
     ],
     "rules": {
+        "no-unused-vars": "off", // or "@typescript-eslint/no-unused-vars": "off",
+        "unused-imports/no-unused-imports": "error",
+        "unused-imports/no-unused-vars": [
+            "warn",
+            {
+                "vars": "all",
+                "varsIgnorePattern": "^_",
+                "args": "after-used",
+                "argsIgnorePattern": "^_"
+            }
+        ],
         "semi": "off",
         "@typescript-eslint/no-empty-interface": "off",
         "@typescript-eslint/semi": [
@@ -69,7 +81,6 @@
                 "functions": "only-multiline"
             }
         ],
-        "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars": [
             "error", // or "error"
             {

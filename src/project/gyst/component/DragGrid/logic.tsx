@@ -140,8 +140,6 @@ const copyItem = (dragGrid : DragGridDTO, itemId : string) : DragItemDTO => {
     const itemInfo = indexOfItemAndPanel(dragGrid, itemId)
 
     if (!itemInfo) {
-        debugger
-
         console.log(`Could not find item ${itemId}`)
         throw Error('Unable to find item  ${itemId}')
     }
@@ -263,8 +261,6 @@ const dropOntoDifferentPanel = (
         panelIndex : dragPanelIndex,
         itemIndex  : dragItemIndex,
     } = indexOfItemAndPanel(dragGrid, dragItemId)
-
-    debugger
 
     dragGrid.panels[dragPanelIndex].items.splice(dragItemIndex, 1)
     dragGrid.panels[dropPanelIndex].items.splice(dropIndex, 0, itemCopy)

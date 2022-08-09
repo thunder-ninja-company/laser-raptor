@@ -73,8 +73,6 @@ export default function DragGrid({ dragGrid, onChange } : Props) {
 
         Logic.toggleItem(copyGrid, itemId)
 
-        debugger
-
         onChange(copyGrid)
     }
 
@@ -106,16 +104,12 @@ export default function DragGrid({ dragGrid, onChange } : Props) {
                 throw Error(`Unknown actionId ${position}`)
         }
 
-        debugger
-
         onChange(copyGrid)
     }
 
     const changeItem = (item : DragItemDTO) : void => {
 
         console.log(`handleChangeItem ${item.id}`)
-
-        debugger
 
         const copyGrid = copyObject(dragGrid) as DragGridDTO
 
@@ -134,8 +128,6 @@ export default function DragGrid({ dragGrid, onChange } : Props) {
         }
 
         Logic.insertItem(copyGrid, panelId, position, newItem)
-
-        debugger
 
         onChange(copyGrid)
 
@@ -177,7 +169,7 @@ export default function DragGrid({ dragGrid, onChange } : Props) {
                         <>
                             {dragGrid.panels.map((dragPanel, dragPanelIndex) =>
                                 <Grid.Col
-                                    key={`gp-${dragPanel.id}`}
+                                    key={`gp-${dragPanel.id}-${dragPanelIndex}`}
                                     xs={12}
                                     md={6}
                                     lg={4}>
@@ -185,7 +177,8 @@ export default function DragGrid({ dragGrid, onChange } : Props) {
                                         index={dragPanelIndex}
                                         panelId={null}
                                         type='grid'>
-                                        <DragPanel dragPanelIndex={dragPanelIndex} />
+                                        <DragPanel
+                                            dragPanelIndex={dragPanelIndex} />
                                     </LandingZone>
                                 </Grid.Col>
                             )}
@@ -198,7 +191,6 @@ export default function DragGrid({ dragGrid, onChange } : Props) {
                                     panelId={null}
                                     type='grid'>
                                     <IconAddPanel
-                                        id='add-panel-tail'
                                         position='tail' />
                                 </LandingZone>
                             </Grid.Col>

@@ -1,8 +1,11 @@
-// main.js
-
 // Modules to control application life and create native browser window
+
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
+
+/* eslint-enable @typescript-eslint/no-var-requires */
 
 const createWindow = () => {
     // Create the browser window.

@@ -1,1 +1,1 @@
-export const copyObject = (obj : any) => JSON.parse(JSON.stringify(obj))
+export const copyObject = (obj : unknown) => JSON.parse(JSON.stringify(obj))

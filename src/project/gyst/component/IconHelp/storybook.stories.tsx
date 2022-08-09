@@ -1,7 +1,7 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { ComponentMeta, ComponentStory } from '@storybook/react'
 
-import IconHelp from '.';
-import { COMPONENT_NAME } from './constant';
+import IconHelp from '.'
+import { COMPONENT_NAME } from './constant'
 
 export default {
     title      : 'Gyst/IconHelp',
@@ -9,14 +9,14 @@ export default {
     parameters : {
         layout : 'fullscreen',
     },
-} as ComponentMeta<typeof IconHelp>;
+} as ComponentMeta<typeof IconHelp>
 
 const Template : ComponentStory<typeof IconHelp> = args => (
     <IconHelp {...args} />
-);
+)
 
-export const ComponentParameters = Template.bind({});
+export const ComponentParameters = Template.bind({})
 
 ComponentParameters.args = {
     id : `component-${COMPONENT_NAME}`,
-};
+}

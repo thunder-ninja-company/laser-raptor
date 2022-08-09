@@ -62,8 +62,7 @@ export default function DragItem({
         },
     }))
 
-    const handleChangeValue = (evt : { currentTarget : { value : any } }) => {
-        debugger
+    const handleChangeValue = (evt : { currentTarget : { value : string } }) => {
 
         const value = evt.currentTarget.value
 
@@ -88,8 +87,6 @@ export default function DragItem({
     }
 
     const handleToggleItem = () => {
-        debugger
-
         toggleItem(itemId)
     }
 
@@ -138,15 +135,12 @@ export default function DragItem({
                             <Menu className={classes.itemMenu}>
                                 <Menu.Item
                                     onClick={handleDuplicateItem}
-                                    icon={<IconDuplicateItem id={itemId} />}>
+                                    icon={<IconDuplicateItem />}>
                                     {'Duplicate'}
                                 </Menu.Item>
                                 <Menu.Item
                                     onClick={handleRemoveItem}
-                                    icon={
-                                        <IconRemoveItem
-                                            id={`remove-item-${itemId}`}/>
-                                    }>
+                                    icon={<IconRemoveItem/>}>
                                     {'Remove'}
                                 </Menu.Item>
                             </Menu>

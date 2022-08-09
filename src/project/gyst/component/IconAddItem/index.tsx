@@ -16,7 +16,6 @@ export default function IconAddItem({
     const _context = useContext(GystAppContext)
 
     const handleClick = () => {
-        debugger
 
         // context?.(position, panelId);
     }

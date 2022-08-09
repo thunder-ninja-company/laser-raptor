@@ -10,9 +10,7 @@ export const initialState : GystAppRoot = {
     dragGrid          : DragGridInitialState,
 }
 
-export const GystAppContext = React.createContext<
-GystAppContextDTO | undefined
->(undefined)
+export const GystAppContext = React.createContext<GystAppContextDTO | undefined>(undefined)
 
 export enum IconSize {
     small = 32,

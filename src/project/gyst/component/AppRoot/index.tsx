@@ -29,8 +29,6 @@ export default function AppRoot({ id } : Props) {
     const dispatch = useAppDispatch()
 
     const handleChange = (value : DragGridDTO) => {
-        debugger
-
         dispatch(updateGroupGridValue(value))
     }
 
@@ -49,8 +47,8 @@ export default function AppRoot({ id } : Props) {
         fontFamily : '\'HelveticaNeue-Light\', \'Helvetica Neue Light\', \'Helvetica Neue\'',
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     const handleCloseDialog = () => {
-        debugger
     }
 
     return (
