@@ -1,5 +1,5 @@
 {
-    "extends": "plasmo/templates/tsconfig.base",
+    "extends": "./tsconfig.aliases.json",
     "compilerOptions": {
         "lib": ["dom", "dom.iterable", "esnext"],
         "forceConsistentCasingInFileNames": true,
@@ -14,13 +14,7 @@
         "target": "es5",
         "allowJs": true,
         "strict": true,
-        "noEmit": true,
-        "paths": {
-            "gyst/*": ["./src/project/gyst/*"],
-            "*": ["./src/*"],
-            "~*": ["./*"],
-        },
-        "baseUrl": "."
+        "noEmit": true
     },
     "include": [
         ".plasmo/**/*",
