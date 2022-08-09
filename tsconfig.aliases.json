@@ -1,7 +1,8 @@
 {
     "compilerOptions": {
         "paths": {
-            "gyst/*": ["./src/project/gyst/*"]
+            "gyst/*": ["./src/project/gyst/*"],
+            "core/*": ["./src/core/*"]
         }
     }
 }
