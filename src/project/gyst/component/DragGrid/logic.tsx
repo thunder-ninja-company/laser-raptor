@@ -19,6 +19,10 @@ export const toggleItem = (dragGrid : DragGridDTO, itemId : string) : void => {
 
 export const duplicateItem = (dragGrid : DragGridDTO, itemId : string) : void => {
 
+    console.log(dragGrid);
+
+    const asdf = dragGrid.goo.foobreakthings;
+
     const { panelIndex, itemIndex } = indexOfItemAndPanel(dragGrid, itemId)
 
     const itemCopy = copyObject(dragGrid.panels[panelIndex].items[itemIndex]) as DragItemDTO
@@ -45,7 +49,12 @@ export const duplicatePanel = (dragGrid : DragGridDTO, panelId : string) : void 
 
 export const removeItem = (dragGrid : DragGridDTO, itemId : string) : DragItemDTO => {
 
+    console.log(dragGrid)
+
     const { panelIndex, itemIndex } = indexOfItemAndPanel(dragGrid, itemId)
+
+    console.log('panelIndex', panelIndex)
+    console.log('itemIndex', itemIndex)
 
     return dragGrid.panels[panelIndex].items.splice(itemIndex, 1)[0]
 }

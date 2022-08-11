@@ -47,8 +47,8 @@ const customJestConfig = {
     // },
 
     transform : {
-        '^.+\\.ts?$'      : 'ts-jest',
-        '^.+\\.(js|jsx)$' : 'babel-jest'
+        '^.+\\.(js|jsx)$' : 'babel-jest',
+        '^.+\\.(ts|tsx)$' : 'ts-jest',
     },
 
     // transform : {

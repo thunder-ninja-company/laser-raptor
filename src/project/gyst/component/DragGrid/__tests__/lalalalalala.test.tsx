@@ -1,5 +1,5 @@
 import Logic from 'gyst/component/DragGrid/logic'
-import { initialDragGrid } from '../constant'
+import { DragGridInitialState } from '../constant'
 
 
 describe('Please just make webpack cooperate', () => {
@@ -7,7 +7,14 @@ describe('Please just make webpack cooperate', () => {
 
         console.log('Logic')
         console.log(Logic)
-        // const newDragGrid = Logic.duplicateItem(initialDragGrid, 'fuck')
+        console.log(DragGridInitialState);
+
+        debugger;
+
+
+        console.log('initialDragGrid', DragGridInitialState)
+
+        const newDragGrid = Logic.removeItem(DragGridInitialState, 'item-alpha')
 
         expect('bbbllllaaaaa').toBe('bbbllllaaaaa')
     })
