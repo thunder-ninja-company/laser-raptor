@@ -12,34 +12,85 @@ const createJestConfig = nextJest({
     dir : './',
 })
 
+// moduleDirectories  : ['node_modules', '<rootDir>/'],
+// testEnvironment    : 'jest-environment-jsdom',
+
+// transformIgnorePatterns : [
+// 'node_modules/nanoid'
+// '/node_modules/(?!react-dnd|core-dnd|@react-dnd|dnd-core|react-dnd-html5-backend|nanoid)'
+// ],
+
+
+// transform : {
+//     '^.+\\.(j|t)sx?$' : 'ts-jest',
+// },
+// transformIgnorePatterns : [
+//     // '/node_modules/(?!@react-dnd|react-dnd|dnd-core|react-dnd-html5-backend)',
+// ],
+// transform         : {},
+// moduleDirectories : [
+//     'node_modules',
+// ],
+
 const customJestConfig = {
 
-    moduleDirectories : ['node_modules'],
-    testEnvironment   : 'jest-environment-jsdom',
-    transform         : {
-        '^.+\\.(js|jsx|ts|tsx)$' : ['babel-jest', { rootMode : 'upward' }],
+    extensionsToTreatAsEsm : ['.ts', '.tsx'],
+
+    globals : {
+        'ts-jest' : {
+            useESM : true
+        }
     },
 
-    setupFilesAfterEnv : ['<rootDir>/jest.setup.js'],
-    // moduleDirectories  : ['node_modules', '<rootDir>/'],
-    // testEnvironment    : 'jest-environment-jsdom',
-
-    transformIgnorePatterns : [
-        '/node_modules/(?!react-dnd|core-dnd|@react-dnd|dnd-core|react-dnd-html5-backend)'
-    ],
-
     // transform : {
-    //     '^.+\\.(j|t)sx?$' : 'ts-jest',
+    //     '^./src/+*/*.(ts|tsx)$' : ['ts-jest', { rootMode : 'upward' }],
     // },
 
+    transform : {
+        '^.+\\.ts?$'      : 'ts-jest',
+        '^.+\\.(js|jsx)$' : 'babel-jest'
+    },
+
+    // transform : {
+    //     '^.+\\.tsx?$' : 'ts-jest',
+    //     '^.+\\.js?$'  : 'babel-jest',
+    // },
+
+    // transform : {
+
+    // },
+
+    testEnvironment : 'jest-environment-jsdom',
+
+    // testRegex : [
+    //     '\\.(test).$'
+    // ],
+
+    // testMatch : ['**/*__tests__/*.ts?(x)'],
+
+    testMatch : ['<rootDir>/src/project/gyst/component/DragGrid/__tests__/lalalalalala.test.tsx'],
+
+
+    // testMatch : [
+
+    //     // '*src/project/gyst/component/DragGrid/__tests__/lalalalalala.tsx',
+
+    // ],
+
+    moduleFileExtensions : ['js', 'jsx', 'ts', 'tsx'],
+    moduleDirectories    : ['node_modules', 'bower_components', 'shared'],
+
     // transformIgnorePatterns : [
-    //     '/node_modules/(?!@react-dnd|react-dnd|dnd-core|react-dnd-html5-backend)',
     // ],
 
     moduleNameMapper : pathsToModuleNameMapper(
-        compilerOptions.paths,
-        { prefix : '<rootDir>/' }
-    )
+        compilerOptions.paths, {
+            prefix : '<rootDir>/'
+        }
+    ),
+
+    setupFilesAfterEnv : ['<rootDir>/jest.setup.js'],
+
 }
 
 console.log(customJestConfig.moduleNameMapper)
