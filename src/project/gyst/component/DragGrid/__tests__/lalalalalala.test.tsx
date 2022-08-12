@@ -1,72 +1,29 @@
 import { DragGridInitialState } from 'gyst/component/DragGrid/constant'
 import Logic from 'gyst/component/DragGrid/logic'
 import { expect } from '@jest/globals'
+import { produce } from 'immer'
 
-describe('Please just make webpack cooperate', () => {
+describe('DragGrid Logic', () => {
 
-    it('Uhggggg', () => {
+    describe('Exported Functions', () => {
 
-        console.log('initialDragGrid', DragGridInitialState)
+        it('Insert Operations', () => {
 
-        const initialDragGridState = DragGridInitialState
+            const newDragGrid = Logic.insertItem(DragGridInitialState, 'panel-0', 'head', {
+                id     : 'item-new',
+                value  : 'new',
+                status : 'default',
+            })
 
-        const newDragGrid = Logic.insertItem(initialDragGridState, 'panel-0', 'head', {
-            id     : 'item-new',
-            value  : 'new',
-            status : 'default',
-        })
+            const expectedResult = produce(DragGridInitialState, dragGrid => {
+                dragGrid.panels[0].items.unshift({
+                    id     : 'item-new',
+                    value  : 'new',
+                    status : 'default',
+                })
+            })
 
-        console.log('newDragGrid', newDragGrid)
-
-        expect(newDragGrid).toEqual({
-            id     : 'grid-0',
-            panels : [
-                {
-                    id    : 'panel-0',
-                    items : [
-                        {
-                            id     : 'item-new',
-                            value  : 'new',
-                            status : 'default',
-                        },
-                        {
-                            status : 'default',
-                            value  : 'alpha',
-                            id     : 'item-alpha',
-                        },
-                        {
-                            status : 'default',
-                            value  : 'beta',
-                            id     : 'item-beta',
-                        },
-                        {
-                            status : 'default',
-                            value  : 'charlie',
-                            id     : 'item-charlie',
-                        },
-                        {
-                            status : 'default',
-                            value  : 'delta',
-                            id     : 'item-delta',
-                        },
-                    ],
-                },
-                {
-                    id    : 'panel-1',
-                    items : [
-                        {
-                            status : 'default',
-                            value  : 'echo',
-                            id     : 'item-echo',
-                        },
-                        {
-                            status : 'default',
-                            value  : 'foxtrot',
-                            id     : 'item-foxtrot',
-                        },
-                    ],
-                },
-            ],
+            expect(newDragGrid).toEqual(expectedResult)
         })
     })
 })
