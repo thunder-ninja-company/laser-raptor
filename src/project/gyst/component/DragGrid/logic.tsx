@@ -22,17 +22,15 @@ export const toggleItem = (initialDragGrid : DragGridDTO, itemId : string) : Dra
     })
 }
 
-export const duplicateItem = (initialDragGrid : DragGridDTO, itemId : string) : DragGridDTO => {
+export const duplicateItem = (initialDragGrid : DragGridDTO, itemId : string, newItemId : string) : DragGridDTO => {
 
     return produce(initialDragGrid, dragGrid => {
 
         const { panelIndex, itemIndex } = indexOfItemAndPanel(dragGrid, itemId)
 
-        const itemCopy = copyObject(dragGrid.panels[panelIndex].items[itemIndex]) as DragItemDTO
-
-        dragGrid.panels[panelIndex].items.splice(itemIndex + 1, 0, {
-            ...itemCopy,
-            id : nanoid(),
+        dragGrid.panels[panelIndex].items.splice(itemIndex, 0, {
+            ...dragGrid.panels[panelIndex].items[itemIndex],
+            id : newItemId,
         })
     })
 }
@@ -58,7 +56,7 @@ export const removeItem = (initialDragGrid : DragGridDTO, itemId : string) : Dra
 
         const { panelIndex, itemIndex } = indexOfItemAndPanel(dragGrid, itemId)
 
-        _.remove(dragGrid.panels[panelIndex].items, itemIndex)
+        dragGrid.panels[panelIndex].items.splice(itemIndex, 1)
     })
 }
 
@@ -70,19 +68,6 @@ export const removePanel = (initialDragGrid : DragGridDTO, panelId : string) : D
             dragGrid.panels,
             panel => panel.id === panelId
         )
-    })
-}
-
-export const removeEmptyPanels = (initialDragGrid : DragGridDTO) : DragGridDTO => {
-
-    return produce(initialDragGrid, dragGrid => {
-
-        for (let panelIndex = 0; panelIndex < dragGrid.panels.length; panelIndex++) {
-            if (dragGrid.panels[panelIndex].items.length === 0) {
-                dragGrid.panels.splice(panelIndex, 1)
-                panelIndex--
-            }
-        }
     })
 }
 
@@ -156,6 +141,19 @@ export const changeDragDrop = (
             return onChange(dropOntoDifferentPanel(dragGrid, dropPanelIndex, dragItemId, dropIndex, itemCopy))
 
         throw Error('Unable to figure out wtf happened dropping the item')
+    })
+}
+
+const removeEmptyPanels = (initialDragGrid : DragGridDTO) : DragGridDTO => {
+
+    return produce(initialDragGrid, dragGrid => {
+
+        for (let panelIndex = 0; panelIndex < dragGrid.panels.length; panelIndex++) {
+            if (dragGrid.panels[panelIndex].items.length === 0) {
+                dragGrid.panels.splice(panelIndex, 1)
+                panelIndex--
+            }
+        }
     })
 }
 

@@ -4,6 +4,7 @@ import { DragPanelDTO } from 'gyst/component/DragGrid/DragPanel/type'
 import Logic from 'gyst/component/DragGrid/logic'
 import { expect } from '@jest/globals'
 import { produce } from 'immer'
+import _ from 'lodash'
 // import jest from 'jest'
 
 // todo - setup standard crypto stuff in one area and not like this
@@ -17,13 +18,30 @@ describe('DragGrid Logic', () => {
     describe('Exported Functions', () => {
 
         it('toggleItem', () => {
-        // export const toggleItem = (initialDragGrid : DragGridDTO, itemId : string) : DragGridDTO => {
-            expect(true).toBeTruthy()
+
+            const newDragGrid = Logic.toggleItem(DragGridInitialState, 'item-alpha')
+
+            const expectedResult = produce(DragGridInitialState, dragGrid => {
+
+                dragGrid.panels[0].items[0].status = 'checked'
+            })
+
+            expect(newDragGrid).toEqual(expectedResult)
         })
 
         it('duplicateItem', () => {
-            // export const duplicateItem = (initialDragGrid : DragGridDTO, itemId : string) : DragGridDTO => {
-            expect(true).toBeTruthy()
+
+            const newDragGrid = Logic.duplicateItem(DragGridInitialState, 'item-alpha', 'new-item-id')
+
+            const expectedResult = produce(DragGridInitialState, dragGrid => {
+
+                dragGrid.panels[0].items.unshift({
+                    ...dragGrid.panels[0].items[0],
+                    id : 'new-item-id',
+                })
+            })
+
+            expect(newDragGrid).toEqual(expectedResult)
         })
 
         it('duplicatePanel', () => {
@@ -42,8 +60,17 @@ describe('DragGrid Logic', () => {
         })
 
         it('removeItem', () => {
-            // export const removeItem = (initialDragGrid : DragGridDTO, itemId : string) : DragGridDTO => {
-            expect(true).toBeTruthy()
+
+            const newDragGrid = Logic.removeItem(DragGridInitialState, 'item-alpha')
+
+            console.log(newDragGrid)
+
+            const expectedResult = produce(DragGridInitialState, dragGrid => {
+
+                dragGrid.panels[0].items.splice(0, 1)
+            })
+
+            expect(newDragGrid).toEqual(expectedResult)
         })
 
         it('removePanel', () => {
@@ -58,11 +85,6 @@ describe('DragGrid Logic', () => {
             })
 
             expect(newDragGrid).toEqual(expectedResult)
-        })
-
-        it('removeEmptyPanels', () => {
-            // export const removeEmptyPanels = (initialDragGrid : DragGridDTO) : DragGridDTO => {
-            expect(true).toBeTruthy()
         })
 
         it('insertPanel', () => {
