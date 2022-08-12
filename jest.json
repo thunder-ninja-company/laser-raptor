@@ -1,0 +1,7 @@
+{
+    "moduleNameMapper": {
+        "^gyst/(.*)$": "<rootDir>/src/project/gyst/$1",
+        "^core/(.*)$": "<rootDir>/src/core/$1"
+      }
+  }
+

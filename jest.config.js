@@ -78,7 +78,10 @@ const customJestConfig = {
     // ],
 
     moduleFileExtensions : ['js', 'jsx', 'ts', 'tsx'],
-    moduleDirectories    : ['node_modules', 'bower_components', 'shared'],
+    moduleDirectories    : [
+        'node_modules',
+        // "<rootDir>/src",
+    ],
 
     // transformIgnorePatterns : [
     // ],

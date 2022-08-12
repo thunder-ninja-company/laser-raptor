@@ -5,11 +5,30 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "pwa-chrome",
+            "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
             "url": "http://storybook.local:6006",
             "webRoot": "${workspaceFolder}/src"
+        },
+        {
+            "type": "node",
+            "name": "vscode-jest-tests.v2",
+            "request": "launch",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "program": "",
+            "cwd": "/Users/danieldonahoe/code/laser-raptor",
+            "args": [
+                "--experimental-vm-modules",
+                "node_modules/jest/bin/jest.js",
+                "--runInBand",
+                "--watchAll=false",
+                "--testNamePattern",
+                "${jest.testNamePattern}",
+                "--runTestsByPath",
+                "${jest.testFile}"
+            ]
         }
     ]
 }

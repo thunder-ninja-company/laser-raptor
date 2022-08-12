@@ -2,7 +2,8 @@
     "files.exclude": {},
     "editor.formatOnPaste": false, // required
     "editor.formatOnType": false, // required
-    "editor.formatOnSave": false, // optional
+    "editor.formatOnSave": false,
+    "jest.jestCommandLine": "node --experimental-vm-modules node_modules/jest/bin/jest.js", // optional
     // "editor.formatOnSaveMode": "file", // required to format on save
     // "files.autoSave": "onFocusChange" // optional but recommended
 }
