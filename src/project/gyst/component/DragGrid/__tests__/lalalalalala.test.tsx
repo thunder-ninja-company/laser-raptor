@@ -1,8 +1,16 @@
+import type { DragItemDTO } from 'gyst/component/DragGrid/DragItem/type'
 import { DragGridInitialState } from 'gyst/component/DragGrid/constant'
-import type { DragItemDTO } from '../DragItem/type'
+import { DragPanelDTO } from 'gyst/component/DragGrid/DragPanel/type'
 import Logic from 'gyst/component/DragGrid/logic'
 import { expect } from '@jest/globals'
 import { produce } from 'immer'
+// import jest from 'jest'
+
+// todo - setup standard crypto stuff in one area and not like this
+
+// jest.mock('nanoid', () => {
+//     return { nanoid : () => '666' }
+// })
 
 describe('DragGrid Logic', () => {
 
@@ -19,8 +27,18 @@ describe('DragGrid Logic', () => {
         })
 
         it('duplicatePanel', () => {
-            // export const duplicatePanel = (initialDragGrid : DragGridDTO, panelId : string) : DragGridDTO => {
-            expect(true).toBeTruthy()
+
+            const newDragGrid = Logic.duplicatePanel(DragGridInitialState, 'panel-0', 'new-panel-id')
+
+            const expectedResult = produce(DragGridInitialState, dragGrid => {
+
+                dragGrid.panels.splice(0, 0, {
+                    ...DragGridInitialState.panels[0],
+                    id : 'new-panel-id',
+                })
+            })
+
+            expect(newDragGrid).toEqual(expectedResult)
         })
 
         it('removeItem', () => {
@@ -29,8 +47,17 @@ describe('DragGrid Logic', () => {
         })
 
         it('removePanel', () => {
-            // export const removePanel = (initialDragGrid : DragGridDTO, panelId : string) : DragGridDTO => {
-            expect(true).toBeTruthy()
+
+            const newDragGrid = Logic.removePanel(DragGridInitialState, 'panel-0')
+
+            const expectedResult = produce(DragGridInitialState, dragGrid => {
+
+                const index = dragGrid.panels.findIndex(panel => panel.id === 'panel-0')
+
+                dragGrid.panels.splice(index, 1)
+            })
+
+            expect(newDragGrid).toEqual(expectedResult)
         })
 
         it('removeEmptyPanels', () => {
@@ -80,19 +107,17 @@ describe('DragGrid Logic', () => {
 
         it('Insert Operations', () => {
 
-            const newDragGrid = Logic.insertItem(DragGridInitialState, 'panel-0', 'head', {
+            const newItem : DragItemDTO = {
                 id     : 'item-new',
                 value  : 'new',
                 status : 'default',
-            })
+            }
+
+            const newDragGrid = Logic.insertItem(DragGridInitialState, 'panel-0', 'head', newItem)
 
             const expectedResult = produce(DragGridInitialState, dragGrid => {
 
-                dragGrid.panels[0].items.unshift({
-                    id     : 'item-new',
-                    value  : 'new',
-                    status : 'default',
-                })
+                dragGrid.panels[0].items.unshift(newItem)
             })
 
             expect(newDragGrid).toEqual(expectedResult)

@@ -5,6 +5,7 @@ import type { ListPosition } from 'gyst/type'
 import { copyObject } from 'gyst/shared'
 import { nanoid } from 'nanoid'
 import { produce } from 'immer'
+import _ from 'lodash'
 
 export const toggleItem = (initialDragGrid : DragGridDTO, itemId : string) : DragGridDTO => {
 
@@ -36,19 +37,17 @@ export const duplicateItem = (initialDragGrid : DragGridDTO, itemId : string) : 
     })
 }
 
-export const duplicatePanel = (initialDragGrid : DragGridDTO, panelId : string) : DragGridDTO => {
+export const duplicatePanel = (initialDragGrid : DragGridDTO, panelId : string, newPanelId : string) : DragGridDTO => {
 
     return produce(initialDragGrid, dragGrid => {
 
         const panelIndex = getPanelIndexById(dragGrid, panelId)
 
-        const panelCopy = copyObject(dragGrid.panels[panelIndex]) as DragPanelDTO
+        const panelToCopy = dragGrid.panels[panelIndex]
 
-        panelCopy.items.map(dragItem => dragItem.id = nanoid())
-
-        dragGrid.panels.splice(panelIndex + 1, 0, {
-            ...panelCopy,
-            id : nanoid(),
+        dragGrid.panels.splice(panelIndex, 0, {
+            ...panelToCopy,
+            id : newPanelId,
         })
     })
 }
@@ -59,19 +58,18 @@ export const removeItem = (initialDragGrid : DragGridDTO, itemId : string) : Dra
 
         const { panelIndex, itemIndex } = indexOfItemAndPanel(dragGrid, itemId)
 
-        console.log('panelIndex', panelIndex)
-        console.log('itemIndex', itemIndex)
-
-        return dragGrid.panels[panelIndex].items.splice(itemIndex, 1)[0]
+        _.remove(dragGrid.panels[panelIndex].items, itemIndex)
     })
 }
 
 export const removePanel = (initialDragGrid : DragGridDTO, panelId : string) : DragGridDTO => {
 
     return produce(initialDragGrid, dragGrid => {
-        const panelIndex = getPanelIndexById(dragGrid, panelId)
 
-        return dragGrid.panels.splice(panelIndex, 1)[0]
+        _.remove(
+            dragGrid.panels,
+            panel => panel.id === panelId
+        )
     })
 }
 
@@ -85,18 +83,13 @@ export const removeEmptyPanels = (initialDragGrid : DragGridDTO) : DragGridDTO =
                 panelIndex--
             }
         }
-
-        return dragGrid
-
     })
 }
 
-export const insertPanel = (initialDragGrid : DragGridDTO, index : number, panel : DragPanelDTO) : DragGridDTO => {
-
-    return produce(initialDragGrid, dragGrid => {
+export const insertPanel = (initialDragGrid : DragGridDTO, index : number, panel : DragPanelDTO) : DragGridDTO =>
+    produce(initialDragGrid, dragGrid => {
         dragGrid.panels.splice(index, 0, panel)
     })
-}
 
 export const insertItem = (initialDragGrid : DragGridDTO, panelId : string, position : ListPosition, item : DragItemDTO) : DragGridDTO => {
 
