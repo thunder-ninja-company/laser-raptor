@@ -39,8 +39,20 @@ describe('DragGrid Logic', () => {
         })
 
         it('insertPanel', () => {
-            // export const insertPanel = (initialDragGrid : DragGridDTO, index : number, panel : DragPanelDTO) : DragGridDTO => {
-            expect(true).toBeTruthy()
+
+            const newDragPanel : DragPanelDTO = {
+                id    : 'foo',
+                items : [],
+            }
+
+            // todo: convert this to use ids rather than index (all external functions)
+            const newDragGrid = Logic.insertPanel(DragGridInitialState, 0, newDragPanel)
+
+            const expectedResult = produce(DragGridInitialState, dragGrid => {
+                dragGrid.panels.unshift(newDragPanel)
+            })
+
+            expect(newDragGrid).toEqual(expectedResult)
         })
 
         it('changeItem', () => {
