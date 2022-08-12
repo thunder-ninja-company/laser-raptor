@@ -1,7 +1,6 @@
-import { DragGridInitialState } from '../constant'
+import { DragGridInitialState } from 'gyst/component/DragGrid/constant'
+import Logic from 'gyst/component/DragGrid/logic'
 import { expect } from '@jest/globals'
-import Logic from '../logic'
-
 
 describe('Please just make webpack cooperate', () => {
 
