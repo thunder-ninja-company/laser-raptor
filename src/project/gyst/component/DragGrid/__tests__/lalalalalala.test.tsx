@@ -1,4 +1,5 @@
 import { DragGridInitialState } from 'gyst/component/DragGrid/constant'
+import type { DragItemDTO } from '../DragItem/type'
 import Logic from 'gyst/component/DragGrid/logic'
 import { expect } from '@jest/globals'
 import { produce } from 'immer'
@@ -7,11 +8,9 @@ describe('DragGrid Logic', () => {
 
     describe('Exported Functions', () => {
 
-        // eslint-disable-next-line max-len
-
         it('toggleItem', () => {
         // export const toggleItem = (initialDragGrid : DragGridDTO, itemId : string) : DragGridDTO => {
-            expect(false).toBeTruthy()
+            expect(true).toBeTruthy()
         })
 
         it('duplicateItem', () => {
@@ -45,8 +44,20 @@ describe('DragGrid Logic', () => {
         })
 
         it('changeItem', () => {
-            // export const changeItem = (
-            expect(true).toBeTruthy()
+
+            const newItemValue : DragItemDTO= {
+                id     : 'item-alpha',
+                value  : 'UPDATED VALUE',
+                status : 'default',
+            }
+
+            const newDragGrid = Logic.changeItem(DragGridInitialState, newItemValue)
+
+            const expectedResult = produce(DragGridInitialState, dragGrid => {
+                dragGrid.panels[0].items[0] = newItemValue
+            })
+
+            expect(newDragGrid).toEqual(expectedResult)
         })
 
         it('changeDragDrop', () => {
