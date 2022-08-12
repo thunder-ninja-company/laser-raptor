@@ -82,15 +82,19 @@ export const insertPanel = (dragGrid : DragGridDTO, index : number, panel : Drag
     dragGrid.panels.splice(index, 0, panel)
 }
 
-export const insertItem = (dragGrid : DragGridDTO, panelId : string, position : ListPosition, item : DragItemDTO) : void => {
+export const insertItem = (dragGrid : DragGridDTO, panelId : string, position : ListPosition, item : DragItemDTO) : DragGridDTO => {
 
     const panel = getPanelById(dragGrid, panelId)
+
+    console.log(panel)
 
     if (position === 'head') {
         panel.items.unshift(item)
     } else {
         panel.items.push(item)
     }
+
+    return dragGrid
 }
 
 export const changeItem = (
