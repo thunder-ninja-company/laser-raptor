@@ -458,7 +458,6 @@ const dropOntoDifferentPanel = (dragGrid : DragGridDTO, dragDropState : DragDrop
         item,
     } = getItemInfoById(dragGrid, dragItemId)
 
-
     if (!item)
         throw Error(`Could not find item ${dragItemId}`)
 

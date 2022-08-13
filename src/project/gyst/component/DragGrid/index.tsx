@@ -1,5 +1,5 @@
-import { initialDragItem, initialDragPanel } from 'gyst/component/DragGrid/constant'
 import type { DragDropState, DragGridContextDTO, Props } from './type'
+import { initialDragItem } from 'gyst/component/DragGrid/constant'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import KeyValueList from 'gyst/component/KeyValueList'
 import type { DragItemDTO } from './DragItem/type'
@@ -18,35 +18,35 @@ export default function DragGrid({ dragGrid, onChange } : Props) {
 
     const { classes } = useStyles()
 
-    const duplicatePanel = (panelId : string) : void => {
+    const duplicatePanel = (panelId : string) => {
 
         const newDragGrid = Logic.duplicatePanel(dragGrid, panelId, nanoid())
 
         onChange(newDragGrid)
     }
 
-    const duplicateItem = (itemId : string) : void => {
+    const duplicateItem = (itemId : string) => {
 
         const newDragGrid = Logic.duplicateItem(dragGrid, itemId, nanoid())
 
         onChange(newDragGrid)
     }
 
-    const removePanel = (panelId : string) : void => {
+    const removePanel = (panelId : string) => {
 
         const newDragGrid = Logic.removePanel(dragGrid, panelId)
 
         onChange(newDragGrid)
     }
 
-    const removeItem = (itemId : string) : void => {
+    const removeItem = (itemId : string) => {
 
         const newDragGrid = Logic.removeItem(dragGrid, itemId)
 
         onChange(newDragGrid)
     }
 
-    const toggleItem = (itemId : string) : void => {
+    const toggleItem = (itemId : string) => {
 
         const newDragGrid = Logic.toggleItem(dragGrid, itemId)
 
@@ -55,14 +55,14 @@ export default function DragGrid({ dragGrid, onChange } : Props) {
 
     const addNewPanel = (position : ListPosition) => {
 
-        const newPanel = Logic.newDragPanelDTO();
+        const newPanel = Logic.newDragPanelDTO()
 
         const newDragGrid = Logic.insertPanel(dragGrid, position, newPanel)
 
         onChange(newDragGrid)
     }
 
-    const changeItem = (item : DragItemDTO) : void => {
+    const changeItem = (item : DragItemDTO) => {
 
         const newDragGrid = Logic.changeItem(dragGrid, item)
 
