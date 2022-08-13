@@ -11,6 +11,33 @@
         "plugin:@typescript-eslint/recommended"
     ],
     "rules": {
+        "keyword-spacing": [
+            "error",
+            {
+                "overrides": {
+                    "if": {
+                        "after"  : true,
+                        "before" : true
+                    },
+                    "for": {
+                        "after"  : true,
+                        "before" : true
+                    },
+                    "while": {
+                        "after"  : true,
+                        "before" : true
+                    },
+                    "static": {
+                        "after"  : true,
+                        "before" : true
+                    },
+                    "as": {
+                        "after"  : true,
+                        "before" : true
+                    }
+                }
+            }
+        ],
         "no-unused-vars": "off", // or "@typescript-eslint/no-unused-vars": "off",
         "unused-imports/no-unused-imports": "error",
         "unused-imports/no-unused-vars": [

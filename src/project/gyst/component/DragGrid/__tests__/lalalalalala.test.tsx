@@ -1,17 +1,10 @@
 import type { DragItemDTO } from 'gyst/component/DragGrid/DragItem/type'
 import { DragGridInitialState } from 'gyst/component/DragGrid/constant'
 import { DragPanelDTO } from 'gyst/component/DragGrid/DragPanel/type'
+import { DragDropState } from 'gyst/component/DragGrid/type'
 import Logic from 'gyst/component/DragGrid/logic'
 import { expect } from '@jest/globals'
 import { produce } from 'immer'
-import _ from 'lodash'
-// import jest from 'jest'
-
-// todo - setup standard crypto stuff in one area and not like this
-
-// jest.mock('nanoid', () => {
-//     return { nanoid : () => '666' }
-// })
 
 describe('DragGrid Logic', () => {
 
@@ -122,8 +115,25 @@ describe('DragGrid Logic', () => {
         })
 
         it('changeDragDrop', () => {
-            // export const changeDragDrop = (
-            expect(true).toBeTruthy()
+
+            const dragDropState : DragDropState = {
+
+                // drag
+                dragItemId  : 'item-alpha',
+                dragPanelId : 'panel-0', // (why is this needed?)
+
+                // drop
+                dropPanelId : 'panel-0',
+                dropIndex   : 0,
+            }
+
+            const newDragGrid = Logic.changeDragDrop(DragGridInitialState, dragDropState)
+
+            const expectedResult = produce(DragGridInitialState, dragGrid => {
+                dragGrid.panels[0].items[0] = newItemValue
+            })
+
+            expect(newDragGrid).toEqual(expectedResult)
         })
 
 

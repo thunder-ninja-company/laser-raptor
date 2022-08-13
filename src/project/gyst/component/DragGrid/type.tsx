@@ -12,6 +12,18 @@ export interface DragGridDTO {
     id     : string;
 }
 
+export type DragItemInfo = {
+    panelIndex : number
+    itemIndex  : number
+    item       : DragItemDTO | null
+}
+
+export type DragPanelInfo = {
+    panelIndex : number
+    panel      : DragPanelDTO | null
+}
+
+
 export interface DragGridContextDTO {
     duplicatePanel : (panelId : string) => void;
     duplicateItem  : (itemId : string) => void;
