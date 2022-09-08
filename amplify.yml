@@ -4,7 +4,8 @@ frontend:
         preBuild:
             commands:
                 - npm install
-        # IMPORTANT - Please verify your build commands
+        # IMPORTANT - Testing this diff command thing
+        # heres a new line
         build:
             commands: []
     artifacts:

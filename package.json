@@ -18,6 +18,11 @@
     "keywords": [
         "oclif"
     ],
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run lint:next"
+        }
+    },
     "types": "dist/index.d.ts",
     "main": "./src/electron/main.js",
     "scripts": {
@@ -42,7 +47,8 @@
         "version": "oclif readme && git add README.md",
         "format": "prettier ./src",
         "check": "prettier ./src",
-        "prettier-watch": "onchange \"**/*\" -- prettier --ignore-unknown {{changed}}"
+        "prettier-watch": "onchange \"**/*\" -- prettier --ignore-unknown {{changed}}",
+        "prepare": "husky install"
     },
     "dependencies": {
         "@aws-amplify/ui-react": "2.17.1",
@@ -72,7 +78,10 @@
         "web-vitals": "2.1.4"
     },
     "devDependencies": {
-        "@babel/core": "7.18.2",
+        "@babel/cli": "7.18.10",
+        "@babel/core": "7.19.0",
+        "@babel/preset-env": "7.19.0",
+        "@babel/register": "7.18.9",
         "@oclif/test": "^2",
         "@storybook/addon-actions": "6.5.9",
         "@storybook/addon-essentials": "6.5.9",
@@ -105,6 +114,7 @@
         "eslint-plugin-prettier": "4.2.1",
         "eslint-plugin-storybook": "0.6.4",
         "globby": "^11",
+        "husky": "8.0.1",
         "mocha": "^9",
         "oclif": "^3",
         "plasmo": "latest",
