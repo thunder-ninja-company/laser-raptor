@@ -72,8 +72,24 @@
     },
     "config": {
         "commitizen": {
-            "path": "@commitlint/prompt"
+            "path": "./node_modules/cz-conventional-changelog",
+            "disableScopeLowerCase": false,
+            "disableSubjectLowerCase": false,
+            "maxHeaderWidth": 100,
+            "maxLineWidth": 100,
+            "defaultType": "",
+            "defaultScope": "",
+            "defaultSubject": "",
+            "defaultBody": "",
+            "defaultIssues": "",
+            "types": {
+              "feat": {
+                "description": "A new feature",
+                "title": "Features"
+              }
+            }
         }
+
     },
     "dependencies": {
         "@aws-amplify/ui-react": "2.17.1",
