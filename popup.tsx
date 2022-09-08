@@ -8,15 +8,17 @@ function IndexPopup() {
     return (
         <div
             style={{
-                display: 'flex',
-                flexDirection: 'column',
-                padding: 16
+                display       : 'flex',
+                flexDirection : 'column',
+                padding       : 16
             }}>
             <h1>
-                Welcome asdf ddd {data} wefto your <a href="https://www.plasmo.com">Plasmo</a> Extension!
+                {'Welcome asdf ddd '}{data}{' wefto your '}<a href='https://www.plasmo.com'>{'Plasmo'}</a> {'Extension!'}
                 <Application />
             </h1>
-            <input onChange={(e) => setData(e.target.value)} value={data} />
+            <input
+                onChange={e => setData(e.target.value)}
+                value={data} />
         </div>
     );
 }
