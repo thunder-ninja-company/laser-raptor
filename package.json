@@ -48,7 +48,13 @@
         "format": "prettier ./src",
         "check": "prettier ./src",
         "prettier-watch": "onchange \"**/*\" -- prettier --ignore-unknown {{changed}}",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "commit": "git-cz"
+    },
+    "config": {
+        "commitizen": {
+            "path": "@commitlint/prompt"
+        }
     },
     "dependencies": {
         "@aws-amplify/ui-react": "2.17.1",
@@ -84,6 +90,7 @@
         "@babel/register": "7.18.9",
         "@commitlint/cli": "17.1.2",
         "@commitlint/config-conventional": "17.1.0",
+        "@commitlint/prompt": "17.1.2",
         "@oclif/test": "^2",
         "@storybook/addon-actions": "6.5.9",
         "@storybook/addon-essentials": "6.5.9",
@@ -105,6 +112,7 @@
         "@typescript-eslint/parser": "5.33.0",
         "babel-loader": "8.2.5",
         "chai": "^4",
+        "commitizen": "4.2.5",
         "cypress": "10.0.0",
         "electron": "19.0.2",
         "eslint": "8.21.0",
