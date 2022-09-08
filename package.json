@@ -91,7 +91,7 @@
         }
     },
     "dependencies": {
-        "@aws-amplify/ui-react": "2.17.1",
+        "@aws-amplify/ui-react": "2.20.0",
         "@mantine/core": "4.2.5",
         "@mantine/form": "4.2.10",
         "@mantine/hooks": "4.2.5",
