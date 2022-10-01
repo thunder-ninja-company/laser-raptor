@@ -111,7 +111,7 @@
         "react-dnd": "16.0.1",
         "react-dnd-html5-backend": "16.0.1",
         "react-dom": "18.1.0",
-        "react-redux": "8.0.2",
+        "react-redux": "8.0.4",
         "styled-components": "5.3.5",
         "tabler-icons-react": "1.48.0",
         "use-debounce": "8.0.3",
