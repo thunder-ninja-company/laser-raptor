@@ -148,7 +148,7 @@
         "chai": "4",
         "commitizen": "4.2.5",
         "cypress": "10.0.0",
-        "electron": "19.0.2",
+        "electron": "19.1.9",
         "eslint": "8.21.0",
         "eslint-config-next": "12.2.4",
         "eslint-config-oclif": "4.0.0",
