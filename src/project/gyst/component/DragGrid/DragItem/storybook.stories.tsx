@@ -1,18 +1,18 @@
-import type { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import DragItemItem from ".";
-import { COMPONENT_NAME } from "./constant";
+import DragItemItem from '.';
+import { COMPONENT_NAME } from './constant';
 
 export default {
-    title: "Gyst/DragItemItem",
-    component: DragItemItem,
- parameters: {
+    title      : 'Gyst/DragItemItem',
+    component  : DragItemItem,
+    parameters : {
         // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
-        layout: "fullscreen",
+        layout : 'fullscreen',
     },
 } as ComponentMeta<typeof DragItemItem>;
 
-const Template: ComponentStory<typeof DragItemItem> = (args) => (
+const Template : ComponentStory<typeof DragItemItem> = args => (
     <DragItemItem {...args} />
 );
 

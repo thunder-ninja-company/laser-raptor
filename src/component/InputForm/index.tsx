@@ -1,11 +1,11 @@
-import { Box } from "@mantine/core";
-import React from "react";
+import { Box } from '@mantine/core';
+import React from 'react';
 
-import type { Props } from "./type";
+import type { Props } from './type';
 
-const InputForm: React.FC<Props> = ({ children }: Props) => {
+const InputForm : React.FC<Props> = ({ children } : Props) => {
     return (
-        <Box sx={{ margin: "20px" }}>
+        <Box sx={{ margin : '20px' }}>
             <form>{children}</form>
         </Box>
     );

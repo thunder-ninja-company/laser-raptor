@@ -1,18 +1,16 @@
 
-import { AppHeader, AppBody, DragGrid, KeyValueList } from "gyst/component";
-import type { DragItemDTO } from "gyst/component/DragGrid/DragItem/type";
-import { AppShell, Grid, MantineProvider, Dialog } from "@mantine/core";
-import { selectDragGrid, selectIsDebugDialogOpen } from "gyst/selector";
-import type { GystAppContextDTO, ListPosition } from "gyst/type";
-import type { DragGridDTO } from "gyst/component/DragGrid/type";
-import { GystAppContext, ProjectName } from "gyst/constant";
+import { AppHeader, AppBody, DragGrid, KeyValueList } from 'gyst/component';
+import { AppShell, Grid, MantineProvider, Dialog } from '@mantine/core';
+import { selectDragGrid, selectIsDebugDialogOpen } from 'gyst/selector';
+import type { GystAppContextDTO } from 'gyst/type';
+import type { DragGridDTO } from 'gyst/component/DragGrid/type';
+import { GystAppContext, ProjectName } from 'gyst/constant';
 import { useAppDispatch } from 'core/hooks';
-import { useSelector } from "react-redux";
-import { copyObject } from "gyst/shared";
-import { useStyles } from "./style";
-import type { Props } from "./type";
+import { useSelector } from 'react-redux';
+import { useStyles } from './style';
+import type { Props } from './type';
 
-import slice from "gyst/slice";
+import slice from 'gyst/slice';
 
 const {
     actions : {
@@ -21,7 +19,7 @@ const {
     },
 } =  slice;
 
-export default function AppRoot({ id }: Props) {
+export default function AppRoot({ id } : Props) {
 
     const { classes } = useStyles();
 
@@ -32,8 +30,8 @@ export default function AppRoot({ id }: Props) {
 
     const dispatch = useAppDispatch();
 
-    const handleChange = (value: DragGridDTO) => {
-        debugger;
+    const handleChange = (value : DragGridDTO) => {
+        // debugger;
 
         dispatch(updateGroupGridValue(value));
     }
@@ -45,13 +43,12 @@ export default function AppRoot({ id }: Props) {
     };
 
 
-
     const context : GystAppContextDTO = {
         onHelp : handleHelp,
     };
 
     const exampleTheme = {
-        fontFamily : "'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue'",
+        fontFamily : '\'HelveticaNeue-Light\', \'Helvetica Neue Light\', \'Helvetica Neue\'',
     };
 
     const handleCloseDialog = () => {
@@ -61,14 +58,14 @@ export default function AppRoot({ id }: Props) {
     return (
         <GystAppContext.Provider value={context}>
             <MantineProvider
-                emotionOptions={{ key: ProjectName }}
+                emotionOptions={{ key : ProjectName }}
                 withNormalizeCSS={true}
                 withGlobalStyles={true}
                 theme={exampleTheme}>
                 <AppShell
                     header={<AppHeader id={`app-header-${id}`} />}
-                    navbarOffsetBreakpoint="sm"
-                    asideOffsetBreakpoint="sm"
+                    navbarOffsetBreakpoint='sm'
+                    asideOffsetBreakpoint='sm'
                     className={classes.appRoot}
                     fixed={true}>
                     <AppBody id={`app-body-${id}`}>

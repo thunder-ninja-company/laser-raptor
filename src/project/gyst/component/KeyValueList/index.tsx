@@ -1,9 +1,9 @@
 import { Table, Title, Box } from '@mantine/core';
-import type { Props } from "./type";
+import type { Props } from './type';
 import { useStyles } from './style';
 
 
-export default function KeyValueList({ value, id }: Props) {
+export default function KeyValueList({ value, id } : Props) {
 
     const { classes } = useStyles();
 

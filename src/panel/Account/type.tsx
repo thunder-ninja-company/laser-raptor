@@ -1,3 +1,3 @@
 export interface Props {
-    children?: React.ReactNode[] | React.ReactNode;
+    children ?: React.ReactNode[] | React.ReactNode;
 }

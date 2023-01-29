@@ -1,10 +1,10 @@
-import { createStyles } from "@mantine/core";
-import { LessProminentIconColor } from "gyst/constant";
+import { createStyles } from '@mantine/core';
+import { LessProminentIconColor } from 'gyst/constant';
 
 export const useStyles = createStyles(_theme => ({
-    iconToggleItem: {
+    iconToggleItem : {
         marginLeft : _theme.spacing.md,
-        cursor      : 'pointer',
-        color       : LessProminentIconColor,
+        cursor     : 'pointer',
+        color      : LessProminentIconColor,
     },
 }));

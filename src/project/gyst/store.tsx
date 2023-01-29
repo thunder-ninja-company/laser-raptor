@@ -1,6 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
-import slice from "./slice";
+import { configureStore } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
+import slice from './slice';
 
 const { reducer } = slice;
 
@@ -10,6 +10,6 @@ const store = configureStore({
 });
 
 export type AppDispatch = typeof store.dispatch;
-export const useAppDispatch: () => AppDispatch = useDispatch;
+export const useAppDispatch : () => AppDispatch = useDispatch;
 
 export default store;

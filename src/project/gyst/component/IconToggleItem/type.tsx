@@ -1,5 +1,5 @@
-import type { IconSize } from "gyst/constant";
+import type { IconSize } from 'gyst/constant';
 
 export interface Props {
-    id: string;
+    id : string;
 }

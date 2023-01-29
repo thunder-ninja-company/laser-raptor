@@ -5,15 +5,15 @@ import React from 'react';
 import Template from '.';
 
 export default {
-    title: 'Shared/panel/Template',
-    component: Template,
-    parameters: {
+    title      : 'Shared/panel/Template',
+    component  : Template,
+    parameters : {
         // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
-        layout: 'fullscreen'
+        layout : 'fullscreen'
     }
 } as ComponentMeta<typeof Template>;
 
-const ComponentTemplate: ComponentStory<typeof Template> = (args) => <Template {...args} />;
+const ComponentTemplate : ComponentStory<typeof Template> = args => <Template {...args} />;
 
 export const LoggedOut = ComponentTemplate.bind({});
 
@@ -23,7 +23,7 @@ export const LoggedIn = ComponentTemplate.bind({});
 LoggedIn.play = async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    const loginButton = canvas.getByRole('button', { name: /Log in/i });
+    const loginButton = canvas.getByRole('button', { name : /Log in/i });
 
     userEvent.click(loginButton);
 };

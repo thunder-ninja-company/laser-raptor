@@ -3,7 +3,7 @@ import { useStyles } from './style';
 import { Box} from '@mantine/core';
 import React from 'react';
 
-export default function HeaderFooter({ children, justify }: PropsHeaderFooter) {
+export default function HeaderFooter({ children, justify } : PropsHeaderFooter) {
 
     const { classes } = useStyles();
 

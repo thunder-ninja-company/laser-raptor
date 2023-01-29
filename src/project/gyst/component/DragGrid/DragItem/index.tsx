@@ -17,7 +17,7 @@ export default function DragItem({
     dragPanelIndex,
     panelId,
     position,
-}: DragItemProps) {
+} : DragItemProps) {
     const context = useContext(DragGridContext);
 
     const { duplicateItem, removeItem, toggleItem, dragGrid } =
@@ -40,22 +40,22 @@ export default function DragItem({
     });
 
     const form = useForm<FormValues>({
-        initialValues: {
-            value: itemValue,
-            email: '',
+        initialValues : {
+            value : itemValue,
+            email : '',
         },
     });
 
     const [{ isDragging: _ }, drag, dragPreview] = useDrag(() => ({
-        type: 'item',
-        collect: (monitor) => ({
-            isDragging: monitor.isDragging(),
+        type    : 'item',
+        collect : monitor => ({
+            isDragging : monitor.isDragging(),
         }),
 
-        item: {
+        item : {
             ...initialDragDropState,
-            dragPanelId: panelId,
-            dragItemId: itemId,
+            dragPanelId : panelId,
+            dragItemId  : itemId,
         } as DragDropState,
         end(item) {
             console.log(`DragItem has finished dragging ${itemId}`);
@@ -63,8 +63,8 @@ export default function DragItem({
         },
     }));
 
-    const handleChangeValue = (evt: { currentTarget: { value: any } }) => {
-        debugger;
+    const handleChangeValue = (evt : { currentTarget : { value : any } }) => {
+        // debugger;
 
         const value = evt.currentTarget.value;
 
@@ -89,22 +89,27 @@ export default function DragItem({
     };
 
     const handleToggleItem = () => {
-        debugger;
+        // debugger;
 
         toggleItem(itemId);
     };
 
     return (
-        <Box className={classes.dragItem} ref={dragPreview}>
-            <div role="Handle" ref={drag}>
+        <Box
+            className={classes.dragItem}
+            ref={dragPreview}>
+            <div
+                role='Handle'
+                ref={drag}>
                 <div ref={refHover}>
                     <Grid gutter={0}>
-                        <Grid.Col className={classes.columnLeft} span={1}>
+                        <Grid.Col
+                            className={classes.columnLeft}
+                            span={1}>
                             <Box
                                 className={classes.iconToggleItem}
                                 onClick={handleToggleItem}
-                                ref={refHoverCheckbox}
-                            >
+                                ref={refHoverCheckbox}>
                                 {itemStatus === 'checked' ? (
                                     <IconCheckbox stroke={1} />
                                 ) : isHoveringCheckbox ? (
@@ -114,7 +119,9 @@ export default function DragItem({
                                 )}
                             </Box>
                         </Grid.Col>
-                        <Grid.Col className={classes.columnMiddle} span={10}>
+                        <Grid.Col
+                            className={classes.columnMiddle}
+                            span={10}>
                             <Textarea
                                 {...form.getInputProps('value')}
                                 onChange={handleChangeValue}
@@ -124,25 +131,23 @@ export default function DragItem({
                                     position === 'head'
                                         ? classes.largeInput
                                         : classes.smallInput
-                                }
-                            />
+                                }/>
                         </Grid.Col>
-                        <Grid.Col className={classes.columnRight} span={1}>
+                        <Grid.Col
+                            className={classes.columnRight}
+                            span={1}>
                             <Menu className={classes.itemMenu}>
                                 <Menu.Item
                                     onClick={handleDuplicateItem}
-                                    icon={<IconDuplicateItem id={itemId} />}
-                                >
+                                    icon={<IconDuplicateItem id={itemId} />}>
                                     {'Duplicate'}
                                 </Menu.Item>
                                 <Menu.Item
                                     onClick={handleRemoveItem}
                                     icon={
                                         <IconRemoveItem
-                                            id={`remove-item-${itemId}`}
-                                        />
-                                    }
-                                >
+                                            id={`remove-item-${itemId}`}/>
+                                    }>
                                     {'Remove'}
                                 </Menu.Item>
                             </Menu>

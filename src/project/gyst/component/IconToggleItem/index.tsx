@@ -1,9 +1,9 @@
 import { IconCheckbox } from '@tabler/icons';
 import { IconSize } from 'gyst/constant';
-import type { Props } from "./type";
+import type { Props } from './type';
 import { useStyles } from './style';
 
-export default function IconToggleItem({ id }: Props) {
+export default function IconToggleItem({ id } : Props) {
 
     const { classes } = useStyles();
 

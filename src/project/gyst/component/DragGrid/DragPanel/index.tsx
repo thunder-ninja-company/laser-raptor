@@ -11,7 +11,8 @@ import { useContext } from 'react';
 import DragItem from '../DragItem';
 import React from 'react';
 
-export default function DragPanel({ dragPanelIndex }: Props) {
+
+export default function DragPanel({ dragPanelIndex } : Props) {
 
     const {
         duplicatePanel, removePanel, dragGrid,
@@ -62,34 +63,39 @@ export default function DragPanel({ dragPanelIndex }: Props) {
                 </HeaderFooter>
 
                 {items.map((dragItem, dragItemIndex) => {
-                        return (
-                            dragItemIndex === 0
-                            ? <LandingZone
-                                index={dragItemIndex}
-                                panelId={panelId}
-                                type='panel'>
-                                    {`HEAD landing-zone-${dragItem.value}-${dragItemIndex}`}
-                                <DragItem
+                    return (
+                        dragItemIndex === 0
+                            ? (
+                                <LandingZone
                                     key={`landing-zone-${dragItem.value}-${dragItemIndex}`}
-                                    dragPanelIndex={dragPanelIndex}
-                                    dragItemIndex={dragItemIndex}
-                                    position='head'
-                                    panelId={panelId} />
-                            </LandingZone>
-                            : <LandingZone
-                                key={`ITEM landing-zone-${dragItem.value}-${dragItemIndex + 1}`}
-                                index={dragItemIndex + 1}
-                                panelId={panelId}
-                                type='panel'>
-                                {`ITEM landing-zone-${dragItem.value}-${dragItemIndex + 1}`}
-                                <DragItem
-                                    dragPanelIndex={dragPanelIndex}
-                                    dragItemIndex={dragItemIndex}
+                                    index={dragItemIndex}
                                     panelId={panelId}
-                                    position='item' />
-                            </LandingZone>
-                        );
-                    }
+                                    type='panel'>
+                                    {`HEAD landing-zone-${dragItem.value}-${dragItemIndex}`}
+                                    <DragItem
+                                        dragPanelIndex={dragPanelIndex}
+                                        dragItemIndex={dragItemIndex}
+                                        position='head'
+                                        panelId={panelId} />
+                                </LandingZone>
+                            )
+                            :
+                            (
+                                <LandingZone
+                                    key={`ITEM landing-zone-${dragItem.value}-${dragItemIndex + 1}`}
+                                    index={dragItemIndex + 1}
+                                    panelId={panelId}
+                                    type='panel'>
+                                    {`ITEM landing-zone-${dragItem.value}-${dragItemIndex + 1}`}
+                                    <DragItem
+                                        dragPanelIndex={dragPanelIndex}
+                                        dragItemIndex={dragItemIndex}
+                                        panelId={panelId}
+                                        position='item' />
+                                </LandingZone>
+                            )
+                    );
+                }
                 )}
                 <LandingZone
                     index={items.length}
