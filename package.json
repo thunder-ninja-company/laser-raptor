@@ -123,7 +123,7 @@
         "@babel/preset-env": "7.19.0",
         "@babel/register": "7.18.9",
         "@commitlint/cli": "17.1.2",
-        "@commitlint/config-conventional": "17.1.0",
+        "@commitlint/config-conventional": "17.4.4",
         "@commitlint/prompt": "17.1.2",
         "@oclif/test": "2",
         "@storybook/addon-actions": "6.5.9",
